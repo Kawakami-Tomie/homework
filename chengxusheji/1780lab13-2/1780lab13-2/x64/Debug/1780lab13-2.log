@@ -1,0 +1,3 @@
+﻿  源.cpp
+E:\VS\1780lab13-2\1780lab13-2\源.cpp(251,1): warning C4102: “flag2”: 未引用的标签
+  1780lab13-2.vcxproj -> E:\VS\1780lab13-2\x64\Debug\1780lab13-2.exe

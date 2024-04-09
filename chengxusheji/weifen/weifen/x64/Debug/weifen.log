@@ -1,0 +1,18 @@
+﻿  源.cpp
+E:\VS\weifen\weifen\源.cpp(14,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(15,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(16,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(17,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(18,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(19,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(20,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(21,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(22,20): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(23,20): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(24,20): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(25,20): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(26,20): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(27,20): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(28,20): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\weifen\weifen\源.cpp(29,20): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  weifen.vcxproj -> E:\VS\weifen\x64\Debug\weifen.exe

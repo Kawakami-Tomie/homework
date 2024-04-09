@@ -1,0 +1,4 @@
+﻿  源.cpp
+E:\VS\1780lab14-5\1780lab14-5\源.cpp(348,8): warning C4101: “m_dailycount”: 未引用的局部变量
+E:\VS\1780lab14-5\1780lab14-5\源.cpp(348,26): warning C4101: “m_endcount”: 未引用的局部变量
+  1780lab14-5.vcxproj -> E:\VS\1780lab14-5\x64\Debug\1780lab14-5.exe

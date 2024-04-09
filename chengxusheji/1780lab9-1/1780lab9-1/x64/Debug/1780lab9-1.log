@@ -1,0 +1,4 @@
+﻿  test.cpp
+E:\VS\1780lab9-1\1780lab9-1\test.cpp(113,39): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\VS\1780lab9-1\1780lab9-1\test.cpp(121,42): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  1780lab9-1.vcxproj -> E:\VS\1780lab9-1\x64\Debug\1780lab9-1.exe
