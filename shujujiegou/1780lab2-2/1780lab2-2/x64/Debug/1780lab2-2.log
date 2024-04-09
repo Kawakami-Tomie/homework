@@ -1,0 +1,7 @@
+﻿  1780lab2-2.cpp
+E:\VS\数据结构\1780lab2-2\1780lab2-2\1780lab2-2.cpp(61,1): fatal  error C1001: 内部编译器错误。
+  (编译器文件“D:\a\_work\1\s\src\vctools\Compiler\CxxFE\sl\p1\c\error.h”，第 1206 行)
+   要解决此问题，请尝试简化或更改上面所列位置附近的程序。
+  如果可以，请在此处提供重现步骤: https://developercommunity.visualstudio.com
+  请选择 Visual C++
+  “帮助”菜单上的“技术支持”命令，或打开技术支持帮助文件来获得详细信息。

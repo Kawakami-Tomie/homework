@@ -1,0 +1,5 @@
+﻿  源.cpp
+E:\VS\数据结构\1780lab6-1\1780lab6-1\源.cpp(121,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+E:\VS\数据结构\1780lab6-1\1780lab6-1\源.cpp(104): warning C4715: “SmallType”: 不是所有的控件路径都返回值
+E:\VS\数据结构\1780lab6-1\1780lab6-1\源.cpp(181): warning C4715: “reasonable”: 不是所有的控件路径都返回值
+  1780lab6-1.vcxproj -> E:\VS\数据结构\1780lab6-1\x64\Debug\1780lab6-1.exe

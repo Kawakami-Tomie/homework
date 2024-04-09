@@ -1,0 +1,9 @@
+﻿  1790lab06.cpp
+D:\大学读不了一点\数据结构\1790lab06.cpp(164,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\大学读不了一点\数据结构\1790lab06.cpp(798,6): warning C4101: “LastCard”: 未引用的局部变量
+D:\大学读不了一点\数据结构\1790lab06.cpp(932,6): warning C4101: “LastCard”: 未引用的局部变量
+D:\大学读不了一点\数据结构\1790lab06.cpp(742): warning C4715: “NPCsigle”: 不是所有的控件路径都返回值
+D:\大学读不了一点\数据结构\1790lab06.cpp(792): warning C4715: “NPCsiglepanduan”: 不是所有的控件路径都返回值
+D:\大学读不了一点\数据结构\1790lab06.cpp(844): warning C4715: “NPCdouble”: 不是所有的控件路径都返回值
+D:\大学读不了一点\数据结构\1790lab06.cpp(975): warning C4715: “NPCboom”: 不是所有的控件路径都返回值
+  ddz.vcxproj -> E:\VS\数据结构\ddz\x64\Debug\ddz.exe

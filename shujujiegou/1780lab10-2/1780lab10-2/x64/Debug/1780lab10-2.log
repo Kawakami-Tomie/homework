@@ -1,0 +1,3 @@
+﻿  源.cpp
+E:\VS\数据结构\1780lab10-2\1780lab10-2\源.cpp(27): warning C4715: “Queue<int>::front”: 不是所有的控件路径都返回值
+  1780lab10-2.vcxproj -> E:\VS\数据结构\1780lab10-2\x64\Debug\1780lab10-2.exe

@@ -1,0 +1,9 @@
+﻿  源.cpp
+E:\VS\数据结构\1780lab4-1\1780lab4-1\源.cpp(91,15): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+E:\VS\数据结构\1780lab4-1\1780lab4-1\源.cpp(93,19): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  正在生成代码
+  1 of 18 functions ( 5.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  1780lab4-1.vcxproj -> E:\VS\数据结构\1780lab4-1\x64\Release\1780lab4-1.exe

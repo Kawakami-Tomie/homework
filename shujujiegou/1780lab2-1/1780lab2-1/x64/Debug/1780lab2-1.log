@@ -1,0 +1,23 @@
+﻿  1780lab2-1.cpp
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(79,11): error C3861: “time”: 找不到标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(79,5): error C3861: “srand”: 找不到标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(81,31): error C3861: “rand”: 找不到标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(81,9): error C2660: “insertElement”: 函数不接受 2 个参数
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(40,6): message : 参见“insertElement”的声明
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(81,9): message : 尝试匹配参数列表“(Vector, int)”时
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(88,9): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(90,5): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(90,13): error C2065: “endl”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(99,5): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(104,5): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(105,5): error C2065: “cin”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(107,5): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(112,5): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(113,5): error C2065: “cin”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(115,5): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(120,5): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(121,5): error C2065: “cin”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(124,9): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(124,97): error C2065: “endl”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(127,9): error C2065: “cout”: 未声明的标识符
+E:\VS\数据结构\1780lab2-1\1780lab2-1\1780lab2-1.cpp(127,35): error C2065: “endl”: 未声明的标识符

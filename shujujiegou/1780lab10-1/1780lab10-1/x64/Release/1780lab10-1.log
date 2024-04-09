@@ -1,0 +1,7 @@
+﻿  源.cpp
+  正在生成代码
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+E:\VS\数据结构\1780lab10-1\1780lab10-1\源.cpp(28): warning C4715: “Queue<int>::front”: 不是所有的控件路径都返回值
+  All 393 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  1780lab10-1.vcxproj -> E:\VS\数据结构\1780lab10-1\x64\Release\1780lab10-1.exe
