@@ -1,0 +1,261 @@
+/********************************************************************************
+** Form generated from reading UI file 'widget.ui'
+**
+** Created by: Qt User Interface Compiler version 5.9.1
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
+
+#ifndef UI_WIDGET_H
+#define UI_WIDGET_H
+
+#include <QtCore/QVariant>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
+
+QT_BEGIN_NAMESPACE
+
+class Ui_Widget
+{
+public:
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout;
+    QLineEdit *lineEdit;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QGridLayout *gridLayout_2;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_6;
+    QPushButton *pushButton_7;
+    QPushButton *pushButton_10;
+    QPushButton *pushButton_9;
+    QPushButton *pushButton_11;
+    QPushButton *pushButton_8;
+    QPushButton *pushButton_14;
+    QPushButton *pushButton_13;
+    QPushButton *pushButton_15;
+    QPushButton *pushButton_12;
+    QPushButton *pushButton_18;
+    QPushButton *pushButton_17;
+    QPushButton *pushButton_19;
+    QPushButton *pushButton_16;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *pushButton_20;
+    QPushButton *pushButton_21;
+    QPushButton *pushButton_22;
+    QPushButton *pushButton_23;
+
+    void setupUi(QWidget *Widget)
+    {
+        if (Widget->objectName().isEmpty())
+            Widget->setObjectName(QStringLiteral("Widget"));
+        Widget->resize(517, 338);
+        widget = new QWidget(Widget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(50, 50, 399, 257));
+        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(6);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setVerticalSpacing(14);
+        lineEdit = new QLineEdit(widget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+
+        gridLayout->addWidget(lineEdit, 0, 0, 1, 3);
+
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        gridLayout->addWidget(pushButton, 1, 0, 1, 1);
+
+        pushButton_2 = new QPushButton(widget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+
+        gridLayout->addWidget(pushButton_2, 1, 1, 1, 1);
+
+        pushButton_3 = new QPushButton(widget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+
+        gridLayout->addWidget(pushButton_3, 1, 2, 1, 1);
+
+
+        verticalLayout->addLayout(gridLayout);
+
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout_2->setVerticalSpacing(10);
+        pushButton_4 = new QPushButton(widget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+
+        gridLayout_2->addWidget(pushButton_4, 0, 0, 1, 1);
+
+        pushButton_5 = new QPushButton(widget);
+        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+
+        gridLayout_2->addWidget(pushButton_5, 0, 1, 1, 1);
+
+        pushButton_6 = new QPushButton(widget);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+
+        gridLayout_2->addWidget(pushButton_6, 0, 2, 1, 1);
+
+        pushButton_7 = new QPushButton(widget);
+        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
+
+        gridLayout_2->addWidget(pushButton_7, 0, 3, 1, 1);
+
+        pushButton_10 = new QPushButton(widget);
+        pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
+
+        gridLayout_2->addWidget(pushButton_10, 1, 0, 1, 1);
+
+        pushButton_9 = new QPushButton(widget);
+        pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
+
+        gridLayout_2->addWidget(pushButton_9, 1, 1, 1, 1);
+
+        pushButton_11 = new QPushButton(widget);
+        pushButton_11->setObjectName(QStringLiteral("pushButton_11"));
+
+        gridLayout_2->addWidget(pushButton_11, 1, 2, 1, 1);
+
+        pushButton_8 = new QPushButton(widget);
+        pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
+
+        gridLayout_2->addWidget(pushButton_8, 1, 3, 1, 1);
+
+        pushButton_14 = new QPushButton(widget);
+        pushButton_14->setObjectName(QStringLiteral("pushButton_14"));
+
+        gridLayout_2->addWidget(pushButton_14, 2, 0, 1, 1);
+
+        pushButton_13 = new QPushButton(widget);
+        pushButton_13->setObjectName(QStringLiteral("pushButton_13"));
+
+        gridLayout_2->addWidget(pushButton_13, 2, 1, 1, 1);
+
+        pushButton_15 = new QPushButton(widget);
+        pushButton_15->setObjectName(QStringLiteral("pushButton_15"));
+
+        gridLayout_2->addWidget(pushButton_15, 2, 2, 1, 1);
+
+        pushButton_12 = new QPushButton(widget);
+        pushButton_12->setObjectName(QStringLiteral("pushButton_12"));
+
+        gridLayout_2->addWidget(pushButton_12, 2, 3, 1, 1);
+
+        pushButton_18 = new QPushButton(widget);
+        pushButton_18->setObjectName(QStringLiteral("pushButton_18"));
+
+        gridLayout_2->addWidget(pushButton_18, 3, 0, 1, 1);
+
+        pushButton_17 = new QPushButton(widget);
+        pushButton_17->setObjectName(QStringLiteral("pushButton_17"));
+
+        gridLayout_2->addWidget(pushButton_17, 3, 1, 1, 1);
+
+        pushButton_19 = new QPushButton(widget);
+        pushButton_19->setObjectName(QStringLiteral("pushButton_19"));
+
+        gridLayout_2->addWidget(pushButton_19, 3, 2, 1, 1);
+
+        pushButton_16 = new QPushButton(widget);
+        pushButton_16->setObjectName(QStringLiteral("pushButton_16"));
+
+        gridLayout_2->addWidget(pushButton_16, 3, 3, 1, 1);
+
+
+        verticalLayout->addLayout(gridLayout_2);
+
+
+        verticalLayout_2->addLayout(verticalLayout);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        pushButton_20 = new QPushButton(widget);
+        pushButton_20->setObjectName(QStringLiteral("pushButton_20"));
+
+        horizontalLayout->addWidget(pushButton_20);
+
+        pushButton_21 = new QPushButton(widget);
+        pushButton_21->setObjectName(QStringLiteral("pushButton_21"));
+
+        horizontalLayout->addWidget(pushButton_21);
+
+        pushButton_22 = new QPushButton(widget);
+        pushButton_22->setObjectName(QStringLiteral("pushButton_22"));
+
+        horizontalLayout->addWidget(pushButton_22);
+
+        pushButton_23 = new QPushButton(widget);
+        pushButton_23->setObjectName(QStringLiteral("pushButton_23"));
+
+        horizontalLayout->addWidget(pushButton_23);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
+
+
+        retranslateUi(Widget);
+
+        QMetaObject::connectSlotsByName(Widget);
+    } // setupUi
+
+    void retranslateUi(QWidget *Widget)
+    {
+        Widget->setWindowTitle(QApplication::translate("Widget", "Widget", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("Widget", "Clear", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("Widget", "ClearAll", Q_NULLPTR));
+        pushButton_3->setText(QApplication::translate("Widget", "=", Q_NULLPTR));
+        pushButton_4->setText(QApplication::translate("Widget", "1", Q_NULLPTR));
+        pushButton_5->setText(QApplication::translate("Widget", "2", Q_NULLPTR));
+        pushButton_6->setText(QApplication::translate("Widget", "3", Q_NULLPTR));
+        pushButton_7->setText(QApplication::translate("Widget", "+", Q_NULLPTR));
+        pushButton_10->setText(QApplication::translate("Widget", "4", Q_NULLPTR));
+        pushButton_9->setText(QApplication::translate("Widget", "5", Q_NULLPTR));
+        pushButton_11->setText(QApplication::translate("Widget", "6", Q_NULLPTR));
+        pushButton_8->setText(QApplication::translate("Widget", "-", Q_NULLPTR));
+        pushButton_14->setText(QApplication::translate("Widget", "7", Q_NULLPTR));
+        pushButton_13->setText(QApplication::translate("Widget", "8", Q_NULLPTR));
+        pushButton_15->setText(QApplication::translate("Widget", "9", Q_NULLPTR));
+        pushButton_12->setText(QApplication::translate("Widget", "*", Q_NULLPTR));
+        pushButton_18->setText(QApplication::translate("Widget", ".", Q_NULLPTR));
+        pushButton_17->setText(QApplication::translate("Widget", "0", Q_NULLPTR));
+        pushButton_19->setText(QApplication::translate("Widget", "+/-", Q_NULLPTR));
+        pushButton_16->setText(QApplication::translate("Widget", "/", Q_NULLPTR));
+        pushButton_20->setText(QApplication::translate("Widget", "sin", Q_NULLPTR));
+        pushButton_21->setText(QApplication::translate("Widget", "cos", Q_NULLPTR));
+        pushButton_22->setText(QApplication::translate("Widget", "tan", Q_NULLPTR));
+        pushButton_23->setText(QApplication::translate("Widget", "sqrt", Q_NULLPTR));
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class Widget: public Ui_Widget {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // UI_WIDGET_H

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>chengxu</class>
+ <widget class="QDialog" name="chengxu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>197</width>
+    <height>220</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QRadioButton" name="radio_8">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>7</y>
+     <width>86</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>8进制</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_10">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>148</y>
+     <width>86</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radio_10">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>34</y>
+     <width>63</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>10进制</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>148</y>
+     <width>48</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>十进制</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_8">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>119</y>
+     <width>86</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_16">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>177</y>
+     <width>86</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>90</y>
+     <width>48</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>二进制</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radio_16">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>34</y>
+     <width>86</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>16进制</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>119</y>
+     <width>48</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>八进制</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_cin">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>61</y>
+     <width>63</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radio_2">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>7</y>
+     <width>63</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>2进制</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>177</y>
+     <width>48</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>十六进制</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_transition">
+   <property name="geometry">
+    <rect>
+     <x>96</x>
+     <y>61</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>转换</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>90</y>
+     <width>86</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

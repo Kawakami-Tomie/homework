@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>551</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>绘制</string>
+    </property>
+    <addaction name="action_draw_circle"/>
+    <addaction name="action_draw_rect"/>
+    <addaction name="action_draw_pie"/>
+    <addaction name="action_clear"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>设置</string>
+    </property>
+    <addaction name="action_pen_color"/>
+    <addaction name="action_pen_thick"/>
+    <addaction name="action_pen_style"/>
+    <addaction name="action_brush_color"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_draw_line"/>
+   <addaction name="action_draw_circle"/>
+   <addaction name="action_draw_rect"/>
+   <addaction name="action_draw_pie"/>
+   <addaction name="action_clear"/>
+  </widget>
+  <action name="action_draw_line">
+   <property name="text">
+    <string>直线</string>
+   </property>
+  </action>
+  <action name="action_draw_circle">
+   <property name="text">
+    <string>圆</string>
+   </property>
+  </action>
+  <action name="action_draw_rect">
+   <property name="text">
+    <string>矩形</string>
+   </property>
+  </action>
+  <action name="action_clear">
+   <property name="text">
+    <string>清空</string>
+   </property>
+  </action>
+  <action name="action_pen_color">
+   <property name="text">
+    <string>边框颜色</string>
+   </property>
+  </action>
+  <action name="action_pen_thick">
+   <property name="text">
+    <string>边框粗细</string>
+   </property>
+  </action>
+  <action name="action_pen_style">
+   <property name="text">
+    <string>边框样式</string>
+   </property>
+  </action>
+  <action name="action_brush_color">
+   <property name="text">
+    <string>背景颜色</string>
+   </property>
+  </action>
+  <action name="action_draw_pie">
+   <property name="text">
+    <string>扇形</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

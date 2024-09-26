@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>602</width>
+    <height>491</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>绘制图形_2021112204</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>602</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDraw">
+    <property name="title">
+     <string>Draw</string>
+    </property>
+    <addaction name="actionLine"/>
+    <addaction name="actionCircle"/>
+    <addaction name="actionRet"/>
+    <addaction name="actionclear"/>
+    <addaction name="actionellipse"/>
+    <addaction name="actionline"/>
+    <addaction name="actiontext"/>
+   </widget>
+   <widget class="QMenu" name="menusetting">
+    <property name="title">
+     <string>setting</string>
+    </property>
+    <addaction name="actionPenColor"/>
+    <addaction name="actionPenW"/>
+    <addaction name="actionPenSty"/>
+    <addaction name="actionBackGroundColor"/>
+   </widget>
+   <addaction name="menuDraw"/>
+   <addaction name="menusetting"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLine">
+   <property name="text">
+    <string>pencial</string>
+   </property>
+  </action>
+  <action name="actionCircle">
+   <property name="text">
+    <string>Circle</string>
+   </property>
+  </action>
+  <action name="actionRet">
+   <property name="text">
+    <string>Ret</string>
+   </property>
+  </action>
+  <action name="actionclear">
+   <property name="text">
+    <string>clear</string>
+   </property>
+  </action>
+  <action name="actionPenColor">
+   <property name="text">
+    <string>PenColor</string>
+   </property>
+  </action>
+  <action name="actionPenW">
+   <property name="text">
+    <string>PenW</string>
+   </property>
+  </action>
+  <action name="actionPenSty">
+   <property name="text">
+    <string>PenSty</string>
+   </property>
+  </action>
+  <action name="actionBackGroundColor">
+   <property name="text">
+    <string>BackGroundColor</string>
+   </property>
+  </action>
+  <action name="actionellipse">
+   <property name="text">
+    <string>ellipse</string>
+   </property>
+  </action>
+  <action name="actionline">
+   <property name="text">
+    <string>line</string>
+   </property>
+  </action>
+  <action name="actiontext">
+   <property name="text">
+    <string>text</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

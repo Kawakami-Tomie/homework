@@ -1,0 +1,59 @@
+#ifndef BOARDWIDGET_H
+#define BOARDWIDGET_H
+
+#include <QWidget>
+#include <QVector>
+#include <QPoint>
+
+class BoardWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit BoardWidget(QWidget *parent = nullptr);
+
+protected:
+    void paintEvent(QPaintEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+
+private:
+    void downPiece(int x, int y);
+    void checkWinner();
+    bool isFivePieceFrom(int x, int y);		//判断从(x, y)处开始，是否有五个同色棋子在一条线上
+    bool isVFivePieceFrom(int x, int y);	//判断从(x, y)处开始，向下是否有五个同色棋子
+    bool isHFivePieceFrom(int x, int y); 	//判断从(x, y)处开始，向下是否有五个同色棋子
+    bool isFSFivePieceFrom(int x, int y);	//判断从(x, y)处开始，右上方向是否有五个同色棋子
+    bool isBSFivePieceFrom(int x, int y);	//判断(x, y)处开始， 右下方向是否有五个同色棋子
+    void setTrackPos(const QPoint &value);
+
+signals:
+    void gameOver(int winner);
+
+public slots:
+    void initBoard();
+
+public:
+    static const QSize WIDGET_SIZE;             //棋盘控件大小
+    static const QSize CELL_SIZE;               //棋盘单元格大小
+    static const QPoint START_POS;              //棋盘单元格绘制开始位置
+    static const QPoint ROW_NUM_START;          //棋盘行号开始位置
+    static const QPoint CLU_NUM_START;          //棋盘列号开始位置
+    static const int BOARD_WIDTH = 15;          //棋盘列数
+    static const int BOARD_HEIGHT = 15;         //棋盘行数
+    static const int NO_PIECE = 0;              //棋子标志， 无子
+    static const int WHITE_PIECE = 1;           //棋子标志， 白子
+    static const int BLACK_PIECE = 2;           //棋子标志， 黑子
+    static const bool WHITE_PLAYER = true;      //棋手标志， 白方
+    static const bool BLACK_PLAYER = false;     //棋手标志， 黑方
+
+
+private:
+    bool endGame;                               //游戏结束标志
+    int board[BOARD_WIDTH][BOARD_HEIGHT];       //棋盘数据
+    int nextPlayer;                             //下一手棋手
+    QPoint lastPos;                             //上一步位置
+    QPoint trackPos;                            //鼠标在棋盘上的位置
+    QVector<QPoint> winPoses;                   //五个相连的棋子位置
+};
+
+#endif // BOARDWIDGET_H
