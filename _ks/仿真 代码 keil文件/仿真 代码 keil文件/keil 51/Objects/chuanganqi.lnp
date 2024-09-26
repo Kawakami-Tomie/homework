@@ -1,0 +1,9 @@
+".\Objects\main.obj",
+".\Objects\Delay.obj",
+".\Objects\DHT11.obj",
+".\Objects\DS18B20.obj",
+".\Objects\LCD1602.obj",
+".\Objects\OneWire.obj",
+".\Objects\Timer0.obj" 
+TO ".\Objects\chuanganqi" 
+PRINT(".\Listings\chuanganqi.m51") RAMSIZE(256) 

@@ -1,0 +1,334 @@
+C51 COMPILER V9.60.0.0   LCD                                                               05/17/2024 17:04:39 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN .\Objects\LCD.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE LCD.c LARGE OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\LCD.lst) OBJECT(.\Objects\LCD.obj)
+
+line level    source
+
+   1          #include "LCD.h" 
+   2           
+   3          
+   4          unsigned char lcd0[18][16]=
+   5          {   
+   6                  /*--  文字:  0  --*/
+   7                  {0x00,0xE0,0x10,0x08,0x08,0x10,0xE0,0x00,0x00,0x0F,0x10,0x20,0x20,0x10,0x0F,0x00,},
+   8                  /*--  文字:  1  --*/
+   9                  {0x00,0x00,0x10,0x10,0xF8,0x00,0x00,0x00,0x00,0x00,0x20,0x20,0x3F,0x20,0x20,0x00,},
+  10                  /*--  文字:  2  --*/
+  11                  {0x00,0x70,0x08,0x08,0x08,0x08,0xF0,0x00,0x00,0x30,0x28,0x24,0x22,0x21,0x30,0x00,},
+  12                  /*--  文字:  3  --*/
+  13                  {0x00,0x30,0x08,0x08,0x08,0x88,0x70,0x00,0x00,0x18,0x20,0x21,0x21,0x22,0x1C,0x00,},
+  14                  /*--  文字:  4  --*/
+  15                  {0x00,0x00,0x80,0x40,0x30,0xF8,0x00,0x00,0x00,0x06,0x05,0x24,0x24,0x3F,0x24,0x24,},
+  16                  /*--  文字:  5  --*/
+  17                  {0x00,0xF8,0x88,0x88,0x88,0x08,0x08,0x00,0x00,0x19,0x20,0x20,0x20,0x11,0x0E,0x00,},
+  18                  /*--  文字:  6  --*/
+  19                  {0x00,0xE0,0x10,0x88,0x88,0x90,0x00,0x00,0x00,0x0F,0x11,0x20,0x20,0x20,0x1F,0x00,},
+  20                  /*--  文字:  7  --*/
+  21                  {0x00,0x18,0x08,0x08,0x88,0x68,0x18,0x00,0x00,0x00,0x00,0x3E,0x01,0x00,0x00,0x00,},
+  22                  /*--  文字:  8  --*/
+  23                  {0x00,0x70,0x88,0x08,0x08,0x88,0x70,0x00,0x00,0x1C,0x22,0x21,0x21,0x22,0x1C,0x00,},
+  24                  /*--  文字:  9  --*/
+  25                  {0x00,0xF0,0x08,0x08,0x08,0x10,0xE0,0x00,0x00,0x01,0x12,0x22,0x22,0x11,0x0F,0x00,},
+  26                  /*--  文字:  :  --*/
+  27                  {0x00,0x00,0x00,0xC0,0xC0,0x00,0x00,0x00,0x00,0x00,0x00,0x30,0x30,0x00,0x00,0x00,},
+  28                  /*--  文字:  -  --*/
+  29                  {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01,0x01,0x01,0x01,0x01,0x01,0x00,},
+  30                  /*--  文字:     --*/
+  31                  {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,},
+  32                  /*--  文字:  .  --*/
+  33                  {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x30,0x30,0x00,0x00,0x00,0x00,0x00,},
+  34                  /*--  文字:  T  --*/
+  35                  {0x18,0x08,0x08,0xF8,0x08,0x08,0x18,0x00,0x00,0x00,0x20,0x3F,0x20,0x00,0x00,0x00,},
+  36                  /*--  文字:  A  --*/
+  37                  {0x00,0x00,0xC0,0x38,0xE0,0x00,0x00,0x00,0x20,0x3C,0x23,0x02,0x02,0x27,0x38,0x20,},
+  38                  /*--  文字:  °C  F--*/
+  39                  {0xC6,0x36,0x08,0x08,0x08,0x08,0x38,0x00,0x07,0x18,0x20,0x20,0x20,0x10,0x08,0x00,},
+  40                  /*--  文字:  U  --*/
+  41                  {0x08,0xF8,0x08,0x00,0x00,0x08,0xF8,0x08,0x00,0x1F,0x20,0x20,0x20,0x20,0x1F,0x00,}
+  42           
+  43          };
+  44          
+  45          
+  46          //函数名：字符串到数码管段码的转换函数
+  47          //入口参数：seg_string(10个字节)待转换的字符串，将转换完的段码存到buf(8个字节)里
+  48          //返回值：无；
+  49          //函数功能：将seg_tran一一转换为数码管段码存储到seg_buf中
+  50          void  Seg_Tran(unsigned char *seg_string,unsigned char *seg_buf)
+  51          {
+  52   1              unsigned char i=0;//buf【i】：buf0-buf7
+  53   1              unsigned char j=0;//seg_string[j]:j0-7
+  54   1              unsigned char temp;//字符串转化为段码的中间变量
+C51 COMPILER V9.60.0.0   LCD                                                               05/17/2024 17:04:39 PAGE 2   
+
+  55   1       
+  56   1              for(i=0;i<=10;i++,j++)
+  57   1              {
+  58   2                      switch(seg_string[j])
+  59   2                      {
+  60   3                              case '0': temp  = 0; break;
+  61   3                              case '1': temp  = 1; break;
+  62   3                              case '2': temp  = 2; break;
+  63   3                              case '3': temp  = 3; break;
+  64   3                              case '4': temp  = 4; break;
+  65   3                              case '5': temp  = 5; break;
+  66   3                              case '6': temp  = 6; break;
+  67   3                              case '7': temp  = 7; break;
+  68   3                              case '8': temp  = 8; break;
+  69   3                              case '9': temp  = 9; break;
+  70   3                              case '.': temp = 13; break;
+  71   3                              case '-': temp = 11; break;
+  72   3                              case ' ': temp = 12; break;
+  73   3                              case ':': temp = 10; break;
+  74   3                              case 'A': temp = 15; break;
+  75   3                              case 'F': temp = 16; break;
+  76   3                              case 'U': temp = 17; break;
+  77   3                              case 'T': temp = 14; break;
+  78   3                              default : temp = 12; break;
+  79   3                      }
+  80   2                      seg_buf[i] = temp;//将转换后的段码传递给buf     
+  81   2              }
+  82   1       
+  83   1      }
+  84           
+  85          /*
+  86          *每行显示6个汉字，一页可显示3行
+  87          */
+  88          void Delay10ms(unsigned int c)   //误差 0us
+  89          {
+  90   1          while(c--);
+  91   1      }
+  92           
+  93          void SendDataSPI(unsigned char dat)
+  94          {  
+  95   1         unsigned char i;
+  96   1         for(i=0; i<8; i++)                       
+  97   1         {  
+  98   2            if( (dat&0x80)!=0 ) 
+  99   2                      SDA = 1;
+ 100   2            else
+ 101   2                       SDA = 0;
+ 102   2            dat <<= 1;
+ 103   2            SCL = 0;
+ 104   2                SCL = 1;                       
+ 105   2         }
+ 106   1      }
+ 107           
+ 108          void WriteComm(unsigned char i)
+ 109          {
+ 110   1          CS0 = 0;
+ 111   1          RS  = 0;
+ 112   1          SendDataSPI(i);
+ 113   1          CS0 = 1;
+ 114   1      }
+ 115          void WriteData(unsigned char i)
+ 116          {
+C51 COMPILER V9.60.0.0   LCD                                                               05/17/2024 17:04:39 PAGE 3   
+
+ 117   1          CS0 = 0;
+ 118   1          RS  = 1;
+ 119   1          SendDataSPI(i);
+ 120   1          CS0 = 1;
+ 121   1      }
+ 122           
+ 123          void LCD_Init(void)
+ 124          {
+ 125   1              RST=1;  
+ 126   1              Delay10ms(1000);  
+ 127   1              RST=0;
+ 128   1              Delay10ms(1000);
+ 129   1              RST=1;
+ 130   1              Delay10ms(1000);
+ 131   1       
+ 132   1              WriteComm(0xe2);                  //软件复位     
+ 133   1              WriteComm(0xc8);                                  //0xC8普通方向选择选择反向，0xC0为正常方向
+ 134   1              WriteComm(0xa0);                  //0xA0段方向选择正常方向（0xA1为反方向
+ 135   1              WriteComm(0x2f);
+ 136   1              WriteComm(0x26);
+ 137   1              WriteComm(0x81);                  //背景光对比度
+ 138   1              WriteComm(0x10);                  //0x10设置列高地址
+ 139   1              WriteComm(0xaf);                  //开启显示
+ 140   1              //WriteComm(0xa4);
+ 141   1      }
+ 142           
+ 143           
+ 144          void Clear(void)
+ 145          {
+ 146   1              unsigned char i,j;       
+ 147   1              WriteComm(0x40);
+ 148   1              for(i=0; i < 9; i++)//一共九页
+ 149   1              {
+ 150   2                      WriteComm(0xb0+i);//页地址
+ 151   2                      WriteComm(0x10);//列地址
+ 152   2                      WriteComm(0x00);//列地址   
+ 153   2                      for(j = 0; j < 96; j++)
+ 154   2                       {
+ 155   3                               WriteData(0x00);       
+ 156   3                        }
+ 157   2              }               
+ 158   1      }
+ 159          /*
+ 160          void Clear_Lcd(void)
+ 161          {
+ 162                  unsigned char i,j;
+ 163                  for(i = 0; i < 6; i++)
+ 164                  {
+ 165                          WriteComm(0x40);
+ 166                          WriteComm(0XB0+i);
+ 167                          WriteComm(0x10);
+ 168                          WriteComm(0x00);
+ 169                          for(j = 0; j < 96; j++)
+ 170                          {
+ 171                                  WriteData(0xff);
+ 172                                  Delay10ms(1000);                                                               
+ 173                          }       
+ 174                  }
+ 175                  for(i = 0; i < 7; i++)
+ 176                  {
+ 177                          WriteComm(0XB0+i);
+ 178                          WriteComm(0x10);
+C51 COMPILER V9.60.0.0   LCD                                                               05/17/2024 17:04:39 PAGE 4   
+
+ 179                          WriteComm(0x00);
+ 180                          for(j = 0; j < 96; j++)
+ 181                          {
+ 182                                          WriteData(0x00);
+ 183                                          Delay10ms(1000);                                                               
+ 184                          }       
+ 185                  }
+ 186          }
+ 187          */
+ 188           
+ 189           
+ 190          //功能：两行显示一个字符 
+ 191          //输入参数：共j个font[]字符显示在i行
+ 192          void Displine_font(unsigned char i,unsigned char j,unsigned char *font0,unsigned char *font1 )   //行扫屏
+ 193          {
+ 194   1          unsigned char k;
+ 195   1          WriteComm(0x40);  //set scroll line         设置滚动一行
+ 196   1          WriteComm(0xb0+i);//set page address         设置页地址
+ 197   1          WriteComm(0x10); //column  msb                列最高位
+ 198   1          WriteComm(0x00); //column  lsb                列最低位
+ 199   1          for(k=0;k<j;k++)
+ 200   1          {
+ 201   2                      WriteData(font0[k]);
+ 202   2                      Delay10ms(100);
+ 203   2          }
+ 204   1              WriteComm(0x40);  //set scroll line         设置滚动一行
+ 205   1          WriteComm(0xb0+i+1);//set page address         设置页地址
+ 206   1          WriteComm(0x10); //column  msb                列最高位
+ 207   1          WriteComm(0x00); //column  lsb                列最低位
+ 208   1          for(k=0;k<j;k++)
+ 209   1          {
+ 210   2                      WriteData(font1[k]);
+ 211   2                      Delay10ms(100);
+ 212   2          }
+ 213   1      }
+ 214           
+ 215           
+ 216          //功能：两行显示一个数字 
+ 217          //输入参数：数字seg_buf[]显示在i行
+ 218          void Displine_num(unsigned char i,unsigned char *seg_buf)   //行扫屏
+ 219          {
+ 220   1          unsigned char k,m;
+ 221   1          WriteComm(0x40);  //set scroll line         设置滚动一行
+ 222   1          WriteComm(0xb0+i);//set page address         设置页地址
+ 223   1          WriteComm(0x10); //column  msb                列最高位
+ 224   1          WriteComm(0x00); //column  lsb                列最低位
+ 225   1          for(m=0;m<10;m++)
+ 226   1              for(k=0;k<8;k++)
+ 227   1          {
+ 228   2                      WriteData(lcd0[seg_buf[m]][k]);
+ 229   2                      Delay10ms(100);
+ 230   2          }
+ 231   1              WriteComm(0x40);  //set scroll line         设置滚动一行
+ 232   1          WriteComm(0xb0+i+1);//set page address         设置页地址
+ 233   1          WriteComm(0x10); //column  msb                列最高位
+ 234   1          WriteComm(0x00); //column  lsb                列最低位
+ 235   1          for(m=0;m<10;m++)
+ 236   1              for(k=8;k<16;k++)
+ 237   1          {
+ 238   2                      WriteData(lcd0[seg_buf[m]][k]);
+ 239   2                      Delay10ms(100);
+ 240   2          }
+C51 COMPILER V9.60.0.0   LCD                                                               05/17/2024 17:04:39 PAGE 5   
+
+ 241   1      }
+ 242          
+ 243          
+ 244          
+ 245          //unsigned char LCD12864_Write16CnCHAR(unsigned char  x, unsigned char y, unsigned char *cn)
+ 246          //{
+ 247          //      unsigned char j, x1, x2, wordNum;
+ 248          
+ 249          //      //--Y的坐标只能从0到7，大于则直接返回--//
+ 250          //      if(y > 7)
+ 251          //      {
+ 252          //              return 0;
+ 253          //      }
+ 254          
+ 255          //      //--X的坐标只能从0到96，大于则直接返回--//
+ 256          //      if(x > 96)
+ 257          //      {
+ 258          //              return 0;
+ 259          //      }
+ 260          //      y += 0xB0;         //求取Y坐标的值
+ 261          //      //--设置Y坐标--//
+ 262          //      WriteComm(y);
+ 263          //      while ( *cn != '\0')     //在C语言中字符串结束以‘\0’结尾
+ 264          //      {       
+ 265          //      
+ 266          //              //--设置Y坐标--//
+ 267          //              WriteComm(y);
+ 268          
+ 269          //              x1 = (x >> 4) & 0x0F;   //由于X坐标要两句命令，分高低4位，所以这里先取出高4位
+ 270          //              x2 = x & 0x0F;          //去低四位
+ 271          //              //--设置X坐标--//
+ 272          //              WriteComm(0x10 + x1);   //高4位
+ 273          //              WriteComm(0x00 + x2);   //低4位
+ 274          //              for (wordNum=0; wordNum<30; wordNum++)
+ 275          //              {
+ 276          //                  //--查询要写的字在字库中的位置--//
+ 277          //                      if ((CN16CHAR[wordNum].Index[0] == *cn)
+ 278          //                           &&(CN16CHAR[wordNum].Index[1] == *(cn+1)))
+ 279          //                      {
+ 280          //                              for (j=0; j<32; j++) //写一个字
+ 281          //                              {               
+ 282          //                                      if (j == 16)     //由于16X16用到两个Y坐标，当大于等于16时，切换坐标
+ 283          //                                      {
+ 284          //                                              //--设置Y坐标--//
+ 285          //                                              WriteComm(y + 1);
+ 286          //                      
+ 287          //                                              //--设置X坐标--//
+ 288          //                                              WriteComm(0x10 + x1);   //高4位
+ 289          //                                              WriteComm(0x00 + x2);   //低4位
+ 290          //                                      }
+ 291          //                                      WriteData(CN16CHAR[wordNum].Msk[j]);
+ 292          //                              }
+ 293          //                              x += 16;
+ 294          //                      }//if查到字结束         
+ 295          //              } //for查字结束
+ 296          //              cn += 2;
+ 297          //              
+ 298          //      }       //while结束
+ 299          //      return 1;
+ 300          //}
+
+
+C51 COMPILER V9.60.0.0   LCD                                                               05/17/2024 17:04:39 PAGE 6   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    797    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    288      22
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

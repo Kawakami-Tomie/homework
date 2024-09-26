@@ -1,0 +1,277 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:38:32 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include  "DS1302.h"
+   3          #include <intrins.h>
+   4          #include "Key.h"
+   5          #include "BlueTooth.h"
+   6          
+   7          unsigned char time[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};//�
+             -��义数码管上0-f  16位数字的段选码
+   8          unsigned char time_buf[3]={0};//定义数码管对应位
+   9          
+  10          #define USART_MAX_RECV_LEN  1
+  11          
+  12          unsigned char USART_RX_BUF[USART_MAX_RECV_LEN];
+  13          
+  14          unsigned char KeyNum=0,menu=0,MODE=0,TimeSetSelect=1;
+  15           /**
+  16           *@breaf 延时函数/@12.0000MHz  1ms为单位
+  17           *@para   t 延时时间设置
+  18           *@retval无
+  19           */
+  20          void Delay1ms(unsigned char t)    //@12.0000MHz
+  21          {
+  22   1        unsigned char i, j;
+  23   1        while(t--)
+  24   1          {
+  25   2          _nop_();
+  26   2          i = 2;
+  27   2          j = 239;
+  28   2          do
+  29   2          {
+  30   3            while (--j);
+  31   3          } while (--i);
+  32   2        }
+  33   1      }
+  34          /**
+  35          *@breaf 数码管显示函数
+  36          *@para  显示的段选数据 数组
+  37          *@retval无
+  38          */
+  39          void smg_display(unsigned char dat[])
+  40          {
+  41   1        unsigned char i=0;
+  42   1        for(i=0;i<4;i++)//扫描
+  43   1        {
+  44   2            switch(i)//位选
+  45   2          {
+  46   3          case 0: P1_0=1; P1_1=0; P1_2=0;P1_3=0;break;
+  47   3          case 1: P1_0=0; P1_1=1; P1_2=0;P1_3=0;break;
+  48   3          case 2: P1_0=0; P1_1=0; P1_2=1;P1_3=0;break;
+  49   3          case 3: P1_0=0; P1_1=0; P1_2=0;P1_3=1;break;  
+  50   3          }
+  51   2          if((i==1)&&(menu!=0))P0=dat[i]|0x80;
+  52   2          else P0=dat[i];//传送段选数据
+  53   2          Delay1ms(1) ;//延时一段时间，等待显示稳定
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:38:32 PAGE 2   
+
+  54   2          P0=0x00;//消音
+  55   2        }
+  56   1      }
+  57          
+  58          
+  59          
+  60          
+  61          
+  62          //按键扫描
+  63          void KeyScan(){
+  64   1         
+  65   1        KeyNum=Key();//读取键码
+  66   1            
+  67   1        if(KeyNum==1){
+  68   2          menu++;
+  69   2          if(menu>=5) menu=0;
+  70   2        }
+  71   1        if(menu<3) MODE=0;
+  72   1        else if(menu==3) {MODE=1;DS1302_SetTime();}//设置 时 分
+  73   1        else if(menu==4) {MODE=1;DS1302_SetTime();}//设置 月 日
+  74   1        
+  75   1      
+  76   1      }
+  77          
+  78          void TimeShow(void)//时间显示功能
+  79          {
+  80   1        DS1302_ReadTime();//读取时间
+  81   1                //显示学号
+  82   1                if(menu==0){
+  83   2                time_buf[0]= time[1];//将BCD码转为十进制
+  84   2                time_buf[1]= time[7];
+  85   2                time_buf[2]= time[8];
+  86   2                time_buf[3]= time[0];
+  87   2                smg_display(time_buf);
+  88   2                }
+  89   1                //显示 时 分
+  90   1                else if(menu==1){
+  91   2                time_buf[0]= time[DS1302_Time[3]/10];//将BCD码转为十进制
+  92   2                time_buf[1]= time[DS1302_Time[3]%10];
+  93   2                time_buf[2]= time[DS1302_Time[4]/10];
+  94   2                time_buf[3]= time[DS1302_Time[4]%10];
+  95   2                smg_display(time_buf);
+  96   2                }
+  97   1                //显示 月 日
+  98   1                else if(menu==2){
+  99   2                time_buf[0]= time[DS1302_Time[1]/10];//将BCD码转为十进制
+ 100   2                time_buf[1]= time[DS1302_Time[1]%10];
+ 101   2                time_buf[2]= time[DS1302_Time[2]/10];
+ 102   2                time_buf[3]= time[DS1302_Time[2]%10];
+ 103   2                smg_display(time_buf);
+ 104   2                } 
+ 105   1      }
+ 106          
+ 107          
+ 108          
+ 109          
+ 110          //时间设置功能
+ 111          void TimeSet(void)
+ 112          {
+ 113   1        if(KeyNum==2)//按键2按下
+ 114   1        {
+ 115   2          TimeSetSelect++;//设置选择位加1
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:38:32 PAGE 3   
+
+ 116   2          if(TimeSetSelect>=5)TimeSetSelect=1;//越界清零
+ 117   2        }
+ 118   1      
+ 119   1        if(KeyNum==3)//按键3按下
+ 120   1        {
+ 121   2          DS1302_Time[TimeSetSelect]++;//时间设置位数值加1
+ 122   2        
+ 123   2          if(DS1302_Time[1]>12){DS1302_Time[1]=1;}//月越界判断
+ 124   2          if( DS1302_Time[1]==1 || DS1302_Time[1]==3 || DS1302_Time[1]==5 || DS1302_Time[1]==7 || 
+ 125   2            DS1302_Time[1]==8 || DS1302_Time[1]==10 || DS1302_Time[1]==12)//日越界判断
+ 126   2          {
+ 127   3            if(DS1302_Time[2]>31){DS1302_Time[2]=1;}//大月
+ 128   3          }
+ 129   2          else if(DS1302_Time[1]==4 || DS1302_Time[1]==6 || DS1302_Time[1]==9 || DS1302_Time[1]==11)
+ 130   2          {
+ 131   3            if(DS1302_Time[2]>30){DS1302_Time[2]=1;}//小月
+ 132   3          }
+ 133   2          else if(DS1302_Time[1]==2)
+ 134   2          {
+ 135   3            if(DS1302_Time[0]%4==0)
+ 136   3            {
+ 137   4              if(DS1302_Time[2]>29){DS1302_Time[2]=1;}//闰年2月
+ 138   4            }
+ 139   3            else
+ 140   3            {
+ 141   4              if(DS1302_Time[2]>28){DS1302_Time[2]=1;}//平年2月
+ 142   4            }
+ 143   3          }
+ 144   2          if(DS1302_Time[3]>23){DS1302_Time[3]=0;}//时越界判断
+ 145   2          if(DS1302_Time[4]>59){DS1302_Time[4]=0;}//分越界判断
+ 146   2          
+ 147   2        }
+ 148   1        if(KeyNum==4)//按键3按下
+ 149   1        {
+ 150   2          DS1302_Time[TimeSetSelect]--;//时间设置位数值减1
+ 151   2          
+ 152   2          if(DS1302_Time[1]<1){DS1302_Time[1]=12;}//月越界判断
+ 153   2          if( DS1302_Time[1]==1 || DS1302_Time[1]==3 || DS1302_Time[1]==5 || DS1302_Time[1]==7 || 
+ 154   2            DS1302_Time[1]==8 || DS1302_Time[1]==10 || DS1302_Time[1]==12)//日越界判断
+ 155   2          {
+ 156   3            if(DS1302_Time[2]<1){DS1302_Time[2]=31;}//大月
+ 157   3            if(DS1302_Time[2]>31){DS1302_Time[2]=1;}
+ 158   3          }
+ 159   2          else if(DS1302_Time[1]==4 || DS1302_Time[1]==6 || DS1302_Time[1]==9 || DS1302_Time[1]==11)
+ 160   2          {
+ 161   3            if(DS1302_Time[2]<1){DS1302_Time[2]=30;}//小月
+ 162   3            if(DS1302_Time[2]>30){DS1302_Time[2]=1;}
+ 163   3          }
+ 164   2          else if(DS1302_Time[1]==2)
+ 165   2          {
+ 166   3            if(DS1302_Time[0]%4==0)
+ 167   3            {
+ 168   4              if(DS1302_Time[2]<1){DS1302_Time[2]=29;}//闰年2月
+ 169   4              if(DS1302_Time[2]>29){DS1302_Time[2]=1;}
+ 170   4            }
+ 171   3            else
+ 172   3            {
+ 173   4              if(DS1302_Time[2]<1){DS1302_Time[2]=28;}//平年2月
+ 174   4              if(DS1302_Time[2]>28){DS1302_Time[2]=1;}
+ 175   4            }
+ 176   3          }
+ 177   2          if(DS1302_Time[3]<0){DS1302_Time[3]=23;}//时越界判断
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:38:32 PAGE 4   
+
+ 178   2          if(DS1302_Time[4]<0){DS1302_Time[4]=59;}//分越界判断
+ 179   2          
+ 180   2        }
+ 181   1      }
+ 182          
+ 183          void TimeChange(void)
+ 184          {
+ 185   1               //设置 时 分
+ 186   1               if(menu==3){
+ 187   2                TimeSet();
+ 188   2                time_buf[0]= time[DS1302_Time[3]/10];//将BCD码转为十进制
+ 189   2                time_buf[1]= time[DS1302_Time[3]%10];
+ 190   2                time_buf[2]= time[DS1302_Time[4]/10];
+ 191   2                time_buf[3]= time[DS1302_Time[4]%10];
+ 192   2                smg_display(time_buf);
+ 193   2                }
+ 194   1                //设置 月 日
+ 195   1                else if(menu==4){
+ 196   2                TimeSet();
+ 197   2                time_buf[0]= time[DS1302_Time[1]/10];//将BCD码转为十进制
+ 198   2                time_buf[1]= time[DS1302_Time[1]%10];
+ 199   2                time_buf[2]= time[DS1302_Time[2]/10];
+ 200   2                time_buf[3]= time[DS1302_Time[2]%10];
+ 201   2                smg_display(time_buf);
+ 202   2                }
+ 203   1      
+ 204   1      }
+ 205           
+ 206          void main ()
+ 207          { 
+ 208   1          UART_Init();//初始化蓝牙
+ 209   1          DS1302_Init();//DS1302初始化
+ 210   1          DS1302_SetTime();// DS1302设置时间
+ 211   1          while(1)
+ 212   1          {
+ 213   2                KeyScan();
+ 214   2                switch(MODE)//根据不同的功能执行不同的函数
+ 215   2                    {
+ 216   3                      case 0:TimeShow();break;
+ 217   3                      case 1:TimeChange();break;
+ 218   3                    }         
+ 219   2            
+ 220   2            }
+ 221   1      }
+ 222          
+ 223          //串口中断函数
+ 224          void Uart1_Isr() interrupt 4
+ 225          {
+ 226   1        if(RI)
+ 227   1        {
+ 228   2          USART_RX_BUF[0]=SBUF;
+ 229   2          RI = 0;//清除接收中断标志位
+ 230   2          UART_SendByte(SBUF);
+ 231   2      //    if(SBUF == 0xB1 || SBUF == 0xB9) KeyNum = 1;  
+ 232   2      //    else if(SBUF == 0xB2 || SBUF == 0xBA) KeyNum = 2;  
+ 233   2      //    else if(SBUF == 0xB3 || SBUF == 0xBB) KeyNum = 3;  
+ 234   2      //    else if(SBUF == 0xB4 || SBUF == 0xBC) KeyNum = 4;    
+ 235   2      //    else { KeyNum = 1;} 
+ 236   2          RI=0;
+ 237   2        }                
+ 238   1      }
+ 239          
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:38:32 PAGE 5   
+
+ 240          
+ 241          
+ 242          
+ 243            
+ 244            
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1021    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     24       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

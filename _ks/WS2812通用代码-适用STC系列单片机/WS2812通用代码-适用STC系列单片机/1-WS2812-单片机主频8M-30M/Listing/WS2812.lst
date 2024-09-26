@@ -1,0 +1,95 @@
+C51 COMPILER V9.60.0.0   WS2812                                                            06/18/2024 23:54:16 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE WS2812
+OBJECT MODULE PLACED IN ..\Objects\WS2812.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE ..\C_AND_H\WS2812.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\C_A
+                    -ND_H) DEBUG OBJECTEXTEND PRINT(..\Listing\WS2812.lst) TABS(2) OBJECT(..\Objects\WS2812.obj)
+
+line level    source
+
+   1          #include<all.h>
+   2          u8 WS2812_BUffer[WSCOUNT][3];
+   3          void WS2812_write_date()
+   4          {
+   5   1          u8 i,j,k,a;
+   6   1          for(k=0;k<WSCOUNT;k++)
+   7   1          {
+   8   2              for(j=0;j<3;j++)
+   9   2              {
+  10   3                  switch(j)
+  11   3                  {
+  12   4                    case 0:a=WS2812_BUffer[k][1];break;
+  13   4                    case 1:a=WS2812_BUffer[k][0];break;
+  14   4                    case 2:a=WS2812_BUffer[k][2];break;
+  15   4                  }
+  16   3                  for(i=0;i<8;i++)
+  17   3                  {
+  18   4                    WS2812_DI=1;
+  19   4                    
+  20   4      #if WSCASE==1             
+              _nop_();_nop_();_nop_();_nop_();_nop_();_nop_();
+              WS2812_DI=(a&0x80); 
+              _nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();
+              a<<=1;
+              #elif WSCASE==2 
+              _nop_();_nop_();_nop_();_nop_();
+              WS2812_DI=(a&0x80); 
+              _nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();
+              a<<=1;
+              #elif WSCASE==3 
+              _nop_();_nop_();
+              WS2812_DI=(a&0x80); 
+              _nop_();_nop_();_nop_();_nop_();_nop_();_nop_();
+              a<<=1;  
+              #elif WSCASE==4
+              WS2812_DI=(a&0x80); 
+              _nop_();_nop_();_nop_();_nop_();
+              a<<=1;
+              #elif WSCASE==5
+  40   4      WS2812_DI=(a&0x80); 
+  41   4      _nop_();_nop_();
+  42   4      a<<=1;
+  43   4      #elif WSCASE==6
+              WS2812_DI=(a&0x80); 
+              _nop_();
+              a<<=1;
+              #elif WSCASE==7
+              WS2812_DI=(a&0x80); 
+              a<<=1;
+              #endif
+  51   4                    
+  52   4                    WS2812_DI=0;
+  53   4                  }
+  54   3                  WS2812_DI=0;
+C51 COMPILER V9.60.0.0   WS2812                                                            06/18/2024 23:54:16 PAGE 2   
+
+  55   3              }
+  56   2          }
+  57   1      }
+  58          void WS2812_Ser()
+  59          {
+  60   1          static u8 count=0;
+  61   1          count++;
+  62   1          switch(count)
+  63   1          {
+  64   2            case 1:WS2812_DI=0;break;
+  65   2            case 50:EA=0;WS2812_write_date();EA=1;break;
+  66   2            case 51:WS2812_DI=0;break;
+  67   2          }
+  68   1          count%=60;
+  69   1      }       
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    137    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     31    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,167 @@
+C51 COMPILER V9.00   WS2812                                                                10/02/2019 07:36:20 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE WS2812
+OBJECT MODULE PLACED IN ..\Objects\WS2812.obj
+COMPILER INVOKED BY: D:\keil_v5\C51\BIN\C51.EXE ..\C_AND_H\WS2812.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\C_AND_H) DEBUG OB
+                    -JECTEXTEND PRINT(..\Listing\WS2812.lst) TABS(2) OBJECT(..\Objects\WS2812.obj)
+
+line level    source
+
+   1          #include<all.h>
+   2          u8 WS2812_BUffer[WSCOUNT][3];
+   3          //u8 code light=30;
+   4          void WS2812_write_date()
+   5          {
+   6   1          u8 j,k,a;
+   7   1      #if WSCASE>=9 
+   8   1      bit b0,b1,b2,b3,b4,b5,b6,b7;
+   9   1      #endif
+  10   1          for(k=0;k<WSCOUNT;k++)
+  11   1          {
+  12   2              for(j=0;j<3;j++)
+  13   2              {
+  14   3                /*  switch(j)
+  15   3                  {
+  16   3                    case 0:a=WS2812_BUffer[k][1];break;
+  17   3                    case 1:a=WS2812_BUffer[k][0];break;
+  18   3                    case 2:a=WS2812_BUffer[k][2];break;
+  19   3                  }*/
+  20   3                  a=WS2812_BUffer[k][j];
+  21   3      #if WSCASE>=9 
+  22   3                  b7=a&0x80;b6=a&0x40;b5=a&0x20;b4=a&0x10;
+  23   3                  b3=a&0x08;b2=a&0x04;b1=a&0x02;b0=a&0x01;  
+  24   3      #endif            
+  25   3      #if WSCASE==8
+              WS2812_DI=1;
+              WS2812_DI=a&0x80;_nop_();
+              WS2812_DI=0;_nop_();_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=a&0x40;_nop_();
+              WS2812_DI=0;_nop_();_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=a&0x20;_nop_();
+              WS2812_DI=0;_nop_();_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=a&0x10;_nop_();
+              WS2812_DI=0;_nop_();_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=a&0x08;_nop_();
+              WS2812_DI=0;_nop_();_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=a&0x04;_nop_();
+              WS2812_DI=0;_nop_();_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=a&0x02;_nop_();
+              WS2812_DI=0;_nop_();_nop_();
+              
+              WS2812_DI=1;
+C51 COMPILER V9.00   WS2812                                                                10/02/2019 07:36:20 PAGE 2   
+
+              WS2812_DI=a&0x01;_nop_();
+              WS2812_DI=0;_nop_();_nop_();
+              
+              #elif WSCASE==9
+              WS2812_DI=1;
+              WS2812_DI=b7;_nop_();
+              WS2812_DI=0;_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=b6;_nop_();
+              WS2812_DI=0;_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=b5;_nop_();
+              WS2812_DI=0;_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=b4;_nop_();
+              WS2812_DI=0;_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=b3;_nop_();
+              WS2812_DI=0;_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=b2;_nop_();
+              WS2812_DI=0;_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=b1;_nop_();
+              WS2812_DI=0;_nop_();
+              
+              WS2812_DI=1;
+              WS2812_DI=b0;_nop_();
+              WS2812_DI=0;_nop_();
+              
+              #elif WSCASE==10
+  92   3      
+  93   3      WS2812_DI=1;
+  94   3      WS2812_DI=b7;
+  95   3      WS2812_DI=0;_nop_();_nop_();
+  96   3      
+  97   3      WS2812_DI=1;
+  98   3      WS2812_DI=b6;
+  99   3      WS2812_DI=0;_nop_();_nop_();
+ 100   3      
+ 101   3      WS2812_DI=1;
+ 102   3      WS2812_DI=b5;
+ 103   3      WS2812_DI=0;_nop_();_nop_();
+ 104   3      
+ 105   3      WS2812_DI=1;
+ 106   3      WS2812_DI=b4;
+ 107   3      WS2812_DI=0;_nop_();_nop_();
+ 108   3      
+ 109   3      WS2812_DI=1;
+ 110   3      WS2812_DI=b3;
+ 111   3      WS2812_DI=0;_nop_();_nop_();
+ 112   3      
+ 113   3      WS2812_DI=1;
+ 114   3      WS2812_DI=b2;
+ 115   3      WS2812_DI=0;_nop_();_nop_();
+ 116   3      
+C51 COMPILER V9.00   WS2812                                                                10/02/2019 07:36:20 PAGE 3   
+
+ 117   3      WS2812_DI=1;
+ 118   3      WS2812_DI=b1;
+ 119   3      WS2812_DI=0;_nop_();_nop_();
+ 120   3      
+ 121   3      WS2812_DI=1;
+ 122   3      WS2812_DI=b0;
+ 123   3      WS2812_DI=0;_nop_();_nop_();
+ 124   3      #endif
+ 125   3              }
+ 126   2          }
+ 127   1      }
+ 128          void WS2812_Ser()
+ 129          {
+ 130   1          static u8 count=0;
+ 131   1          count++;
+ 132   1          switch(count)
+ 133   1          {
+ 134   2            case 1:WS2812_DI=0;break;
+ 135   2            case 50:EA=0;WS2812_write_date();EA=1;break;
+ 136   2            case 51:WS2812_DI=0;break;
+ 137   2          }
+ 138   1          count%=60;
+ 139   1      }       
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    178    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     31    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       8
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

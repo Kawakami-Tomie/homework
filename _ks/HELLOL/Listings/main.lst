@@ -1,0 +1,227 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:36:25 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include  "DS1302.h"
+   3          #include "LCD1602.h"
+   4          #include <intrins.h>
+   5          #include "Key.h"
+   6          #include "BlueTooth.h"
+   7          #include "Timer0.h"
+   8          #include "DHT11.h"
+   9          
+  10          #define USART_MAX_RECV_LEN  1
+  11          
+  12          unsigned char USART_RX_BUF[USART_MAX_RECV_LEN];
+  13          
+  14          unsigned char KeyNum,MODE,TimeSetSelect,TimeSetFlashFlag;
+  15          
+  16          extern unsigned char rec_dat[15];
+  17          char rec[8]={1,2,3,5,6,6,6,6};
+  18           /**
+  19           *@breaf 延时函数/@12.0000MHz  1ms为单位
+  20           *@para   t 延时时间设置
+  21           *@retval无
+  22           */
+  23          void Delay1ms(unsigned char t)    //@12.0000MHz
+  24          {
+  25   1        unsigned char i, j;
+  26   1        while(t--)
+  27   1          {
+  28   2          _nop_();
+  29   2          i = 2;
+  30   2          j = 239;
+  31   2          do
+  32   2          {
+  33   3            while (--j);
+  34   3          } while (--i);
+  35   2        }
+  36   1      }
+  37          
+  38          
+  39          void TimeShow(void)//时间显示功能
+  40          {
+  41   1        DS1302_ReadTime();//读取时间
+  42   1        DS1302_ReadTime();//读取时间
+  43   1        LCD_ShowNum(1,1,DS1302_Time[0],2);//显示年
+  44   1        LCD_ShowNum(1,4,DS1302_Time[1],2);//显示月
+  45   1        LCD_ShowNum(1,7,DS1302_Time[2],2);//显示日
+  46   1        LCD_ShowNum(1,9,DS1302_Time[3],2);//显示时
+  47   1        LCD_ShowNum(1,12,DS1302_Time[4],2);//显示分
+  48   1        LCD_ShowNum(1,15,DS1302_Time[5],2);//显示秒  
+  49   1      }
+  50          
+  51          
+  52          //时间设置功能
+  53          void TimeSet(void)
+  54          {
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:36:25 PAGE 2   
+
+  55   1          if(KeyNum==2)//按键2按下
+  56   1        {
+  57   2          TimeSetSelect++;//设置选择位加1
+  58   2          TimeSetSelect%=6;//越界清零
+  59   2        }
+  60   1        if(KeyNum==3)//按键3按下
+  61   1        {
+  62   2          DS1302_Time[TimeSetSelect]++;//时间设置位数值加1
+  63   2          if(DS1302_Time[0]>99){DS1302_Time[0]=0;}//年越界判断
+  64   2          if(DS1302_Time[1]>12){DS1302_Time[1]=1;}//月越界判断
+  65   2          if( DS1302_Time[1]==1 || DS1302_Time[1]==3 || DS1302_Time[1]==5 || DS1302_Time[1]==7 || 
+  66   2            DS1302_Time[1]==8 || DS1302_Time[1]==10 || DS1302_Time[1]==12)//日越界判断
+  67   2          {
+  68   3            if(DS1302_Time[2]>31){DS1302_Time[2]=1;}//大月
+  69   3          }
+  70   2          else if(DS1302_Time[1]==4 || DS1302_Time[1]==6 || DS1302_Time[1]==9 || DS1302_Time[1]==11)
+  71   2          {
+  72   3            if(DS1302_Time[2]>30){DS1302_Time[2]=1;}//小月
+  73   3          }
+  74   2          else if(DS1302_Time[1]==2)
+  75   2          {
+  76   3            if(DS1302_Time[0]%4==0)
+  77   3            {
+  78   4              if(DS1302_Time[2]>29){DS1302_Time[2]=1;}//闰年2月
+  79   4            }
+  80   3            else
+  81   3            {
+  82   4              if(DS1302_Time[2]>28){DS1302_Time[2]=1;}//平年2月
+  83   4            }
+  84   3          }
+  85   2          if(DS1302_Time[3]>23){DS1302_Time[3]=0;}//时越界判断
+  86   2          if(DS1302_Time[4]>59){DS1302_Time[4]=0;}//分越界判断
+  87   2          if(DS1302_Time[5]>59){DS1302_Time[5]=0;}//秒越界判断
+  88   2        }
+  89   1        if(KeyNum==4)//按键3按下
+  90   1        {
+  91   2          DS1302_Time[TimeSetSelect]--;//时间设置位数值减1
+  92   2          if(DS1302_Time[0]<0){DS1302_Time[0]=99;}//年越界判断
+  93   2          if(DS1302_Time[1]<1){DS1302_Time[1]=12;}//月越界判断
+  94   2          if( DS1302_Time[1]==1 || DS1302_Time[1]==3 || DS1302_Time[1]==5 || DS1302_Time[1]==7 || 
+  95   2            DS1302_Time[1]==8 || DS1302_Time[1]==10 || DS1302_Time[1]==12)//日越界判断
+  96   2          {
+  97   3            if(DS1302_Time[2]<1){DS1302_Time[2]=31;}//大月
+  98   3            if(DS1302_Time[2]>31){DS1302_Time[2]=1;}
+  99   3          }
+ 100   2          else if(DS1302_Time[1]==4 || DS1302_Time[1]==6 || DS1302_Time[1]==9 || DS1302_Time[1]==11)
+ 101   2          {
+ 102   3            if(DS1302_Time[2]<1){DS1302_Time[2]=30;}//小月
+ 103   3            if(DS1302_Time[2]>30){DS1302_Time[2]=1;}
+ 104   3          }
+ 105   2          else if(DS1302_Time[1]==2)
+ 106   2          {
+ 107   3            if(DS1302_Time[0]%4==0)
+ 108   3            {
+ 109   4              if(DS1302_Time[2]<1){DS1302_Time[2]=29;}//闰年2月
+ 110   4              if(DS1302_Time[2]>29){DS1302_Time[2]=1;}
+ 111   4            }
+ 112   3            else
+ 113   3            {
+ 114   4              if(DS1302_Time[2]<1){DS1302_Time[2]=28;}//平年2月
+ 115   4              if(DS1302_Time[2]>28){DS1302_Time[2]=1;}
+ 116   4            }
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:36:25 PAGE 3   
+
+ 117   3          }
+ 118   2          if(DS1302_Time[3]<0){DS1302_Time[3]=23;}//时越界判断
+ 119   2          if(DS1302_Time[4]<0){DS1302_Time[4]=59;}//分越界判断
+ 120   2          if(DS1302_Time[5]<0){DS1302_Time[5]=59;}//秒越界判断
+ 121   2        }
+ 122   1        //更新显示，根据TimeSetSelect和TimeSetFlashFlag判断可完成闪烁功能
+ 123   1        if(TimeSetSelect==0 && TimeSetFlashFlag==1){LCD_ShowString(1,1,"  ");}
+ 124   1        else {LCD_ShowNum(1,1,DS1302_Time[0],2);}
+ 125   1        if(TimeSetSelect==1 && TimeSetFlashFlag==1){LCD_ShowString(1,4,"  ");}
+ 126   1        else {LCD_ShowNum(1,4,DS1302_Time[1],2);}
+ 127   1        if(TimeSetSelect==2 && TimeSetFlashFlag==1){LCD_ShowString(1,7,"  ");}
+ 128   1        else {LCD_ShowNum(1,7,DS1302_Time[2],2);}
+ 129   1        if(TimeSetSelect==3 && TimeSetFlashFlag==1){LCD_ShowString(1,9,"  ");}
+ 130   1        else {LCD_ShowNum(1,9,DS1302_Time[3],2);}
+ 131   1        if(TimeSetSelect==4 && TimeSetFlashFlag==1){LCD_ShowString(1,12,"  ");}
+ 132   1        else {LCD_ShowNum(1,12,DS1302_Time[4],2);}
+ 133   1        if(TimeSetSelect==5 && TimeSetFlashFlag==1){LCD_ShowString(1,15,"  ");}
+ 134   1        else {LCD_ShowNum(1,15,DS1302_Time[5],2);}
+ 135   1      }
+ 136          
+ 137           
+ 138          void main ()
+ 139          { 
+ 140   1      
+ 141   1        UART_Init();//初始化蓝牙
+ 142   1        LCD_Init();
+ 143   1        Timer0Init();
+ 144   1        DS1302_Init();
+ 145   1        LCD_ShowString(1,1,"  -  -  ");//静态字符初始化显示
+ 146   1        LCD_ShowString(1,9,"  :  :  ");
+ 147   1        
+ 148   1        DS1302_SetTime();//设置时间
+ 149   1          while(1)
+ 150   1          {
+ 151   2              DHT11_receive();
+ 152   2            LCD_ShowString(2,1,rec);
+ 153   2      
+ 154   2              KeyNum=Key();//读取键码
+ 155   2              if(KeyNum==1)//按键1按下
+ 156   2              {
+ 157   3                if(MODE==0){MODE=1;TimeSetSelect=0;}//功能切换
+ 158   3                else if(MODE==1){MODE=0;DS1302_SetTime();}
+ 159   3              }
+ 160   2              switch(MODE)//根据不同的功能执行不同的函数
+ 161   2              {
+ 162   3                case 0:TimeShow();break;
+ 163   3                case 1:TimeSet();break;
+ 164   3              }
+ 165   2            }
+ 166   1      }
+ 167          
+ 168          //串口中断函数
+ 169          void Uart1_Isr() interrupt 4
+ 170          {
+ 171   1        if(RI)
+ 172   1        {
+ 173   2          USART_RX_BUF[0]=SBUF;
+ 174   2          RI = 0;//清除接收中断标志位
+ 175   2          UART_SendByte(SBUF);
+ 176   2          RI=0;
+ 177   2        }                
+ 178   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 21:36:25 PAGE 4   
+
+ 179          
+ 180          void Timer0_Routine() interrupt 1
+ 181          {
+ 182   1        static unsigned int T0Count;
+ 183   1        TL0 = 0x18;   //设置定时初值
+ 184   1        TH0 = 0xFC;   //设置定时初值
+ 185   1        T0Count++;
+ 186   1        if(T0Count>=500)//每500ms进入一次
+ 187   1        {
+ 188   2          T0Count=0;
+ 189   2          TimeSetFlashFlag=!TimeSetFlashFlag;//闪烁标志位取反
+ 190   2        }
+ 191   1      }
+ 192          
+ 193          
+ 194          
+ 195          
+ 196            
+ 197            
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1078    ----
+   CONSTANT SIZE    =     21    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     15    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

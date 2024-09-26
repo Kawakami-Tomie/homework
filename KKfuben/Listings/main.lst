@@ -1,0 +1,183 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              07/08/2024 21:26:29 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include  "DS1302.h"
+   3          #include <intrins.h>
+   4          #include "Key.h"
+   5          #include "BlueTooth.h"
+   6          #include "Timer0.h"
+   7          #include "DHT11.h"
+   8          
+   9          #define USART_MAX_RECV_LEN  1
+  10          
+  11          unsigned char USART_RX_BUF[USART_MAX_RECV_LEN];
+  12          
+  13          unsigned char KeyNum,MODE,TimeSetSelect,TimeSetFlashFlag;
+  14          
+  15          unsigned char time[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};//�
+             -��义数码管上0-f  16位数字的段选码
+  16          unsigned char time_buf[3]={0};//定义数码管对应位
+  17          
+  18          extern unsigned char  hum;//湿度
+  19          extern unsigned char  tem;//温度
+  20          
+  21          sbit Motor=P2^5;
+  22          sbit beep=P3^6;
+  23          int beepflag=0;
+  24          int Compare=0;
+  25          int blue=0;//蓝牙控制标志
+  26          
+  27           /**
+  28           *@breaf 延时函数/@12.0000MHz  1ms为单位
+  29           *@para   t 延时时间设置
+  30           *@retval无
+  31           */
+  32          void Delay1ms(unsigned char t)    //@12.0000MHz
+  33          {
+  34   1        unsigned char i, j;
+  35   1        while(t--)
+  36   1          {
+  37   2          _nop_();
+  38   2          i = 2;
+  39   2          j = 239;
+  40   2          do
+  41   2          {
+  42   3            while (--j);
+  43   3          } while (--i);
+  44   2        }
+  45   1      }
+  46          
+  47          /**
+  48          *@breaf 数码管显示函数
+  49          *@para  显示的段选数据 数组
+  50          *@retval无
+  51          */
+  52          void smg_display(unsigned char dat[])
+  53          {
+C51 COMPILER V9.60.0.0   MAIN                                                              07/08/2024 21:26:29 PAGE 2   
+
+  54   1        unsigned char i=0;
+  55   1        for(i=0;i<4;i++)//扫描
+  56   1        {
+  57   2            switch(i)//位选
+  58   2          {
+  59   3          case 0: P2_0=0; P2_1=1; P2_2=1;P2_3=1;break;
+  60   3          case 1: P2_0=1; P2_1=0; P2_2=1;P2_3=1;break;
+  61   3          case 2: P2_0=1; P2_1=1; P2_2=0;P2_3=1;break;
+  62   3          case 3: P2_0=1; P2_1=1; P2_2=1;P2_3=0;break;  
+  63   3          }
+  64   2          if(i==1)P0=~(dat[i]|0x80);
+  65   2          else P0=~dat[i];
+  66   2          Delay1ms(1) ;//延时一段时间，等待显示稳定
+  67   2          P0=0xff;//消影
+  68   2        }
+  69   1      }
+  70          
+  71          
+  72          void main ()
+  73          { 
+  74   1      
+  75   1        UART_Init();//初始化蓝牙
+  76   1      
+  77   1        DHT11_Init();
+  78   1        Timer0Init();
+  79   1        Compare=0;
+  80   1        Delay1ms(1000);
+  81   1      //        beepflag=1;
+  82   1      
+  83   1      
+  84   1          while(1)
+  85   1          {
+  86   2            //为了不打断dht11读取的时序，需要暂停定时器
+  87   2            TR0 = 0;
+  88   2            DHT11_receive();
+  89   2            TR0 = 1;
+  90   2            
+  91   2            time_buf[0]=time[tem/10];
+  92   2            time_buf[1]=time[tem%10];
+  93   2            time_buf[2]=time[hum/10];
+  94   2            time_buf[3]=time[hum%10];
+  95   2            smg_display(time_buf);
+  96   2      
+  97   2            
+  98   2            if((hum>=80)&&(blue==0)){Compare=5;beepflag=1;}
+  99   2            else if ((hum<=80)&&(blue==0)) {Compare=0;beepflag=0;}        
+ 100   2      
+ 101   2      
+ 102   2            }
+ 103   1      }
+ 104          
+ 105          //串口中断函数
+ 106          void Uart1_Isr() interrupt 4
+ 107          {
+ 108   1        if(RI)
+ 109   1        {
+ 110   2          USART_RX_BUF[0]=SBUF;
+ 111   2          blue=1;
+ 112   2          RI = 0;//清除接收中断标志位    
+ 113   2          if((USART_RX_BUF[0]==0x31)&&(beepflag==1))Compare=1;
+ 114   2          if((USART_RX_BUF[0]==0x32)&&(beepflag==1))Compare=3;
+ 115   2          if((USART_RX_BUF[0]==0x33)&&(beepflag==1))Compare=5;
+C51 COMPILER V9.60.0.0   MAIN                                                              07/08/2024 21:26:29 PAGE 3   
+
+ 116   2          if((USART_RX_BUF[0]==0x34)&&(beepflag==1))Compare=6;
+ 117   2          if((USART_RX_BUF[0]==0x35)&&(beepflag==1))Compare=8;
+ 118   2          if((USART_RX_BUF[0]==0x36)&&(beepflag==1))Compare=9;
+ 119   2          if((USART_RX_BUF[0]==0x37)&&(beepflag==1))Compare=10;
+ 120   2          if((USART_RX_BUF[0]==0x38)&&(beepflag==1))blue=0;//退出蓝牙控制
+ 121   2      //    else blue=0;
+ 122   2          UART_SendByte(SBUF);
+ 123   2          RI=0;
+ 124   2        }                
+ 125   1      }
+ 126          
+ 127          void Timer0_Routine() interrupt 1
+ 128          {
+ 129   1        static unsigned int T0Count;
+ 130   1        TL0 = 0x18;   //设置定时初值
+ 131   1        TH0 = 0xFC;   //设置定时初值
+ 132   1        
+ 133   1        if(beepflag==1) beep=~beep;
+ 134   1      
+ 135   1        T0Count++;
+ 136   1        if(T0Count < Compare)
+ 137   1        {
+ 138   2          Motor = 1;
+ 139   2        }
+ 140   1        else
+ 141   1        {
+ 142   2          Motor = 0;
+ 143   2        }
+ 144   1        if (T0Count >= 10)
+ 145   1        {
+ 146   2          T0Count = 0;
+ 147   2        }
+ 148   1      }
+ 149          
+ 150          
+ 151          
+ 152          
+ 153            
+ 154            
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    578    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     32       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

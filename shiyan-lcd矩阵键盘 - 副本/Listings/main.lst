@@ -1,0 +1,173 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 14:02:33 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #include "LCD1602.h"
+   3           
+   4          #include "MatrixKey.h"
+   5          /***********************************************
+   6          
+   7                  | 1 | | 2 | | 3 | | 4 |
+   8                  | 5 | | 6 | | 7 | | 8 |
+   9                  | 9 | | 0 | | + | | - |
+  10                  | * | | / | | = | |clear|
+  11          
+  12          ***********************************************/
+  13           
+  14          int shuju[5];  //存放数据的数组
+  15          char yunsuan[5];   //存放运算符的数组
+  16          int keynum;  //返回矩阵键盘的
+  17          int dat;
+  18          int j=0;
+  19          int bb=0;
+  20          int i=0;
+  21          int jj;
+  22          int ii;
+  23          int j3=0;
+  24          int i3=0;
+  25          int yshuju[5];    //存储*与/对应的数据
+  26          char youxian[5];  //存储 *与/运算符的数组
+  27           
+  28          void result() //结果显示函数
+  29          {
+  30   1        LCD_ShowString(1,16," ");
+  31   1        if(shuju[jj]<=9){LCD_ShowNum(2,8,shuju[jj],1);}
+  32   1        if(shuju[jj]>9&&shuju[jj]<=99){LCD_ShowNum(2,8,shuju[jj],2);}
+  33   1        if(shuju[jj]>99&&shuju[jj]<=999){LCD_ShowNum(2,8,shuju[jj],3);}
+  34   1      }
+  35           
+  36          void showdata()  //显示输入的数据
+  37          {
+  38   1        
+  39   1        if(dat<=9){LCD_ShowNum(1,1,dat,1);}
+  40   1        if(dat>9&&dat<=99){LCD_ShowNum(1,1,dat,2);}
+  41   1        if(dat>99&&dat<=999){LCD_ShowNum(1,1,dat,3);}
+  42   1      
+  43   1      }
+  44          void showdata1()  //显示输入的数据
+  45          {
+  46   1        
+  47   1        if(dat<=9){LCD_ShowNum(1,4,dat,1);}
+  48   1        if(dat>9&&dat<=99){LCD_ShowNum(1,4,dat,2);}
+  49   1        if(dat>99&&dat<=999){LCD_ShowNum(1,4,dat,3);}
+  50   1      
+  51   1      }
+  52          
+  53           int flag=0;
+  54          
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 14:02:33 PAGE 2   
+
+  55          void main()
+  56          {
+  57   1        LCD_Init();
+  58   1        
+  59   1        LCD_ShowString(2,1,"OUTPUT:");
+  60   1        
+  61   1        while(1)
+  62   1        {
+  63   2          
+  64   2          keynum=MatrixKey(); //返回矩阵键盘的键值
+  65   2          if(keynum)
+  66   2          {     
+  67   3            if(keynum>10)
+  68   3            { 
+  69   4              flag=1;       
+  70   4              shuju[j]=dat;
+  71   4              j++;
+  72   4              dat=0;
+  73   4              LCD_ShowString(1,7,"      ");
+  74   4              if(keynum==11){yunsuan[i]='+';LCD_ShowString(1,3,"+");i++;}  
+  75   4              if(keynum==12){yunsuan[i]='-';LCD_ShowString(1,3,"-");i++;}
+  76   4              if(keynum==13){yunsuan[i]='*';LCD_ShowString(1,3,"*");i++;}
+  77   4              if(keynum==14){yunsuan[i]='/';LCD_ShowString(1,3,"/");i++;}
+  78   4              if(keynum==15)//计算结果
+  79   4              {
+  80   5                for(ii=0,jj=1;jj<j;jj++) //优先遍历，找出*与/对应的数组元素，并优先计算
+  81   5                {
+  82   6                  if(yunsuan[ii]=='*'|yunsuan[ii]=='/')
+  83   6                  {
+  84   7                    youxian[i3]=yunsuan[ii];
+  85   7                    yshuju[j3]=shuju[jj];
+  86   7                    if(youxian[i3]=='*')
+  87   7                    {
+  88   8                      yshuju[j3]=shuju[jj]*shuju[jj-1];
+  89   8                      shuju[jj]=yshuju[j3];
+  90   8                      shuju[jj-1]=0;
+  91   8                    }
+  92   7                    if(youxian[i3]=='/')
+  93   7                    {
+  94   8                      if(shuju[jj]==0){LCD_ShowString(2,8,"ERROR");}
+  95   8                      else 
+  96   8                      yshuju[j3]=shuju[jj-1]/shuju[jj];
+  97   8                      shuju[jj]=yshuju[j3];
+  98   8                      shuju[jj-1]=0;
+  99   8                    }
+ 100   7                    yunsuan[ii]='+';
+ 101   7                  }
+ 102   6                  ii++;
+ 103   6                }
+ 104   5                for(ii=0,jj=1;jj<j;jj++) //第二次遍历，计算+ -法
+ 105   5                {
+ 106   6                  if(yunsuan[ii]=='+')
+ 107   6                  {
+ 108   7                    shuju[jj]=shuju[jj]+shuju[jj-1];
+ 109   7                    result();
+ 110   7                  }
+ 111   6                  if(yunsuan[ii]=='-')
+ 112   6                  {
+ 113   7                    shuju[jj]=shuju[jj-1]-shuju[jj];
+ 114   7                    result();
+ 115   7                  }
+ 116   6                  if(yunsuan[ii]=='*')
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 14:02:33 PAGE 3   
+
+ 117   6                  {
+ 118   7                    shuju[jj]=shuju[jj]*shuju[jj-1];
+ 119   7                    result();
+ 120   7                  }
+ 121   6                  if(yunsuan[ii]=='/')
+ 122   6                  {
+ 123   7                    shuju[jj]=shuju[jj-1]/shuju[jj];
+ 124   7                    result();
+ 125   7                  }
+ 126   6                  ii++;
+ 127   6                }
+ 128   5              }
+ 129   4              if(keynum==16){//清空，所有变量置0
+ 130   5                youxian[5]=0;yshuju[5]=0;
+ 131   5                j=0;i=0; jj=0;ii=0; j3=0;i3=0;
+ 132   5                flag=0;yunsuan[5]=0;LCD_ShowString(1,1,"      ");
+ 133   5              shuju[5]=0;dat=0;LCD_ShowString(2,8,"      ");}
+ 134   4            }
+ 135   3          if(keynum<=10)  //输入的数据处理，若超过两位则左移
+ 136   3            {   
+ 137   4              dat*=10;
+ 138   4              dat+=keynum%10; 
+ 139   4              if(flag==0){showdata();}
+ 140   4              if(flag==1){showdata1();}
+ 141   4              
+ 142   4            }
+ 143   3          }
+ 144   2        }
+ 145   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1292    ----
+   CONSTANT SIZE    =     31    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     50    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

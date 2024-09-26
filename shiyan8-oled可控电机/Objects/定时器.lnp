@@ -1,0 +1,8 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\charcode.obj",
+".\Objects\Delay.obj",
+".\Objects\LCD9648.obj",
+".\Objects\lcddriver.obj" 
+TO ".\Objects\定时器" 
+PRINT(".\Listings\定时器.m51")

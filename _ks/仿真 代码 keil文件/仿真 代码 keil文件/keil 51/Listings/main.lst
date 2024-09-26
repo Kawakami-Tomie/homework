@@ -1,0 +1,262 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 20:56:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REG52.H>
+   2          #include "intrins.h"
+   3          #include "LCD1602.h"  //包含LCD1602头文件
+   4          #include "Delay.h"    //包含Delay头文件
+   5          #include "DS18B20.h"
+   6          #include "DHT11.h"
+   7          #include "Timer0.h"
+   8          
+   9          sbit Motor=P0^0;
+  10          sbit P34 = P3^4;
+  11          sbit P35 = P3^5;
+  12          sbit P36 = P3^6;
+  13          sbit P37 = P3^7;
+  14          float T = 0;
+  15          extern unsigned char  hum;//湿度
+  16          
+  17          unsigned char k1 = 5, k2 = 1, k3 = 10;
+  18          int sbz = 38, speed = 0, wbz = 25;
+  19          float bz = 0, xz = 0;
+  20          float p = 0,i = 0,d = 0;
+  21          float pid = 0;
+  22          int Compare = 0;
+  23          unsigned char DHTC = 0,DHTF = 0;
+  24          unsigned char sw = 0; //0湿度 ， 1温度
+  25          unsigned char kz = 0; //0档位控制, 1pid
+  26          unsigned char key = 0, key_keyNumber = 0;
+  27          
+  28          void main()
+  29          { 
+  30   1        Motor = 0;
+  31   1        LCD_Init();
+  32   1        DHT11_Init();
+  33   1        DS18B20_ConvertT();
+  34   1        Delay(1000);
+  35   1      
+  36   1        Timer0Init();
+  37   1        Timer1Init();
+  38   1        TR0 = 1;        //定时器0开始计时
+  39   1        ET0=1;
+  40   1        TR1 = 1;
+  41   1        ET1 = 1;
+  42   1        EA=1;//开启总中断
+  43   1      
+  44   1        while(1)
+  45   1        { 
+  46   2          LCD_ShowString(1,1,"Tem:");
+  47   2          LCD_ShowString(2,1,"Hum:");
+  48   2          LCD_ShowChar(1,8,'.');  
+  49   2          LCD_ShowChar(2,7,'%');
+  50   2      
+  51   2          TR0 = 0;
+  52   2          TR1 = 0;
+  53   2      //    DS18B20_ConvertT(); //转换温度
+  54   2      //    T=DS18B20_ReadT();  //读取温度
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 20:56:04 PAGE 2   
+
+  55   2          DHT11_receive();
+  56   2          if(DHTF == 1)
+  57   2          {
+  58   3            
+  59   3            DHTF = 0;
+  60   3          } 
+  61   2          TR0 = 1;
+  62   2          TR1 = 1;
+  63   2      
+  64   2      //    LCD_ShowNum(1,5,T,3);   //显示温度整数部分
+  65   2      //    LCD_ShowNum(1,9,(unsigned long)(T*10000)%10000,4);//显示温度小数部分
+  66   2          LCD_ShowNum(2,5,hum,2);
+  67   2      
+  68   2          //LCD_ShowNum(1,5,Compare,4);
+  69   2          //LCD_ShowNum(1,10,hu,2);LCD_ShowSignedNum(2,1,p,4);LCD_ShowSignedNum(2,6,i,4);LCD_ShowSignedNum(2,11,d,
+             -4);
+  70   2      
+  71   2          key = key_keyNumber;
+  72   2          key_keyNumber = 0;
+  73   2      //    {
+  74   2      //      if(key == 1)
+  75   2      //      {
+  76   2      //        sw = 1 - sw;
+  77   2      //      }
+  78   2      //      else if(key == 2)
+  79   2      //      {
+  80   2      //        if(sw == 0)
+  81   2      //          sbz++;
+  82   2      //        else
+  83   2      //          wbz++;
+  84   2      //      }
+  85   2      //      else if(key == 3)
+  86   2      //      {
+  87   2      //        if(sw == 0)
+  88   2      //          sbz--;
+  89   2      //        else
+  90   2      //          wbz--;
+  91   2      //      }
+  92   2      //      else if(key == 4)
+  93   2      //      {
+  94   2      //        kz = 1 - kz;
+  95   2      //      }
+  96   2      //    }
+  97   2      
+  98   2      //    if(sw == 1)
+  99   2      //    {
+ 100   2      //      LCD_ShowNum(1,14,wbz,3);
+ 101   2      //      LCD_ShowString(2,14,"   ");
+ 102   2      //      xz = T;
+ 103   2      //      bz = wbz;
+ 104   2      //    }
+ 105   2      //    else
+ 106   2      //    {
+ 107   2      //      LCD_ShowNum(2,14,sbz,3);
+ 108   2      //      LCD_ShowString(1,14,"   ");
+ 109   2      //      xz = hum;
+ 110   2      //      bz = sbz;
+ 111   2      //    }
+ 112   2      
+ 113   2      //    if(kz)
+ 114   2      //    {
+ 115   2      //      LCD_ShowString(2,10,"PID");
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 20:56:04 PAGE 3   
+
+ 116   2      //      d = xz - bz - p;
+ 117   2      //      p = xz - bz;
+ 118   2      //      i += p;
+ 119   2      //      pid += (k1*p + k2*i + k3*d);
+ 120   2      
+ 121   2      //      if(pid>=0 && pid<=1000)
+ 122   2      //      {
+ 123   2      //        Compare = pid;
+ 124   2      //      }
+ 125   2      //      else if(pid<0)
+ 126   2      //      {
+ 127   2      //        Compare = 0;
+ 128   2      //        pid = 0;
+ 129   2      //      }
+ 130   2      //      else
+ 131   2      //      {
+ 132   2      //        Compare = 1000;
+ 133   2      //        pid = 1000;
+ 134   2      //      }
+ 135   2      //    }
+ 136   2      //    else
+ 137   2      //    {
+ 138   2      //      LCD_ShowString(2,10,"   ");
+ 139   2      //      p = 0;i = 0; d = 0; pid = 0;
+ 140   2      //      if(xz - bz >=10)
+ 141   2      //      {
+ 142   2      //        speed = 1000;
+ 143   2      //      }
+ 144   2      //      else if(xz - bz <=0)
+ 145   2      //      {
+ 146   2      //        speed = 0;
+ 147   2      //      }
+ 148   2      //      else
+ 149   2      //      {
+ 150   2      //        speed = (int)((xz - bz)*100);
+ 151   2      //      }
+ 152   2      //      Compare = speed ;
+ 153   2      //    }
+ 154   2      //    Delay(50);
+ 155   2        }
+ 156   1      }
+ 157          
+ 158          unsigned char Key_GetState()
+ 159          {
+ 160   1        unsigned char keynum = 0;
+ 161   1        if(P34 == 0){keynum=1;} //一有按键被按下，标志位keynum立即置位并返回，给key_loop函数处理
+ 162   1        if(P35 == 0){keynum=2;}
+ 163   1        if(P36 == 0){keynum=3;}
+ 164   1        if(P37 == 0){keynum=4;}
+ 165   1        return keynum;
+ 166   1      }
+ 167          
+ 168          //void key_loop()
+ 169          //{
+ 170          //  static unsigned char before_state,now_state;
+ 171          //  before_state = now_state;
+ 172          //  now_state = Key_GetState();   //获取按键标志位
+ 173          //  if(before_state == 1 && now_state == 0) 
+ 174          //  {
+ 175          //    key_keyNumber = 1;  //全局变量key_keyNumber置1，使用key_return函数返回给main函数使用
+ 176          //  }
+ 177          //  if(before_state == 2 && now_state == 0) 
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 20:56:04 PAGE 4   
+
+ 178          //  {
+ 179          //    key_keyNumber = 2;
+ 180          //  }
+ 181          //  if(before_state == 3 && now_state == 0) 
+ 182          //  {
+ 183          //    key_keyNumber = 3;
+ 184          //  }
+ 185          //  if(before_state == 4 && now_state == 0) 
+ 186          //  {
+ 187          //    key_keyNumber = 4;
+ 188          //  }
+ 189          //}
+ 190          
+ 191          void Timer0_Routine() interrupt 1
+ 192          {
+ 193   1        static unsigned int T0Count;
+ 194   1        TL0 = 0xA4;       //设置定时初始值
+ 195   1        TH0 = 0xFF;
+ 196   1        T0Count++;
+ 197   1        if(T0Count < Compare)
+ 198   1        {
+ 199   2          Motor = 1;
+ 200   2        }
+ 201   1        else
+ 202   1        {
+ 203   2          Motor = 0;
+ 204   2        }
+ 205   1        if (T0Count >= 1000)
+ 206   1        {
+ 207   2          T0Count = 0;
+ 208   2        }
+ 209   1      }
+ 210          
+ 211          void Timer1_Routine() interrupt 3
+ 212          {
+ 213   1        static unsigned int T1Count;
+ 214   1        TL1 = 0x00;       
+ 215   1        TH1 = 0xDC;
+ 216   1      //  T1Count++;
+ 217   1      //  DHTC ++;
+ 218   1      //  if(T1Count>=20)
+ 219   1      //  {
+ 220   1      ////    key_loop();
+ 221   1      //    T1Count = 0;
+ 222   1      //  }
+ 223   1      //  if(DHTC >=75)
+ 224   1      //  {
+ 225   1      //    DHTC = 0;
+ 226   1      //    DHTF = 1;
+ 227   1      //  }
+ 228   1      }
+*** WARNING C280 IN LINE 213 OF main.c: 'T1Count': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    204    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     49    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 20:56:04 PAGE 5   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,303 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              05/10/2024 16:56:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include"regx51.h"
+   2          sbit rs=P2^0;                   //data~command  rs=0??? rs=1???
+   3          sbit rw=P2^1;                   //read~write
+   4          sbit en=P2^2;                   //start
+   5          unsigned int key,temp,value;            //key->P1??? temp->P1?key?????    
+   6          unsigned int count,num;                         //count->??????   num->??????
+   7          unsigned char state;                            //state->???
+   8          unsigned int Num1,Num2;                         //Num1->???1    Num2->???2
+   9          int answer;                                                     //answer->????
+  10          unsigned char welcome;                          //welcome->???????
+  11          void delay(unsigned int t)
+  12          {
+  13   1          unsigned int i,j;
+  14   1          for(i=0;i<t;i++)
+  15   1          for(j=0;j<1275;j++);
+  16   1      }
+  17          
+  18          void writecommand(unsigned char value)          //???
+  19          {
+  20   1          rs=0;
+  21   1          rw=0;
+  22   1          P0=value;
+  23   1          en=1;
+  24   1          delay(1);
+  25   1          en=0;
+  26   1      }
+  27          
+  28          void writedata(unsigned char value)                     //???
+  29          {
+  30   1          rs=1;
+  31   1          rw=0;
+  32   1          P0=value;
+  33   1          en=1;
+  34   1          delay(1);
+  35   1          en=0;
+  36   1      }
+  37          
+  38          void LCD_init()
+  39          {
+  40   1          writecommand(0x38);//??????,????,5*7??
+  41   1              writecommand(0x0c);//???,???,???
+  42   1              writecommand(0x06);//???????,??????,????
+  43   1              writecommand(0x01);//????,??
+  44   1      }
+  45          
+  46          
+  47          void set_cursor(unsigned char Line,unsigned char Column)        //????
+  48          {
+  49   1              if(Line==1)
+  50   1              {
+  51   2                      writecommand(0x80|(Column-1));
+  52   2              }
+  53   1              else if(Line==2)
+  54   1              {
+C51 COMPILER V9.60.0.0   MAIN                                                              05/10/2024 16:56:21 PAGE 2   
+
+  55   2                      writecommand(0x80|(Column-1+0x40));
+  56   2              }
+  57   1      }
+  58          
+  59          int LCD_Pow(int X,int Y)
+  60          {
+  61   1              unsigned char i;
+  62   1              int Result=1;
+  63   1              for(i=0;i<Y;i++)
+  64   1              {
+  65   2                      Result*=X;
+  66   2              }
+  67   1              return Result;
+  68   1      }
+  69          
+  70          void show_num(unsigned char Line,unsigned char Column,unsigned int Number,unsigned char Length)
+  71          {
+  72   1              unsigned char i;
+  73   1              set_cursor(Line,Column);
+  74   1              for(i=Length;i>0;i--)
+  75   1              {
+  76   2                      writedata(Number/LCD_Pow(10,i-1)%10+'0');
+  77   2              }
+  78   1      }
+  79          
+  80          void show_string(unsigned char Line,unsigned char Column,char *String)
+  81          {
+  82   1              unsigned char i;
+  83   1              set_cursor(Line,Column);
+  84   1              for(i=0;String[i]!='\0';i++)
+  85   1              {
+  86   2                      writedata(String[i]);
+  87   2              }
+  88   1      }
+  89          
+  90          unsigned int scan()
+  91          {
+  92   1          unsigned int result=0;
+  93   1          P1 = 0Xf0;                  //1111 0000
+  94   1          temp = P1;  
+  95   1          temp = temp &0Xf0;  //1111 0000     
+  96   1              if(temp!=0xf0)      //??????
+  97   1              {               
+  98   2              delay(20);              
+  99   2                      if(temp!=0xf0)          
+ 100   2                      {                       
+ 101   3                  P1=0x0f;
+ 102   3                  temp|=(P1&0x0f);
+ 103   3                  key=temp;                   
+ 104   3                              switch(key)                     
+ 105   3                              {                               
+ 106   4                                      case 0xee:              //1110 1110                     
+ 107   4                                      result=8;               //????1 
+ 108   4                                      break;                                  
+ 109   4                                      case 0xde:              //1101 1110                     
+ 110   4                      result=9;                               
+ 111   4                                      break;                                  
+ 112   4                                      case 0xbe:              //1100 1110                     
+ 113   4                                      result=10;                      
+ 114   4                                      break;                                  
+ 115   4                                      case 0x7e:              //0111 1110                     
+ 116   4                                      result=11;              // ÷            
+C51 COMPILER V9.60.0.0   MAIN                                                              05/10/2024 16:56:21 PAGE 3   
+
+ 117   4                                      break;                                  
+ 118   4                                      case 0xed:              //1110 1101                     
+ 119   4                                      result=5;                               
+ 120   4                                      break;                                  
+ 121   4                                      case 0xdd:              //1101 1101                     
+ 122   4                                      result=6;                       
+ 123   4                                      break;                                  
+ 124   4                                      case 0xbd:              //1011 1101                     
+ 125   4                                      result=7;                       
+ 126   4                                      break;                                  
+ 127   4                                      case 0x7d:              //0111 1101                             
+ 128   4                                      result=12;              // ×    
+ 129   4                                      break;                                  
+ 130   4                                      case 0xeb:              //1110 1011                     
+ 131   4                                      result=2;                               
+ 132   4                                      break;                                  
+ 133   4                                      case 0xdb:              //1101 1011                     
+ 134   4                                      result=3;                               
+ 135   4                                      break;                                  
+ 136   4                                      case 0xbb:              //1011 1011                     
+ 137   4                                      result=4;                       
+ 138   4                                      break;                                  
+ 139   4                                      case 0x7b:              //0111 1011                     
+ 140   4                                      result=13;              // -            
+ 141   4                                      break;                                  
+ 142   4                                      case 0xe7:              //1110 0111                     
+ 143   4                                      result=14;              // ON/C         
+ 144   4                                      break;                                  
+ 145   4                                      case 0xd7:              //1101 0111                     
+ 146   4                                      result=1;                       
+ 147   4                                      break;                                  
+ 148   4                                      case 0xb7:              //1011 0111                     
+ 149   4                                      result=15;              // =            
+ 150   4                                      break;                                  
+ 151   4                                      case 0x77:              //0111 0111                     
+ 152   4                                      result=16;              // +    
+ 153   4                                      break;                  
+ 154   4                                      }               
+ 155   3                              }       
+ 156   2                      } 
+ 157   1          return result;
+ 158   1      }
+ 159          
+ 160          void main()
+ 161          {
+ 162   1          LCD_init();   
+ 163   1          while(1)
+ 164   1          {
+ 165   2              value=scan();           //?????1
+ 166   2              if(value)
+ 167   2              {
+ 168   3                  if(welcome==0)              //welcome=0?,??????
+ 169   3                  {
+ 170   4                      if(value==14)
+ 171   4                      {
+ 172   5                          show_string(1,1,"Welcome to");
+ 173   5                          show_string(2,1,"Calculator!");
+ 174   5                          delay(200);                         //???????
+ 175   5                          show_string(1,1,"00          ");
+ 176   5                          show_string(2,1,"            ");
+ 177   5                          welcome++;                          //????????
+ 178   5                      }
+C51 COMPILER V9.60.0.0   MAIN                                                              05/10/2024 16:56:21 PAGE 4   
+
+ 179   4                      
+ 180   4                  }
+ 181   3                  else                //?????????
+ 182   3               {          
+ 183   4                  if(value<=10)
+ 184   4                 {
+ 185   5                     if(count<2)                      //??????
+ 186   5                     {
+ 187   6                         num*=10;                     //??
+ 188   6                         num+=(value-1)%10;
+ 189   6                         count++;
+ 190   6                     }
+ 191   5                     show_num(1,1,num,2);
+ 192   5                 }               
+ 193   4                 else if(value>10 && value!=15)               //?????
+ 194   4                 {           
+ 195   5                      Num1=num;                                               //?????1
+ 196   5                      count=0;
+ 197   5                      num=0;
+ 198   5                      show_string(1,1,"       ");
+ 199   5                     switch(value)
+ 200   5                     {
+ 201   6                         case 11: state='/';
+ 202   6                                  show_string(1,1,"/");
+ 203   6                         break;
+ 204   6                         case 12: state='x';
+ 205   6                                  show_string(1,1,"x");
+ 206   6                         break;
+ 207   6                         case 13: state='-';
+ 208   6                                  show_string(1,1,"-");
+ 209   6                         break;
+ 210   6                         case 14: count=0;                    //ON/C???
+ 211   6                                  num=0;
+ 212   6                                  Num1=0;
+ 213   6                                  Num2=0;
+ 214   6                                  answer=0;
+ 215   6                                  show_num(1,1,00,2);
+ 216   6                         break;
+ 217   6                         case 16: state='+';
+ 218   6                                  show_string(1,1,"+");
+ 219   6                         break;
+ 220   6                     }
+ 221   5                     
+ 222   5                 }
+ 223   4                 else if(value==15)                           // =?
+ 224   4                 {
+ 225   5                     Num2=num;                                        //??????2
+ 226   5                     show_string(1,1,"      ");
+ 227   5                     if(state=='+')
+ 228   5                     {
+ 229   6                         answer=Num1+Num2;
+ 230   6                         if(answer>=100)  show_num(1,1,answer,3);
+ 231   6                         else show_num(1,1,answer,2);
+ 232   6                     }
+ 233   5                     else if(state=='-')
+ 234   5                     {
+ 235   6                         answer=Num1-Num2;
+ 236   6                         if(answer>=0)   show_num(1,1,answer,2);
+ 237   6                         else 
+ 238   6                         {
+ 239   7                             answer=-answer;
+ 240   7                             show_string(1,1,"-");
+C51 COMPILER V9.60.0.0   MAIN                                                              05/10/2024 16:56:21 PAGE 5   
+
+ 241   7                             if(answer>=10) show_num(1,2,answer,2);
+ 242   7                             else show_num(1,2,answer,1);
+ 243   7                         }
+ 244   6                     }
+ 245   5                     else if(state=='x')
+ 246   5                     {
+ 247   6                         answer=Num1*Num2;
+ 248   6                         if(answer>=1000) {show_num(1,1,answer,4);}
+ 249   6                         else if(100<=answer<1000) {show_num(1,1,answer,3);}
+ 250   6                         else if(10<=answer<100) {show_num(1,1,answer,2);}
+ 251   6                         else {show_num(1,1,answer,1);}
+ 252   6                     }
+ 253   5                                      
+ 254   5                     else if(state=='/')
+ 255   5                     {
+ 256   6                         if(Num2==0)
+ 257   6                         {
+ 258   7                             show_string(1,1,"ERROR");
+ 259   7                         }
+ 260   6                         else 
+ 261   6                         {
+ 262   7                             answer=Num1/Num2;
+ 263   7                             if(answer>=10)   show_num(1,1,answer,2);
+ 264   7                             else show_num(1,1,answer,1);
+ 265   7                         }
+ 266   6                     }
+ 267   5                   }
+ 268   4               }      
+ 269   3             }
+ 270   2           }
+ 271   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1220    ----
+   CONSTANT SIZE    =     78    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     18      17
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

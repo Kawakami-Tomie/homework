@@ -1,0 +1,265 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              07/07/2024 01:56:30 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include  "DS1302.h"
+   3          #include <intrins.h>
+   4          #include "Key.h"
+   5          #include "BlueTooth.h"
+   6          
+   7          unsigned char time[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};//�
+             -��义数码管上0-f  16位数字的段选码
+   8          unsigned char time_buf[3]={0};//定义数码管对应位
+   9          
+  10          #define USART_MAX_RECV_LEN  1
+  11          unsigned char USART_RX_BUF[USART_MAX_RECV_LEN];
+  12          
+  13          unsigned char KeyNum=0,menu=0,MODE=0,TimeSetSelect=1;
+  14           /**
+  15           *@breaf 延时函数/@12.0000MHz  1ms为单位
+  16           *@para   t 延时时间设置
+  17           *@retval无
+  18           */
+  19          void Delay1ms(unsigned char t)    //@12.0000MHz
+  20          {
+  21   1        unsigned char i, j;
+  22   1        while(t--)
+  23   1          {
+  24   2          _nop_();
+  25   2          i = 2;
+  26   2          j = 239;
+  27   2          do
+  28   2          {
+  29   3            while (--j);
+  30   3          } while (--i);
+  31   2        }
+  32   1      }
+  33          /**
+  34          *@breaf 数码管显示函数
+  35          *@para  显示的段选数据 数组
+  36          *@retval无
+  37          */
+  38          void smg_display(unsigned char dat[])
+  39          {
+  40   1        unsigned char i=0;
+  41   1        for(i=0;i<4;i++)//扫描
+  42   1        {
+  43   2            switch(i)//位选
+  44   2          {
+  45   3          case 0: P1_0=1; P1_1=0; P1_2=0;P1_3=0;break;
+  46   3          case 1: P1_0=0; P1_1=1; P1_2=0;P1_3=0;break;
+  47   3          case 2: P1_0=0; P1_1=0; P1_2=1;P1_3=0;break;
+  48   3          case 3: P1_0=0; P1_1=0; P1_2=0;P1_3=1;break;  
+  49   3          }
+  50   2          if((i==1)&&(menu!=0))P0=dat[i]|0x80;
+  51   2          else P0=dat[i];//传送段选数据
+  52   2          Delay1ms(1) ;//延时一段时间，等待显示稳定
+  53   2          P0=0x00;//消音
+C51 COMPILER V9.60.0.0   MAIN                                                              07/07/2024 01:56:30 PAGE 2   
+
+  54   2        }
+  55   1      }
+  56          
+  57          
+  58          
+  59          
+  60          
+  61          //按键扫描
+  62          void KeyScan(){
+  63   1         
+  64   1        KeyNum=Key();//读取键码
+  65   1        if(KeyNum==1){
+  66   2          menu++;
+  67   2          if(menu>=5) menu=0;
+  68   2        }
+  69   1        if(menu<3) MODE=0;
+  70   1        else if(menu==3) {MODE=1;DS1302_SetTime();}//设置 时 分
+  71   1        else if(menu==4) {MODE=1;DS1302_SetTime();}//设置 月 日
+  72   1        
+  73   1      }
+  74          
+  75          void TimeShow(void)//时间显示功能
+  76          {
+  77   1        DS1302_ReadTime();//读取时间
+  78   1                //显示学号
+  79   1                if(menu==0){
+  80   2                time_buf[0]= time[1];//将BCD码转为十进制
+  81   2                time_buf[1]= time[7];
+  82   2                time_buf[2]= time[8];
+  83   2                time_buf[3]= time[0];
+  84   2                smg_display(time_buf);
+  85   2                }
+  86   1                //显示 时 分
+  87   1                else if(menu==1){
+  88   2                time_buf[0]= time[DS1302_Time[3]/10];//将BCD码转为十进制
+  89   2                time_buf[1]= time[DS1302_Time[3]%10];
+  90   2                time_buf[2]= time[DS1302_Time[4]/10];
+  91   2                time_buf[3]= time[DS1302_Time[4]%10];
+  92   2                smg_display(time_buf);
+  93   2                }
+  94   1                //显示 月 日
+  95   1                else if(menu==2){
+  96   2                time_buf[0]= time[DS1302_Time[1]/10];//将BCD码转为十进制
+  97   2                time_buf[1]= time[DS1302_Time[1]%10];
+  98   2                time_buf[2]= time[DS1302_Time[2]/10];
+  99   2                time_buf[3]= time[DS1302_Time[2]%10];
+ 100   2                smg_display(time_buf);
+ 101   2                } 
+ 102   1      }
+ 103          
+ 104          
+ 105          
+ 106          
+ 107          //时间设置功能
+ 108          void TimeSet(void)
+ 109          {
+ 110   1        if(KeyNum==2)//按键2按下
+ 111   1        {
+ 112   2          TimeSetSelect++;//设置选择位加1
+ 113   2          if(TimeSetSelect>=5)TimeSetSelect=1;//越界清零
+ 114   2        }
+ 115   1      
+C51 COMPILER V9.60.0.0   MAIN                                                              07/07/2024 01:56:30 PAGE 3   
+
+ 116   1        if(KeyNum==3)//按键3按下
+ 117   1        {
+ 118   2          DS1302_Time[TimeSetSelect]++;//时间设置位数值加1
+ 119   2        
+ 120   2          if(DS1302_Time[1]>12){DS1302_Time[1]=1;}//月越界判断
+ 121   2          if( DS1302_Time[1]==1 || DS1302_Time[1]==3 || DS1302_Time[1]==5 || DS1302_Time[1]==7 || 
+ 122   2            DS1302_Time[1]==8 || DS1302_Time[1]==10 || DS1302_Time[1]==12)//日越界判断
+ 123   2          {
+ 124   3            if(DS1302_Time[2]>31){DS1302_Time[2]=1;}//大月
+ 125   3          }
+ 126   2          else if(DS1302_Time[1]==4 || DS1302_Time[1]==6 || DS1302_Time[1]==9 || DS1302_Time[1]==11)
+ 127   2          {
+ 128   3            if(DS1302_Time[2]>30){DS1302_Time[2]=1;}//小月
+ 129   3          }
+ 130   2          else if(DS1302_Time[1]==2)
+ 131   2          {
+ 132   3            if(DS1302_Time[0]%4==0)
+ 133   3            {
+ 134   4              if(DS1302_Time[2]>29){DS1302_Time[2]=1;}//闰年2月
+ 135   4            }
+ 136   3            else
+ 137   3            {
+ 138   4              if(DS1302_Time[2]>28){DS1302_Time[2]=1;}//平年2月
+ 139   4            }
+ 140   3          }
+ 141   2          if(DS1302_Time[3]>23){DS1302_Time[3]=0;}//时越界判断
+ 142   2          if(DS1302_Time[4]>59){DS1302_Time[4]=0;}//分越界判断
+ 143   2          
+ 144   2        }
+ 145   1        if(KeyNum==4)//按键3按下
+ 146   1        {
+ 147   2          DS1302_Time[TimeSetSelect]--;//时间设置位数值减1
+ 148   2          
+ 149   2          if(DS1302_Time[1]<1){DS1302_Time[1]=12;}//月越界判断
+ 150   2          if( DS1302_Time[1]==1 || DS1302_Time[1]==3 || DS1302_Time[1]==5 || DS1302_Time[1]==7 || 
+ 151   2            DS1302_Time[1]==8 || DS1302_Time[1]==10 || DS1302_Time[1]==12)//日越界判断
+ 152   2          {
+ 153   3            if(DS1302_Time[2]<1){DS1302_Time[2]=31;}//大月
+ 154   3            if(DS1302_Time[2]>31){DS1302_Time[2]=1;}
+ 155   3          }
+ 156   2          else if(DS1302_Time[1]==4 || DS1302_Time[1]==6 || DS1302_Time[1]==9 || DS1302_Time[1]==11)
+ 157   2          {
+ 158   3            if(DS1302_Time[2]<1){DS1302_Time[2]=30;}//小月
+ 159   3            if(DS1302_Time[2]>30){DS1302_Time[2]=1;}
+ 160   3          }
+ 161   2          else if(DS1302_Time[1]==2)
+ 162   2          {
+ 163   3            if(DS1302_Time[0]%4==0)
+ 164   3            {
+ 165   4              if(DS1302_Time[2]<1){DS1302_Time[2]=29;}//闰年2月
+ 166   4              if(DS1302_Time[2]>29){DS1302_Time[2]=1;}
+ 167   4            }
+ 168   3            else
+ 169   3            {
+ 170   4              if(DS1302_Time[2]<1){DS1302_Time[2]=28;}//平年2月
+ 171   4              if(DS1302_Time[2]>28){DS1302_Time[2]=1;}
+ 172   4            }
+ 173   3          }
+ 174   2          if(DS1302_Time[3]<0){DS1302_Time[3]=23;}//时越界判断
+ 175   2          if(DS1302_Time[4]<0){DS1302_Time[4]=59;}//分越界判断
+ 176   2          
+ 177   2        }
+C51 COMPILER V9.60.0.0   MAIN                                                              07/07/2024 01:56:30 PAGE 4   
+
+ 178   1      }
+ 179          
+ 180          void TimeChange(void)
+ 181          {
+ 182   1               //设置 时 分
+ 183   1               if(menu==3){
+ 184   2                TimeSet();
+ 185   2                time_buf[0]= time[DS1302_Time[3]/10];//将BCD码转为十进制
+ 186   2                time_buf[1]= time[DS1302_Time[3]%10];
+ 187   2                time_buf[2]= time[DS1302_Time[4]/10];
+ 188   2                time_buf[3]= time[DS1302_Time[4]%10];
+ 189   2                smg_display(time_buf);
+ 190   2                }
+ 191   1                //设置 月 日
+ 192   1                else if(menu==4){
+ 193   2                TimeSet();
+ 194   2                time_buf[0]= time[DS1302_Time[1]/10];//将BCD码转为十进制
+ 195   2                time_buf[1]= time[DS1302_Time[1]%10];
+ 196   2                time_buf[2]= time[DS1302_Time[2]/10];
+ 197   2                time_buf[3]= time[DS1302_Time[2]%10];
+ 198   2                smg_display(time_buf);
+ 199   2                }
+ 200   1      
+ 201   1      }
+ 202           
+ 203          void main ()
+ 204          { 
+ 205   1          UART_Init();//初始化蓝牙
+ 206   1          DS1302_Init();//DS1302初始化
+ 207   1          DS1302_SetTime();// DS1302设置时间
+ 208   1          while(1)
+ 209   1          {
+ 210   2                KeyScan();
+ 211   2                switch(MODE)//根据不同的功能执行不同的函数
+ 212   2                    {
+ 213   3                      case 0:TimeShow();break;
+ 214   3                      case 1:TimeChange();break;
+ 215   3                    }         
+ 216   2            
+ 217   2            }
+ 218   1      }
+ 219          
+ 220          //串口中断函数
+ 221          void Uart() interrupt 4
+ 222          {
+ 223   1        if(RI)
+ 224   1        {
+ 225   2          USART_RX_BUF[0]=SBUF;
+ 226   2          RI = 0;//清除接收中断标志位
+ 227   2        }                
+ 228   1      }
+ 229          
+ 230           
+ 231            
+ 232            
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    959    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              07/07/2024 01:56:30 PAGE 5   
+
+   DATA SIZE        =     24       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

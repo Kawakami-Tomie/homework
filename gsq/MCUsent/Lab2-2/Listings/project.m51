@@ -1,0 +1,147 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/28/2024  15:13:33  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\project PRINT (.\Listings\project.m51)
+
+
+MEMORY MODEL: LARGE
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  D:\KEIL5\C51\LIB\C51L.LIB (?C_STARTUP)
+  D:\KEIL5\C51\LIB\C51L.LIB (?C?SIDIV)
+  D:\KEIL5\C51\LIB\C51L.LIB (?C_INIT)
+  D:\KEIL5\C51\LIB\C51L.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0010H     UNIT         ?XD?MAIN
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     07FAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     008BH     UNIT         ?C?LIB_CODE
+            CODE    0917H     0056H     UNIT         ?PR?MAIN?MAIN
+            CODE    096DH     0033H     UNIT         ?PR?INT_0?MAIN
+            CODE    09A0H     0020H     UNIT         ?PR?_DELAY?MAIN
+            CODE    09C0H     001BH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?INT_0?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?_DELAY?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/28/2024  15:13:33  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  B:00A8H.7       PUBLIC        EA
+  C:09A0H         PUBLIC        _delay
+  X:0000H         PUBLIC        flag
+  C:0917H         PUBLIC        main
+  B:0088H.1       PUBLIC        IE0
+  X:0001H         PUBLIC        C
+  X:0007H         PUBLIC        D
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  X:000DH         PUBLIC        i
+  X:000FH         PUBLIC        VAR
+  C:096DH         PUBLIC        INT_0
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        n
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:09A0H         LINE#         10
+  C:09A0H         LINE#         11
+  C:09A0H         LINE#         13
+  C:09ABH         LINE#         14
+  C:09ABH         LINE#         15
+  C:09B8H         LINE#         16
+  C:09BFH         LINE#         17
+  -------         ENDPROC       _DELAY
+  -------         PROC          INT_0
+  C:096DH         LINE#         18
+  C:0980H         LINE#         20
+  C:0987H         LINE#         21
+  C:098DH         LINE#         22
+  C:098FH         LINE#         23
+  -------         ENDPROC       INT_0
+  -------         PROC          MAIN
+  C:0917H         LINE#         27
+  C:0917H         LINE#         28
+  C:0917H         LINE#         29
+  C:0919H         LINE#         30
+  C:091BH         LINE#         31
+  C:091DH         LINE#         32
+  C:091DH         LINE#         33
+  C:091DH         LINE#         34
+  C:0924H         LINE#         35
+  C:0924H         LINE#         36
+  C:0926H         LINE#         37
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/28/2024  15:13:33  PAGE 3
+
+
+  C:0937H         LINE#         38
+  C:0953H         LINE#         39
+  C:0956H         LINE#         40
+  C:095DH         LINE#         41
+  C:096BH         LINE#         42
+  C:096BH         LINE#         43
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?SIDIV
+  C:088CH         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:08C2H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00C6H BYTE ( 9%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=16 code=481
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

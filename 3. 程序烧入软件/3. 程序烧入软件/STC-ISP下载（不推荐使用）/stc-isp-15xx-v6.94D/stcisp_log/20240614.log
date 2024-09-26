@@ -1,0 +1,41 @@
+[2024-06-14 22:32:18] : Begin
+--------------------
+*MCUTYPE* : STC89C52RC/LE52RC
+*FILENAME* : D:\大学读不了一点\大二下\MCU\_ks\hello\Objects\Project.hex
+*FILETIME* : 2024年06月14日, 22:25:42
+*FILESIZE* : 3033 (0x000BD9)
+*CODESIZE* : 1003 (0x0003EB)
+*CHECKSUM* : 0x0001EC8C
+*ISPMODE* : 2
+*ISPRESULT* : 4
+--------------------
+[2024-06-14 22:32:21] : End
+--------------------------------------------------
+[2024-06-14 22:32:44] : Begin
+--------------------
+*MCUTYPE* : STC89C52RC/LE52RC
+*MCUID* : F002C4B212708E
+*FILENAME* : D:\大学读不了一点\大二下\MCU\_ks\hello\Objects\Project.hex
+*FILETIME* : 2024年06月14日, 22:25:42
+*FILESIZE* : 3033 (0x000BD9)
+*CODESIZE* : 1003 (0x0003EB)
+*CHECKSUM* : 0x0001EC8C
+*ISPMODE* : 2
+*ISPRESULT* : 0
+--------------------
+[2024-06-14 22:32:47] : End
+--------------------------------------------------
+[2024-06-14 22:35:28] : Begin
+--------------------
+*MCUTYPE* : STC89C52RC/LE52RC
+*MCUID* : F002C4B212708E
+*FILENAME* : D:\大学读不了一点\大二下\MCU\_ks\hello\Objects\Project.hex
+*FILETIME* : 2024年06月14日, 22:35:10
+*FILESIZE* : 3090 (0x000C12)
+*CODESIZE* : 1025 (0x000401)
+*CHECKSUM* : 0x0001FCF3
+*ISPMODE* : 2
+*ISPRESULT* : 0
+--------------------
+[2024-06-14 22:35:31] : End
+--------------------------------------------------

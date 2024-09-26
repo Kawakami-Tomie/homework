@@ -1,0 +1,186 @@
+C51 COMPILER V9.60.0.0   LCDDRIVER                                                         07/08/2024 14:27:49 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCDDRIVER
+OBJECT MODULE PLACED IN .\Objects\lcddriver.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE lcddriver.c LARGE OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXT
+                    -END PRINT(.\Listings\lcddriver.lst) TABS(2) OBJECT(.\Objects\lcddriver.obj)
+
+line level    source
+
+   1          //#include<reg51.h>
+   2          //#include"charcode.h"
+   3          
+   4          //sbit CS0  = P0^0;   //片选
+   5          //sbit RST  = P0^1;   //复位
+   6          //sbit RS   = P2^7;     //数据命令选择端
+   7          //sbit SCL  = P2^6;   //SPI时钟端
+   8          //sbit SDA  = P2^5;   //SPI数据端
+   9          
+  10          //void Delay10ms(unsigned int c)   //误差 0us
+  11          //{
+  12          //    unsigned char a,b;
+  13          //    for(;c>0;c--)
+  14          //        for(b=38;b>0;b--)
+  15          //            for(a=130;a>0;a--);
+  16          //}
+  17          
+  18          
+  19          //void  SendDataSPI(unsigned char dat)
+  20          //{  
+  21          //   unsigned char i;
+  22          //   
+  23          //   for(i=0; i<8; i++)     
+  24          //   {  
+  25          //      if( (dat&0x80)!=0 ) SDA = 1;
+  26          //        else SDA = 0;
+  27          
+  28          //      dat <<= 1;
+  29          
+  30          //    SCL = 0;
+  31          //      SCL = 1;      
+  32          //   }
+  33          //}
+  34          
+  35          //void WriteComm(unsigned int i)
+  36          //{
+  37          
+  38          //    CS0 = 0;
+  39          //  RS  = 0;
+  40          
+  41          //  SendDataSPI(i);  ///
+  42          
+  43          //  CS0 = 1;
+  44          
+  45          //}
+  46          //void WriteData(unsigned int i)
+  47          //{
+  48          //    CS0 = 0;
+  49          //  RS  = 1;
+  50          
+  51          //  SendDataSPI(i);
+  52          
+  53          //  CS0 = 1;
+  54          //}
+C51 COMPILER V9.60.0.0   LCDDRIVER                                                         07/08/2024 14:27:49 PAGE 2   
+
+  55          
+  56          //void LCD_Init(void)
+  57          //{
+  58          //  unsigned int i;
+  59          //  //CS0=0;
+  60          //  
+  61          //  RST=1;  
+  62          //  for(i = 0; i < 1000; i++);
+  63          //  
+  64          //  RST=0;
+  65          //  for(i = 0; i < 1000; i++);
+  66          
+  67          //  RST=1;
+  68          //  for(i = 0; i < 1000; i++);
+  69          
+  70          //    WriteComm(0xe2);      //软件复位
+  71          //  WriteComm(0xc8);      //0xC8普通方向选择选择反向，0xC0为正常方向
+  72          //  WriteComm(0xa0);      //0xA0段方向选择正常方向（0xA1为反方向
+  73          //  WriteComm(0x2f);
+  74          //  WriteComm(0x26);
+  75          //  WriteComm(0x81);      //背景光对比度
+  76          //  WriteComm(0x10);
+  77          //  WriteComm(0xaf);      //开启显示
+  78          
+  79          //}
+  80          
+  81          
+  82          //void Clear()
+  83          //{
+  84          //  unsigned char i,j;
+  85          //  
+  86          //  for(i=0; i < 9; i++)
+  87          //  {
+  88          //    WriteComm(0x40);
+  89          //    WriteComm(0xb0+i);
+  90          //    WriteComm(0x10);
+  91          //    WriteComm(0x00);
+  92          //    
+  93          //    for(j = 0; j < 96; j++)
+  94          //    {
+  95          //      WriteData(0x00);  
+  96          //    } 
+  97          //  }   
+  98          //}
+  99          
+ 100          
+ 101          //unsigned char LCD12864_Write16CnCHAR(unsigned char  x, unsigned char y, unsigned char *cn)
+ 102          //{
+ 103          //  unsigned char j, x1, x2, wordNum;
+ 104          
+ 105          //  //--Y的坐标只能从0到7，大于则直接返回--//
+ 106          //  if(y > 7)
+ 107          //  {
+ 108          //    return 0;
+ 109          //  }
+ 110          
+ 111          //  //--X的坐标只能从0到96，大于则直接返回--//
+ 112          //  if(x > 96)
+ 113          //  {
+ 114          //    return 0;
+ 115          //  }
+ 116          //  y += 0xB0;     //求取Y坐标的值
+C51 COMPILER V9.60.0.0   LCDDRIVER                                                         07/08/2024 14:27:49 PAGE 3   
+
+ 117          //  //--设置Y坐标--//
+ 118          //  WriteComm(y);
+ 119          //  while ( *cn != '\0')   //在C语言中字符串结束以‘\0’结尾
+ 120          //  { 
+ 121          //  
+ 122          //    //--设置Y坐标--//
+ 123          //    WriteComm(y);
+ 124          
+ 125          //    x1 = (x >> 4) & 0x0F;   //由于X坐标要两句命令，分高低4位，所以这里先取出高4位
+ 126          //    x2 = x & 0x0F;          //去低四位
+ 127          //    //--设置X坐标--//
+ 128          //    WriteComm(0x10 + x1);   //高4位
+ 129          //    WriteComm(0x00 + x2); //低4位
+ 130          //    for (wordNum=0; wordNum<30; wordNum++)
+ 131          //    {
+ 132          //        //--查询要写的字在字库中的位置--//
+ 133          //      if ((CN16CHAR[wordNum].Index[0] == *cn)
+ 134          //           &&(CN16CHAR[wordNum].Index[1] == *(cn+1)))
+ 135          //      {
+ 136          //        for (j=0; j<32; j++) //写一个字
+ 137          //        {   
+ 138          //          if (j == 16)   //由于16X16用到两个Y坐标，当大于等于16时，切换坐标
+ 139          //          {
+ 140          //            //--设置Y坐标--//
+ 141          //              WriteComm(y + 1);
+ 142          //      
+ 143          //            //--设置X坐标--//
+ 144          //            WriteComm(0x10 + x1);   //高4位
+ 145          //            WriteComm(0x00 + x2); //低4位
+ 146          //          }
+ 147          //          WriteData(CN16CHAR[wordNum].Msk[j]);
+ 148          //        }
+ 149          //        x += 16;
+ 150          //      }//if查到字结束   
+ 151          //    } //for查字结束
+ 152          //    cn += 2;
+ 153          //    
+ 154          //  } //while结束
+ 155          //  return 1;
+ 156          //}
+ 157          
+ 158          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

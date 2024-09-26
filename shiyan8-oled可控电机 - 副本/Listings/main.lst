@@ -1,0 +1,473 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 15:08:00 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files\Keil_v5\C51\BIN\C51.EXE main.c LARGE OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND P
+                    -RINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #include "Delay.h"
+   3          #include "LCD9648.h"
+   4          #include "ST7565.h"
+   5          
+   6          #include<intrins.h> //因为要用到左右移函数，所以加入这个头文件
+   7          typedef unsigned int u16; //对数据类型进行声明定义
+   8          typedef unsigned char u8;
+   9          sbit MOTOA = P1^0;
+  10          sbit MOTOB = P1^1;
+  11          sbit MOTOC = P1^2;
+  12          sbit MOTOD = P1^3;
+  13          ////修改此值可改变电机旋转速度，不能过大或过小 2-10
+  14          
+  15          sbit KEY1=P3^0;
+  16          sbit KEY2=P3^1;
+  17          sbit KEY3=P3^2;
+  18          sbit KEY4=P3^3;
+  19          // 
+  20          //void zhengrun(int spd)
+  21          //{
+  22          //MOTOA = 1;
+  23          //MOTOB = 0;
+  24          //MOTOC = 1;
+  25          //MOTOD = 1;
+  26          //Delay(spd);
+  27          //MOTOA = 1;
+  28          //MOTOB = 1;
+  29          //MOTOC = 1;
+  30          //MOTOD = 0;
+  31          //Delay(spd);
+  32          //MOTOA = 0;
+  33          //MOTOB = 1;
+  34          //MOTOC = 1;
+  35          //MOTOD = 1;
+  36          //Delay(spd);
+  37          //MOTOA = 1;
+  38          //MOTOB = 1;
+  39          //MOTOC = 0;
+  40          //MOTOD = 1;
+  41          //Delay(spd);
+  42          //}
+  43          
+  44          //void fanrun(int spd)
+  45          //{
+  46          
+  47          
+  48          //MOTOA = 1;
+  49          //MOTOB = 1;
+  50          //MOTOC = 0;
+  51          //MOTOD = 1;
+  52          //Delay(spd);
+  53          //  MOTOA = 0;
+  54          //MOTOB = 1;
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 15:08:00 PAGE 2   
+
+  55          //MOTOC = 1;
+  56          //MOTOD = 1;
+  57          //Delay(spd);
+  58          //  MOTOA = 1;
+  59          //MOTOB = 1;
+  60          //MOTOC = 1;
+  61          //MOTOD = 0;
+  62          //Delay(spd);
+  63          //  
+  64          //  MOTOA = 1;
+  65          //MOTOB = 0;
+  66          //MOTOC = 1;
+  67          //MOTOD = 1;
+  68          //Delay(spd);
+  69          
+  70          //}
+  71          
+  72          
+  73          
+  74          // void main()
+  75          //{
+  76          //  int SPEED= 2 ;
+  77          //  int flag=0;
+  78          //  int zhengfan=0;
+  79          //P1=0X00;
+  80          //while(1)
+  81          //{
+  82          //    if(P3_0==0)     //如果K7按键按下
+  83          //    {
+  84          //      Delay(20);
+  85          //      while(P3_0==0);
+  86          //      Delay(20);        
+  87          //      flag=!flag;     
+  88          //    }
+  89          //        
+  90          //    if(P3_1==0)     //如果K7按键按下
+  91          //    {
+  92          //      Delay(20);
+  93          //      while(P3_1==0);
+  94          //      Delay(20);        
+  95          //      SPEED++;
+  96          //      if(SPEED>=10)SPEED=10;      
+  97          //    }
+  98          //            
+  99          //    if(P3_2==0)     //如果K7按键按下
+ 100          //    {
+ 101          //      Delay(20);
+ 102          //      while(P3_2==0);
+ 103          //      Delay(20);        
+ 104          //      SPEED--;
+ 105          //      if(SPEED<=2)SPEED=2;
+ 106          //    }
+ 107          //            
+ 108          //    if(P3_3==0)     //如果K7按键按下
+ 109          //    {
+ 110          //      Delay(20);
+ 111          //      while(P3_3==0);
+ 112          //      Delay(20);        
+ 113          //      zhengfan!=zhengfan;
+ 114          //    }
+ 115          //    
+ 116          //    if(flag==1&&zhengfan==1)zhengrun(SPEED);
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 15:08:00 PAGE 3   
+
+ 117          //    if(flag==1&&zhengfan==0)fanrun(SPEED);    
+ 118          //    
+ 119          //  
+ 120          //}
+ 121          //}
+ 122           
+ 123          
+ 124          int stepmove=0;//步进电机旋转标志位，0为停止，1为旋转
+ 125          
+ 126          //typedef unsigned int u16; //对系统默认数据类型进行重定义
+ 127          //typedef unsigned char u8;
+ 128          //typedef unsigned long u32;
+ 129          
+ 130           //使用宏定义独立按键按下的键值
+ 131          #define KEY1_PRESS  1
+ 132          #define KEY2_PRESS  2
+ 133          #define KEY3_PRESS  3
+ 134          #define KEY4_PRESS  4
+ 135          #define KEY_UNPRESS 0
+ 136          
+ 137          unsigned char key_scan()
+ 138          {
+ 139   1        static u8 key=1;
+ 140   1      
+ 141   1      //  if(mode)key=1;//连续扫描按键
+ 142   1        if(key==1&&(KEY1==0||KEY2==0||KEY3==0||KEY4==0))//任意按键按下
+ 143   1        {
+ 144   2          Delay(20);//消抖
+ 145   2          key=0;
+ 146   2          if(KEY1==0)
+ 147   2            return KEY1_PRESS;
+ 148   2          else if(KEY2==0)
+ 149   2            return KEY2_PRESS;
+ 150   2          else if(KEY3==0)
+ 151   2            return KEY3_PRESS;
+ 152   2          else if(KEY4==0)
+ 153   2            return KEY4_PRESS;  
+ 154   2        }
+ 155   1        else if(KEY1==1&&KEY2==1&&KEY3==1&&KEY4==1) //无按键按下
+ 156   1        {
+ 157   2          key=1;      
+ 158   2        }
+ 159   1        return KEY_UNPRESS;   
+ 160   1      }
+ 161          
+ 162          
+ 163          //void step_28byj48_control(u8 step,u8 dir)//步数和方向设置函数
+ 164          //{
+ 165          //  u8 temp=step;
+ 166          //  
+ 167          //  if(dir==0) temp=7-step;
+ 168          //  
+ 169          //  switch(temp)
+ 170          //  {
+ 171          //    case 0: IN1_A=1;IN1_B=1;IN1_C=1;IN1_D=0;break;
+ 172          //    case 1: IN1_A=1;IN1_B=1;IN1_C=0;IN1_D=0;break;
+ 173          //    case 2: IN1_A=1;IN1_B=1;IN1_C=0;IN1_D=1;break;
+ 174          //    case 3: IN1_A=1;IN1_B=0;IN1_C=0;IN1_D=1;break;
+ 175          //    case 4: IN1_A=1;IN1_B=0;IN1_C=1;IN1_D=1;break;
+ 176          //    case 5: IN1_A=0;IN1_B=0;IN1_C=1;IN1_D=1;break;
+ 177          //    case 6: IN1_A=0;IN1_B=1;IN1_C=1;IN1_D=1;break;
+ 178          //    case 7: IN1_A=0;IN1_B=1;IN1_C=1;IN1_D=0;break;  
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 15:08:00 PAGE 4   
+
+ 179          //  }
+ 180          //}
+ 181          
+ 182          
+ 183          
+ 184          unsigned char Counter,Compare;  //计数值和比较值，用于输出PWM
+ 185          unsigned char KeyNum,Speed;
+ 186          
+ 187          void Timer0_Init(void)
+ 188          {
+ 189   1        TMOD &= 0xF0;   //设置定时器模式
+ 190   1        TMOD |= 0x01;   //设置定时器模式
+ 191   1        TL0 = 0x9C;   //设置定时初值
+ 192   1        TH0 = 0xFF;   //设置定时初值
+ 193   1        TF0 = 0;    //清除TF0标志
+ 194   1        TR0 = 1;    //定时器0开始计时
+ 195   1        ET0=1;
+ 196   1        EA=1;
+ 197   1        PT0=0;
+ 198   1      }
+ 199          
+ 200          #define SPEEDMAX 20
+ 201          void Timer0Init(void)   //1毫秒@12.000MHz
+ 202          {
+ 203   1      //  AUXR &= 0x7F;   //定时器时钟12T模式
+ 204   1        TMOD &= 0xF0;   //设置定时器模式
+ 205   1        TMOD |= 0x01;   //设置定时器模式
+ 206   1        TL0 = 0x18;   //设置定时初值
+ 207   1        TH0 = 0xFC;   //设置定时初值
+ 208   1        TF0 = 0;    //清除TF0标志
+ 209   1        TR0 = 1;    //定时器0开始计时
+ 210   1      }
+ 211          //void main()
+ 212          //{ 
+ 213          //  u8 key=0;
+ 214          //  u8 dir=0;
+ 215          //  u8 step=0;
+ 216          //  u8 speed=SPEEDMAX;  
+ 217          //  LCD_Init();
+ 218          //  Clear();
+ 219          ////  time0_init();//定时器0中断配置
+ 220          //  
+ 221          //  while(1)
+ 222          //  {   
+ 223          //    key=key_scan(); 
+ 224          //    
+ 225          //      if(key==KEY1_PRESS)//按键一按下令步进电机旋转或停止
+ 226          //      {
+ 227          //        stepmove=!stepmove;
+ 228          //        LCD12864_Write16CnCHAR(0,0,"院空空空空空");
+ 229          //      }       
+ 230          //    
+ 231          //      if(stepmove==1) //判断是否要让步进电机旋转
+ 232          //      {
+ 233          ////        step_28byj48_control(step++,dir);
+ 234          //        if(step==8) step=0;
+ 235          //        Delay(speed);
+ 236          //      }
+ 237          //      
+ 238          //      if(key==KEY4_PRESS)//按下按键四令步进电机反转 
+ 239          //      {
+ 240          //        dir=!dir;   
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 15:08:00 PAGE 5   
+
+ 241          //  LCD12864_Write16CnCHAR(0,0,"院院院院空空");       
+ 242          //      } 
+ 243          //  
+ 244          //      else if (key==KEY2_PRESS)//按下按键二令步进电机加速
+ 245          //      {
+ 246          //        if(speed>SPEEDMAX)
+ 247          //          speed-=1;
+ 248          //        LCD12864_Write16CnCHAR(0,0,"院院空空空空");
+ 249          //      }
+ 250          //      else if (key==KEY3_PRESS)         
+ 251          //      {
+ 252          //        if(speed<SPEEDMIN) //按下按键三令步进电机减速
+ 253          //          speed+=1; 
+ 254          //        LCD12864_Write16CnCHAR(0,0,"院院院空空空");
+ 255          //      }Delay(SPEEDMAX);//通过每一步的延时来调节步进电机的速度     
+ 256          //  } //while
+ 257          //}
+ 258          
+ 259          
+ 260            
+ 261          
+ 262          void main()
+ 263          {
+ 264   1        u8 key=0;
+ 265   1        u8 dir=0;
+ 266   1        u8 step=0;
+ 267   1        u8 speed=SPEEDMAX;  
+ 268   1        uchar i = 0;
+ 269   1        uchar j = 0;
+ 270   1        int flag=0;
+ 271   1        int fg=0;
+ 272   1        
+ 273   1      //  LCD_Init();
+ 274   1      //  Clear();
+ 275   1      //    Timer0_Init();
+ 276   1        while(1)
+ 277   1        {
+ 278   2          
+ 279   2          
+ 280   2          if(key==KEY1_PRESS)//按键一按下令步进电机旋转或停止
+ 281   2            {
+ 282   3              stepmove=!stepmove;
+ 283   3            }       
+ 284   2          
+ 285   2            if(stepmove==1) //判断是否要让步进电机旋转
+ 286   2            {
+ 287   3      //        step_28byj48_control(step++,dir);
+ 288   3              if(step==8) step=0;
+ 289   3              Delay(speed);
+ 290   3            }
+ 291   2            
+ 292   2            if(key==KEY4_PRESS)//按下按键四令步进电机反转 
+ 293   2            {
+ 294   3              dir=!dir;     
+ 295   3            } 
+ 296   2      //*********步进电机速度控制环节   
+ 297   2            else if (key==KEY2_PRESS)//按下按键二令步进电机加速se if (key==KEY3_PRESS)  
+ 298   2            {
+ 299   3              if(speed>SPEEDMAX)
+ 300   3                speed-=1;
+ 301   3            } 
+ 302   2            {
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 15:08:00 PAGE 6   
+
+ 303   3      //        if(speed<SPEEDMIN) //按下按键三令步进电机减速
+ 304   3                speed+=1; 
+ 305   3            }Delay(SPEEDMAX);//通过每一步的延时来调节步进电机的速度     
+ 306   2      
+ 307   2          if(P3_4==0){Delay(20);while(P3_3==0);Delay(20);
+ 308   3          //flag=0;
+ 309   3          
+ 310   3      //      Speed++;
+ 311   3      //      Speed%=6;
+ 312   3      //      if(Speed==0){Compare=0;LCD12864_Write16CnCHAR(0,0,"院空空空空空");} //设置比较值，改变PWM占空比
+ 313   3      //      if(Speed==1){Compare=20;LCD12864_Write16CnCHAR(0,0,"术院空空空空");}
+ 314   3      //      if(Speed==2){Compare=40;LCD12864_Write16CnCHAR(0,0,"技术院空空空");}
+ 315   3      //      if(Speed==3){Compare=60;LCD12864_Write16CnCHAR(0,0,"村技术院空空");}
+ 316   3      //      if(Speed==4){Compare=80;LCD12864_Write16CnCHAR(0,0,"湾村技术院空");}  //设置比较值，改变PWM占空比
+ 317   3      //      if(Speed==5){Compare=100;LCD12864_Write16CnCHAR(0,0,"林湾村技术院");}
+ 318   3          
+ 319   3          
+ 320   3          
+ 321   3          }
+ 322   2      
+ 323   2          
+ 324   2          
+ 325   2          
+ 326   2                if(P3_1==0)     //如果K2按键按下
+ 327   2          {
+ 328   3            flag=0;
+ 329   3            Delay(20);
+ 330   3            while(P3_1==0);
+ 331   3            Delay(20);
+ 332   3      
+ 333   3              
+ 334   3              Clear();
+ 335   3            while(1){
+ 336   4            LCD12864_Write16CnCHAR(0,0,"院空空空空空");Compare=10;
+ 337   4            Delay(100);
+ 338   4              if(P3_7==0) break;
+ 339   4            LCD12864_Write16CnCHAR(0,0,"术院空空空空");Compare=30;
+ 340   4            Delay(100);
+ 341   4              if(P3_7==0) break;
+ 342   4            LCD12864_Write16CnCHAR(0,0,"技术院空空空");Compare=40;
+ 343   4            Delay(100);
+ 344   4            LCD12864_Write16CnCHAR(0,0,"村技术院空空");Compare=60;
+ 345   4            Delay(100);
+ 346   4              if(P3_7==0) break;
+ 347   4            LCD12864_Write16CnCHAR(0,0,"湾村技术院空");Compare=80;
+ 348   4            Delay(100);
+ 349   4              if(P3_7==0) break;
+ 350   4            LCD12864_Write16CnCHAR(0,0,"林湾村技术院");Compare=100;
+ 351   4            Delay(100);
+ 352   4              if(P3_7==0) break;
+ 353   4            LCD12864_Write16CnCHAR(0,0,"空林湾村技术");Compare=80;
+ 354   4            Delay(100);
+ 355   4              if(P3_7==0) break;
+ 356   4            LCD12864_Write16CnCHAR(0,0,"空空林湾村技");Compare=60;
+ 357   4            Delay(100);
+ 358   4              if(P3_7==0) break;
+ 359   4            LCD12864_Write16CnCHAR(0,0,"空空空林湾村");Compare=40;
+ 360   4            Delay(100);
+ 361   4              if(P3_7==0) break;
+ 362   4            LCD12864_Write16CnCHAR(0,0,"空空空空林湾");Compare=30;
+ 363   4            Delay(100);
+ 364   4              if(P3_7==0) break;
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 15:08:00 PAGE 7   
+
+ 365   4            LCD12864_Write16CnCHAR(0,0,"空空空空空林"); Compare=20;       
+ 366   4            Delay(100);
+ 367   4      
+ 368   4            if(P3_7==0) break;}
+ 369   3            
+ 370   3            
+ 371   3          }
+ 372   2          
+ 373   2          if(P3_5==0)     //如果K5按键按下
+ 374   2          {
+ 375   3            Delay(20);
+ 376   3            while(P3_1==0);
+ 377   3            Delay(20);
+ 378   3            flag++;
+ 379   3          }
+ 380   2          if(P3_6==0)     //如果K6按键按下
+ 381   2          {
+ 382   3            Delay(20);
+ 383   3            while(P3_1==0);
+ 384   3            Delay(20);
+ 385   3            fg++;
+ 386   3            flag--;
+ 387   3          }
+ 388   2          
+ 389   2          if(P3_7==0||flag==1)      //如果K7按键按下
+ 390   2          {
+ 391   3            Delay(20);
+ 392   3            while(P3_1==0);
+ 393   3            Delay(20);        
+ 394   3            
+ 395   3            //compare=0;
+ 396   3              LCD12864_Write16CnCHAR(0,0,"设置空空菜单");
+ 397   3              LCD12864_Write16CnCHAR(0,4,"显示学校？空");
+ 398   3            flag=1;
+ 399   3            
+ 400   3          }
+ 401   2          
+ 402   2          if(flag==2){
+ 403   3          
+ 404   3          
+ 405   3            LCD12864_Write16CnCHAR(0,0,"林湾村技术院");
+ 406   3          LCD12864_Write16CnCHAR(0,4,"显示专业？空"); 
+ 407   3          
+ 408   3          }
+ 409   2          if(flag==3){
+ 410   3          
+ 411   3          
+ 412   3            LCD12864_Write16CnCHAR(0,0,"电子信息空空");
+ 413   3            LCD12864_Write16CnCHAR(0,4,"显示姓名？空"); 
+ 414   3          
+ 415   3          }
+ 416   2          if(flag==4){
+ 417   3          
+ 418   3          
+ 419   3            LCD12864_Write16CnCHAR(0,0,"王乙斯空空空");
+ 420   3            LCD12864_Write16CnCHAR(0,4,"菜单空空空"); 
+ 421   3          
+ 422   3          } 
+ 423   2          if(flag>=5)flag=1;    
+ 424   2          
+ 425   2          
+ 426   2        }
+C51 COMPILER V9.60.0.0   MAIN                                                              07/06/2024 15:08:00 PAGE 8   
+
+ 427   1        
+ 428   1        
+ 429   1      }
+ 430          
+ 431          
+ 432          
+ 433          
+ 434          
+*** WARNING C316 IN LINE 434 OF main.c: unterminated conditionals
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    926    ----
+   CONSTANT SIZE    =    232    ----
+   XDATA SIZE       =      7      10
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
