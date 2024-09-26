@@ -1,0 +1,8 @@
+|_1780_chap_2_4_1
+A => U2.IN0
+B => U3.IN0
+SEL => U3.IN1
+SEL => U2.IN1
+L << U4.DB_MAX_OUTPUT_PORT_TYPE
+
+

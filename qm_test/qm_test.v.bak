@@ -1,0 +1,28 @@
+module qm_test(cp,cout);
+	input cp;
+	output reg out;
+	
+	reg [2:0] counter;
+	
+	always@(posedge cp)
+	begin
+		if(counter < 3'b101)
+		begin 
+			if(counter<3'b101)
+			begin
+			 counter <= counter + 3'b001;
+			 case (counter)
+			 3'b000:out<=1'b1;
+			 3'b001:out<=1'b1;
+			 3'b010:out<=1'b0;
+			 3'b011:out<=1'b1;
+			 3'b100:out<=1'b0;
+			 3'b101:out<=1'b0;
+			 endcase 
+			end
+			else
+			begin
+				counter <=3'b000;
+			end
+		end
+endmodule

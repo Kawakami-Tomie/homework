@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at _1790_chap_5.v(17): always construct contains both blocking and non-blocking assignments File: E:/Quartusexperiment/_1790_chap_5/_1790_chap_5/_1790_chap_5.v Line: 17

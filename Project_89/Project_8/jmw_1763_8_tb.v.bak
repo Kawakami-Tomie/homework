@@ -1,0 +1,46 @@
+`timescale 1 ns/ 1 ns
+module jmw_1763_8_test();
+
+reg clkin;
+reg f0;
+reg clr;
+wire f1;
+jmw_1763_7 i1(.clkin(clk),
+				  .f0(f0),
+				  .f1(f1),
+				  .clr(clr));
+				  
+initial
+	begin
+	f0 = 0;
+	clkin = 0;
+	clr = 0;
+	#1000;
+	clr = 1;
+	end
+	
+always #83 clkin = ~clkin;
+always
+	begin
+	f0 = 1; #400000;	//0.5ms
+	f0 = 0; #600000;	//0.5ms
+	
+	f0 = 1; #300000;	//0.5ms
+	f0 = 0; #700000;	//0.5ms
+	
+	f0 = 1; #200000;	//0.5ms
+	f0 = 0; #800000;	//0.5ms
+	
+	f0 = 1; #100000;	//0.5ms
+	f0 = 0; #900000;	//0.5ms
+	
+	f0 = 1; #50000;	//0.05ms
+	f0 = 0; #950000;	//0.95ms
+	
+	f0 = 1; #20000;	//0.02ms
+	f0 = 0; #980000;	//0.98ms
+	end	
+endmodule
+	
+	
+	

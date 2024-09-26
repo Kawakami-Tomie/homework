@@ -1,0 +1,35 @@
+
+State Machine - |sdsheji|state2
+Name state2.0011 state2.0010 state2.0001 state2.0000 
+state2.0000 0 0 0 0 
+state2.0001 0 0 1 1 
+state2.0010 0 1 0 1 
+state2.0011 1 0 0 1 
+
+State Machine - |sdsheji|temp
+Name temp.00001 temp.00000 temp.00101 temp.00010 
+temp.00000 0 0 0 0 
+temp.00001 1 1 0 0 
+temp.00010 0 1 0 1 
+temp.00101 0 1 1 0 
+
+State Machine - |sdsheji|change
+Name change.00101 
+change.00000 0 
+change.00101 1 
+
+State Machine - |sdsheji|sum
+Name sum.01111 sum.01010 sum.00101 sum.00000 sum.10100 
+sum.00000 0 0 0 0 0 
+sum.00101 0 0 1 1 0 
+sum.01010 0 1 0 1 0 
+sum.01111 1 0 0 1 0 
+sum.10100 0 0 0 1 1 
+
+State Machine - |sdsheji|state1
+Name state1.s3 state1.s2 state1.s1 state1.00000 state1.s4 
+state1.00000 0 0 0 0 0 
+state1.s1 0 0 1 1 0 
+state1.s2 0 1 0 1 0 
+state1.s3 1 0 0 1 0 
+state1.s4 0 0 0 1 1 

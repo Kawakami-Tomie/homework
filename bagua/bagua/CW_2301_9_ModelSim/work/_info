@@ -1,0 +1,98 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/My_Quartus_Projects/CW_2301_8_ModelSim
+vCW_2301_9
+Z0 !s110 1686223615
+!i10b 1
+!s100 emgGLoMW]TI2cG[K@gFZ11
+IOXNVAJh5IMc]XNf<2^^So3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dD:/My_Quartus_Projects/CW_2301_9_ModelSim
+w1686222786
+8D:/My_Quartus_Projects/CW_2301_9/CW_2301_9.v
+FD:/My_Quartus_Projects/CW_2301_9/CW_2301_9.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1686223615.000000
+!s107 D:/My_Quartus_Projects/CW_2301_9/CW_2301_9.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/My_Quartus_Projects/CW_2301_9/CW_2301_9.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@c@w_2301_9
+vCW_2301_9_1
+R0
+!i10b 1
+!s100 RP?A;O]lWlSaS[CfYOJd10
+IeM3l`@0k1O2FZGeRQfOQE2
+R1
+R2
+w1686222413
+8D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_1.v
+FD:/My_Quartus_Projects/CW_2301_9/CW_2301_9_1.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_1.v|
+!i113 1
+R5
+R6
+n@c@w_2301_9_1
+vCW_2301_9_2
+!s110 1686223616
+!i10b 1
+!s100 N1iJm`V7ni5O>VBCm83Ri0
+IED4<^j]jC?L_O?DjVR6RN1
+R1
+R2
+w1686222642
+8D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_2.v
+FD:/My_Quartus_Projects/CW_2301_9/CW_2301_9_2.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_2.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_2.v|
+!i113 1
+R5
+R6
+n@c@w_2301_9_2
+vCW_2301_9_test
+R0
+!i10b 1
+!s100 iEnhk7@BRLfM^dBD>L2473
+IjiJogYh<mbSbIJTldR5i10
+R1
+R2
+w1686223370
+8D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_test.v
+FD:/My_Quartus_Projects/CW_2301_9/CW_2301_9_test.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_test.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/My_Quartus_Projects/CW_2301_9/CW_2301_9_test.v|
+!i113 1
+R5
+R6
+n@c@w_2301_9_test

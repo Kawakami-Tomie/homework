@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/18.1
+v_1790_chap_5
+Z0 !s110 1714026490
+!i10b 1
+!s100 d2K1FXQM>V=QSnD^AXfI21
+I3VikgFL`Xg^;mXYJ0S9JS3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dE:/SHUDIAN/_1790_chap_5
+w1713964676
+8E:/SHUDIAN/_1790_chap_5/_1790_chap_5.v
+FE:/SHUDIAN/_1790_chap_5/_1790_chap_5.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1714026490.000000
+!s107 E:/SHUDIAN/_1790_chap_5/_1790_chap_5.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/SHUDIAN/_1790_chap_5/_1790_chap_5.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@_1790_chap_5
+v_1790_chap_5_test
+R0
+!i10b 1
+!s100 LG3_85IgS6jbI=UlTAR:`1
+IHoiNAmJ;h3B6_WjbPoDKO1
+R1
+R2
+w1713964992
+8E:/SHUDIAN/_1790_chap_5/_1790_chap_5_test.v
+FE:/SHUDIAN/_1790_chap_5/_1790_chap_5_test.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/SHUDIAN/_1790_chap_5/_1790_chap_5_test.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/SHUDIAN/_1790_chap_5/_1790_chap_5_test.v|
+!i113 1
+R5
+R6
+n@_1790_chap_5_test

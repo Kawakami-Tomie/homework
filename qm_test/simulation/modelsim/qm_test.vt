@@ -1,0 +1,135 @@
+
+
+`timescale 10 ns/ 1 ns
+module qm_test_vlg_tst();
+// constants                                           
+// general purpose registers
+
+// test vector input registers
+reg Key1;
+reg clk;
+// wires                                               
+wire P_out;
+
+// assign statements (if any)                          
+qm_test i1 (
+// port map - connection between master ports and signals/registers   
+	.Key1(Key1),
+	.P_out(P_out),
+	.clk(clk)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin
+	  Key1=1'b0;
+
+     clk=1'b0;
+	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+	  	  #5000000
+	  Key1=1'b1;
+	  #30000
+	  Key1=1'b0;
+
+
+// --> end                                             
+                     
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+    #1
+	 clk=~clk;
+                                             
+// --> end                                             
+end                                                    
+endmodule
+
+//
+//timescale 10 ns/ 1 ns  
+//module qm_test_vlg_tst();  
+//  
+//// 常量和通用寄存器（这里没有使用）  
+//  
+//// 测试向量输入寄存器  
+//reg Key1;  
+//reg clk;  
+//  
+//// 连线  
+//wire P_out; // 注意：P_out在测试中可能没有被使用，除非你有特定的观测目标  
+//  
+//// 实例化被测试模块  
+//qm_test i1 (  
+//    .Key1(Key1),  
+//    .P_out(P_out),  
+//    .clk(clk)  
+//);  
+//  
+//initial begin  
+//    // 初始化Key1和clk  
+//    Key1 = 1'b0;  
+//    clk = 1'b0;  
+//  
+//    // 创建一个循环来简化测试序列  
+//    integer i;  
+//    for (i = 0; i < 7; i = i + 1) begin  
+//        // 保持Key1为0一段时间  
+//        #500000;  
+//          
+//        // 设置Key1为1，并持续3个时间单位  
+//        Key1 = 1'b1;  
+//        #3;  
+//          
+//        // 设置Key1回0  
+//        Key1 = 1'b0;  
+//    end  
+//  
+//    // 可以在这里添加额外的测试或观测代码  
+//    // 例如，检查P_out的值是否符合预期  
+//      
+//    // 结束仿真（可选）  
+//    $finish;  
+//end  
+//  
+//// 生成时钟信号  
+//always #5 clk = ~clk; // 修改时钟周期为5个时间单位（50ns），根据需要调整  
+//  
+//endmodule

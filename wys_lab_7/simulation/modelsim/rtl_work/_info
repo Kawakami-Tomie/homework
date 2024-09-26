@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/Quartusexperiment/wys_lab_7/simulation/modelsim
+vwys_lab_7
+Z1 !s110 1717507341
+!i10b 1
+!s100 dNJ=5Y@>oKPPi]m@dF1S]0
+I;7Jb:38eCn1Bn>jBL30YP1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1715786991
+8E:/Quartusexperiment/wys_lab_7/wys_lab_7.v
+FE:/Quartusexperiment/wys_lab_7/wys_lab_7.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1717507340.000000
+!s107 E:/Quartusexperiment/wys_lab_7/wys_lab_7.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/wys_lab_7|E:/Quartusexperiment/wys_lab_7/wys_lab_7.v|
+!i113 1
+Z4 o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+E:/Quartusexperiment/wys_lab_7
+Z5 tCvgOpt 0
+vwys_lab_7_vlg_tst
+R1
+!i10b 1
+!s100 f1^Oioo@n6;[JVGzgR]P^1
+IH8QVhgY;QDJzFk?UCP3882
+R2
+R0
+w1715787521
+8E:/Quartusexperiment/wys_lab_7/simulation/modelsim/wys_lab_7.vt
+FE:/Quartusexperiment/wys_lab_7/simulation/modelsim/wys_lab_7.vt
+L0 2
+R3
+r1
+!s85 0
+31
+!s108 1717507341.000000
+!s107 E:/Quartusexperiment/wys_lab_7/simulation/modelsim/wys_lab_7.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/wys_lab_7/simulation/modelsim|E:/Quartusexperiment/wys_lab_7/simulation/modelsim/wys_lab_7.vt|
+!i113 1
+R4
+!s92 -vlog01compat -work work +incdir+E:/Quartusexperiment/wys_lab_7/simulation/modelsim
+R5

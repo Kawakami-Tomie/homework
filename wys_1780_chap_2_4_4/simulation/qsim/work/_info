@@ -1,0 +1,75 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/Quartusexperiment/wys_1780_chap_2_4_4/simulation/qsim
+v_1780_chap2_4_4
+Z1 !s110 1711517929
+!i10b 1
+!s100 XLkQ?51V;lk6WHU@L3^5P2
+Ig:U<AflQ0O`OEgSfIGjo63
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1711517927
+Z4 8_1780_chap2_4_4.vo
+Z5 F_1780_chap2_4_4.vo
+L0 31
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1711517929.000000
+Z8 !s107 _1780_chap2_4_4.vo|
+Z9 !s90 -work|work|_1780_chap2_4_4.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+n@_1780_chap2_4_4
+v_1780_chap2_4_4_vlg_vec_tst
+R1
+!i10b 1
+!s100 i1CEdGU867zH]@VF]e@V:0
+IkIj4XY?N>M@zL4V>8KeRP1
+R2
+R0
+w1711517926
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11
+n@_1780_chap2_4_4_vlg_vec_tst
+vhard_block
+R1
+!i10b 1
+!s100 Y9oi_5=F2;PW7_Oil_L]N2
+IRc@8;@IC@=HTnin_anBMf1
+R2
+R0
+R3
+R4
+R5
+L0 135
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11

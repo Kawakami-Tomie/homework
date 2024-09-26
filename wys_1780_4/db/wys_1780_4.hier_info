@@ -1,0 +1,35 @@
+|wys_1780_4
+clkin => Q[0]~reg0.CLK
+clkin => Q[1]~reg0.CLK
+clkin => Q[2]~reg0.CLK
+clkin => Q[3]~reg0.CLK
+clr => CO.IN1
+clr => Q[0]~reg0.ACLR
+clr => Q[1]~reg0.ACLR
+clr => Q[2]~reg0.ACLR
+clr => Q[3]~reg0.ACLR
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CO <= CO.DB_MAX_OUTPUT_PORT_TYPE
+upd => Q.OUTPUTSELECT
+upd => Q.OUTPUTSELECT
+upd => Q.OUTPUTSELECT
+upd => Q.OUTPUTSELECT
+upd => CO.IN1
+upd => CO.IN1
+en => Q.OUTPUTSELECT
+en => Q.OUTPUTSELECT
+en => Q.OUTPUTSELECT
+en => Q.OUTPUTSELECT
+load => Q.OUTPUTSELECT
+load => Q.OUTPUTSELECT
+load => Q.OUTPUTSELECT
+load => Q.OUTPUTSELECT
+data[0] => Q.DATAB
+data[1] => Q.DATAB
+data[2] => Q.DATAB
+data[3] => Q.DATAB
+
+

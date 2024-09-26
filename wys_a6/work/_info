@@ -1,0 +1,136 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dE:/Quartusexperiment/wys_1780_chap_66
+vtest_wys_1780_6
+Z0 !s110 1715256186
+!i10b 1
+!s100 k4^k;6<WbbbBB=f@j2P[j1
+IW[[19Ra_bRkHQ2W3[`OCM2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dE:/Quartusexperiment/wys_a6
+w1715256056
+8E:/Quartusexperiment/wys_a6/test_wys_1780_6.v
+FE:/Quartusexperiment/wys_a6/test_wys_1780_6.v
+L0 3
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1715256186.000000
+!s107 E:/Quartusexperiment/wys_a6/test_wys_1780_6.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/wys_a6/test_wys_1780_6.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vwys_1780_6_1
+Z7 !s110 1715256187
+!i10b 1
+!s100 6=cIF0Pi_zClAJQE0]e8O1
+IO[R<O6Yf5?o9MZlWae61Y0
+R1
+R2
+w1715255776
+8E:/Quartusexperiment/wys_a6/wys_1780_6_1.v
+FE:/Quartusexperiment/wys_a6/wys_1780_6_1.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z8 !s108 1715256187.000000
+!s107 E:/Quartusexperiment/wys_a6/wys_1780_6_1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/wys_a6/wys_1780_6_1.v|
+!i113 1
+R5
+R6
+vwys_1780_6_2
+R7
+!i10b 1
+!s100 [@58WdWWzUJ?oSLfmzJ]e1
+IM@1z1l^[;degUgAONfTI]2
+R1
+R2
+w1715255767
+8E:/Quartusexperiment/wys_a6/wys_1780_6_2.v
+FE:/Quartusexperiment/wys_a6/wys_1780_6_2.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 E:/Quartusexperiment/wys_a6/wys_1780_6_2.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/wys_a6/wys_1780_6_2.v|
+!i113 1
+R5
+R6
+vwys_1780_6_3
+R7
+!i10b 1
+!s100 GcJ^[7BKLlUE=^Sc_?8KQ1
+IcIZ6TG?e;n1O1oYRzZ2T:0
+R1
+R2
+w1715255737
+8E:/Quartusexperiment/wys_a6/wys_1780_6_3.v
+FE:/Quartusexperiment/wys_a6/wys_1780_6_3.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 E:/Quartusexperiment/wys_a6/wys_1780_6_3.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/wys_a6/wys_1780_6_3.v|
+!i113 1
+R5
+R6
+vwys_1780_6_4
+R7
+!i10b 1
+!s100 BM@P`Alb1?Q^24=hnY]291
+ImQGN=P@YlCzS>WkV6Bg2O1
+R1
+R2
+w1715255727
+8E:/Quartusexperiment/wys_a6/wys_1780_6_4.v
+FE:/Quartusexperiment/wys_a6/wys_1780_6_4.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 E:/Quartusexperiment/wys_a6/wys_1780_6_4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/wys_a6/wys_1780_6_4.v|
+!i113 1
+R5
+R6
+vwys_1780_6_5
+R0
+!i10b 1
+!s100 l40JV;W4Vj<`?:G:HkhS=0
+IbA`cDlPdDbRWKNWADnSl;1
+R1
+R2
+w1715255717
+8E:/Quartusexperiment/wys_a6/wys_1780_6_5.v
+FE:/Quartusexperiment/wys_a6/wys_1780_6_5.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Quartusexperiment/wys_a6/wys_1780_6_5.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/wys_a6/wys_1780_6_5.v|
+!i113 1
+R5
+R6

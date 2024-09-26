@@ -1,0 +1,34 @@
+|bg
+P_out[0] <= bg2:decoder.port0
+P_out[1] <= bg2:decoder.port0
+P_out[2] <= bg2:decoder.port0
+Q[0] <= Q[0].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2].DB_MAX_OUTPUT_PORT_TYPE
+clk => clk.IN1
+en => en.IN1
+
+
+|bg|bg1:counter
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk => Q[0]~reg0.CLK
+clk => Q[1]~reg0.CLK
+clk => Q[2]~reg0.CLK
+en => Q[0]~reg0.ENA
+en => Q[1]~reg0.ENA
+en => Q[2]~reg0.ENA
+
+
+|bg|bg2:decoder
+P_out[0] <= Q[2].DB_MAX_OUTPUT_PORT_TYPE
+P_out[1] <= P_out.DB_MAX_OUTPUT_PORT_TYPE
+P_out[2] <= P_out.DB_MAX_OUTPUT_PORT_TYPE
+Q[0] => Decoder0.IN1
+Q[1] => Decoder1.IN1
+Q[2] => Decoder0.IN0
+Q[2] => Decoder1.IN0
+Q[2] => P_out[0].DATAIN
+
+

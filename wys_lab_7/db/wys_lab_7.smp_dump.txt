@@ -1,0 +1,7 @@
+
+State Machine - |wys_lab_7|state
+Name state.S4 state.S3 state.S2 state.S1 
+state.S1 0 0 0 0 
+state.S2 0 0 1 1 
+state.S3 0 1 0 1 
+state.S4 1 0 0 1 

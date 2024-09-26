@@ -1,0 +1,13 @@
+module zwm_1898_10(clk,en,DIG,seg,codeout,Y,Q);
+input clk,en;//时钟和使能信号
+output [1:0] Q;//计数信号
+output [3:0] Y;
+output [3:0] DIG;//位选信号
+output [6:0] codeout;//七段数码管译码信号
+output [3:0] seg;//位选信号
+//调用子模块
+zwm_1898_10_1 a(clk,Q,en);
+zwm_1898_10_2 b(x(Q),DIG(DIG),seg(seg));
+zwm_1898_10_3 c(SEL(Q),Y(Y));
+zwm_1898_10_4 d(Din(Y),codeout(codeout));
+endmodule

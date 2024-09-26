@@ -1,0 +1,16 @@
+module py_1810_6_2(x,DIG,seg);//2-4线译码器
+input [1:0] x;
+output reg[3:0] DIG;//位选信号
+output [3:0]seg;//位选信号
+assign seg=4'b0000;
+always @(x)
+begin
+case(x)
+2'd0:DIG <= 4'b0001;//数码管位1亮
+2'd1:DIG <= 4'b0010;//数码管位2亮
+2'd2:DIG <= 4'b0100;//数码管位3亮
+2'd3:DIG <= 4'b1000;//数码管位4亮
+default:DIG <= 4'bx;
+endcase
+end
+endmodule

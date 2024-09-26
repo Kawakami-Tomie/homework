@@ -1,0 +1,104 @@
+|wys_1780_chap_6_1
+clk_in => ~NO_FANOUT~
+clk_1kHz << wys_1780_chap_6_3:comb_4.port0
+DIG[1] << wys_1780_chap_6_6:comb_7.port1
+DIG[2] << wys_1780_chap_6_6:comb_7.port1
+DIG[3] << wys_1780_chap_6_6:comb_7.port1
+SEL[0] << SEL[0].DB_MAX_OUTPUT_PORT_TYPE
+SEL[1] << SEL[1].DB_MAX_OUTPUT_PORT_TYPE
+data[0] << data[0].DB_MAX_OUTPUT_PORT_TYPE
+data[1] << data[1].DB_MAX_OUTPUT_PORT_TYPE
+data[2] << data[2].DB_MAX_OUTPUT_PORT_TYPE
+data[3] << data[3].DB_MAX_OUTPUT_PORT_TYPE
+SEG[0] << wys_1780_chap_6_5:comb_6.port1
+SEG[1] << wys_1780_chap_6_5:comb_6.port1
+SEG[2] << wys_1780_chap_6_5:comb_6.port1
+SEG[3] << wys_1780_chap_6_5:comb_6.port1
+SEG[4] << wys_1780_chap_6_5:comb_6.port1
+SEG[5] << wys_1780_chap_6_5:comb_6.port1
+SEG[6] << wys_1780_chap_6_5:comb_6.port1
+
+
+|wys_1780_chap_6_1|wys_1780_chap_6_2:comb_3
+clk_in => clk_1kHz~reg0.CLK
+clk_in => counter[0].CLK
+clk_in => counter[1].CLK
+clk_in => counter[2].CLK
+clk_in => counter[3].CLK
+clk_in => counter[4].CLK
+clk_in => counter[5].CLK
+clk_in => counter[6].CLK
+clk_in => counter[7].CLK
+clk_in => counter[8].CLK
+clk_in => counter[9].CLK
+clk_in => counter[10].CLK
+clk_in => counter[11].CLK
+clk_in => counter[12].CLK
+clk_in => counter[13].CLK
+clk_in => counter[14].CLK
+clk_1kHz <= clk_1kHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|wys_1780_chap_6_1|wys_1780_chap_6_3:comb_4
+clk_1kHz => SEL[0]~reg0.CLK
+clk_1kHz => SEL[1]~reg0.CLK
+clk_1kHz => counter[0].CLK
+clk_1kHz => counter[1].CLK
+SEL[0] <= SEL[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+SEL[1] <= SEL[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|wys_1780_chap_6_1|wys_1780_chap_6_4:comb_5
+SEL[0] => Mux0.IN5
+SEL[0] => Mux1.IN5
+SEL[0] => Mux2.IN5
+SEL[0] => Mux3.IN5
+SEL[1] => Mux0.IN4
+SEL[1] => Mux1.IN4
+SEL[1] => Mux2.IN4
+SEL[1] => Mux3.IN4
+data[0] <= data[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+data[1] <= data[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+data[2] <= data[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+data[3] <= data[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|wys_1780_chap_6_1|wys_1780_chap_6_5:comb_6
+data[0] => Mux0.IN19
+data[0] => Decoder0.IN2
+data[0] => Mux1.IN19
+data[0] => Mux2.IN19
+data[0] => Mux3.IN19
+data[1] => Mux0.IN18
+data[1] => Decoder0.IN1
+data[1] => Mux1.IN18
+data[1] => Mux2.IN18
+data[1] => Mux3.IN18
+data[2] => Mux0.IN17
+data[2] => Decoder0.IN0
+data[2] => Mux1.IN17
+data[2] => Mux2.IN17
+data[2] => Mux3.IN17
+data[3] => Mux0.IN16
+data[3] => Mux1.IN16
+data[3] => Mux2.IN16
+data[3] => Mux3.IN16
+SEG[0] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+SEG[1] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+SEG[2] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+SEG[3] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+SEG[4] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+SEG[5] <= SEG.DB_MAX_OUTPUT_PORT_TYPE
+SEG[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|wys_1780_chap_6_1|wys_1780_chap_6_6:comb_7
+SEL[0] => Mux0.IN5
+SEL[0] => DIG[2].DATAIN
+SEL[1] => Mux0.IN4
+SEL[1] => DIG[3].DATAIN
+DIG[1] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+DIG[2] <= SEL[0].DB_MAX_OUTPUT_PORT_TYPE
+DIG[3] <= SEL[1].DB_MAX_OUTPUT_PORT_TYPE
+
+

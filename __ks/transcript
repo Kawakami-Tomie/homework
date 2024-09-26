@@ -1,0 +1,7 @@
+# Reading D:/Quartus-Prime/ModelSim-Intel-FPGA-Edition/modelsim_ase/tcl/vsim/pref.tcl
+# OpenFile E:/shudian/sdsheji/vsim.wlf
+add wave vsim:/T_sdsheji/*
+run
+# No Design Loaded!
+run
+# No Design Loaded!

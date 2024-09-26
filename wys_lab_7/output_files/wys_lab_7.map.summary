@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu May 16 19:01:18 2024
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : wys_lab_7
+Top-level Entity Name : wys_lab_7
+Family : Cyclone IV E
+Total logic elements : 59
+    Total combinational functions : 58
+    Dedicated logic registers : 34
+Total registers : 34
+Total pins : 17
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

@@ -1,0 +1,8 @@
+|_1780_chap2_4_2
+A => comb.DATAIN
+B => comb.DATAIN
+SEL => comb.OE
+SEL => comb.OE
+L << L.DB_MAX_OUTPUT_PORT_TYPE
+
+

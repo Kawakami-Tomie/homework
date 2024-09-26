@@ -1,0 +1,14 @@
+module gsq_1783_6_0(clk_in,clk_1khz,DIG,SEL,data,SEG);
+input clk_in;//系统信号
+output clk_1khz;
+output [1:0] SEL;
+output [3:0] data;//存储后三位学号
+output [3:0] DIG;//位选信号
+output [6:0] SEG;//段选，哪一个数码管显示 SEG0-3
+gsq_1783_6_1 a(clk_in,clk_1khz);
+gsq_1783_6_1 b(clk_1khz,SEL);//计数器
+gsq_1783_6_1 c(SEL,data);
+gsq_1783_6_1 e(SEL,DIG);
+gsq_1783_6_1 d(data,SEG);
+
+endmodule

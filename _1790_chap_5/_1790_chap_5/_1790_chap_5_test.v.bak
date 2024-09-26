@@ -1,0 +1,33 @@
+`timescale 10 ns/ 1 ns
+module _1790_chap_5_test();
+reg clk_in;
+reg rstn;
+reg sel;                                            
+wire [1:0]  clk_out;
+                   
+_1790_chap_5 i1 ( 
+    .clk_in(clk_in),
+    .clk_out(clk_out),
+    .rstn(rstn),
+    .sel(sel)
+);
+initial                                                
+begin                                                  
+        rstn = 1'b0;    // 初始化复位信号为低电平
+        clk_in = 1'b0;  // 初始化输入时钟信号为低电平
+        sel = 1'b0;     // 初始化选择信号为低电平
+        #100 rstn = 1'b1;  // 延迟100个时间单位后，复位信号变为高电平
+        #300000 
+        sel = 1'b1;   // 经过300000个时间单位后，选择信号变为高电平                                         
+$display("Running testbench");                       
+end                                                    
+always                                                 
+      
+begin                                                  
+             
+    #1
+    clk_in = ~clk_in;
+                                                                              
+end                                                    
+endmodule
+

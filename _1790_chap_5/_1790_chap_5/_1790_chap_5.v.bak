@@ -1,0 +1,111 @@
+
+module _1790_chap_5(clk_in,sel,clk_out,rstn);
+    input clk_in;
+    input sel;
+    input rstn;
+    output reg [1:0] clk_out;
+    reg [31:0] cnt;
+    reg [31:0] cnt2;
+    
+    parameter NUM=27624;
+    parameter NUM1=NUM*2;
+    parameter NUM2=NUM*4;
+    
+    always@(posedge clk_in or negedge rstn)
+    begin
+        if(!rstn)
+        begin
+            cnt<=1'd0;
+            cnt2<=1'd0;
+            clk_out<=2'b00;
+        end
+        else
+        if(!sel)
+        begin
+            if(cnt<(NUM/2))
+            begin
+                cnt<=cnt+1'b1;
+                clk_out[0]<=1;
+            end
+            else if(cnt>(NUM/2-1)&&cnt<(NUM-1))
+            begin
+                cnt<=cnt+1'b1;
+                clk_out[0]<=0;
+            end
+            else cnt<=0;
+            
+            if(cnt2<(NUM1/2))
+            begin
+                cnt2<=cnt2+1'b1;
+                clk_out[1]<=1;
+            end
+            else if(cnt2>(NUM1/2-1)&&cnt2<(NUM1-1))
+            begin
+                cnt2<=cnt2+1'b1;
+                clk_out[1]<=0;
+            end
+            else cnt2<=0;
+        end
+        else
+        begin
+            if(cnt<NUM/2)
+            begin
+                cnt<=cnt+1'b1;
+                clk_out[0]<=1;
+            end
+            else if(cnt>(NUM/2-1)&&cnt<(NUM-1))
+            begin
+                cnt<=cnt+1'b1;
+                clk_out[0]<=0;
+            end
+            else cnt<=0;
+            
+            if(cnt2<(NUM2/2))
+            begin
+                cnt2<=cnt2+1'b1;
+                clk_out[1]<=1;
+            end
+            else if(cnt2>(NUM2/2-1)&&cnt2<(NUM2-1))
+            begin
+                cnt2<=cnt2+1'b1;
+                clk_out[1]<=0;
+            end
+            else cnt2<=0;
+        end
+    end    
+endmodule
+
+
+`timescale 10 ns/ 1 ns
+module py_1810_5_test();
+reg clk_in;
+reg rstn;
+reg sel;                                            
+wire [1:0]  clk_out;
+                   
+py_1810_5 i1 ( 
+    .clk_in(clk_in),
+    .clk_out(clk_out),
+    .rstn(rstn),
+    .sel(sel)
+);
+initial                                                
+begin                                                  
+        rstn = 1'b0;    // 初始化复位信号为低电平
+        clk_in = 1'b0;  // 初始化输入时钟信号为低电平
+        sel = 1'b0;     // 初始化选择信号为低电平
+        #100 rstn = 1'b1;  // 延迟100个时间单位后，复位信号变为高电平
+        #300000 
+        sel = 1'b1;   // 经过300000个时间单位后，选择信号变为高电平                                         
+$display("Running testbench");                       
+end                                                    
+always                                                 
+      
+begin                                                  
+             
+    #1
+    clk_in = ~clk_in;
+                                                                              
+end                                                    
+endmodule
+

@@ -1,0 +1,14 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+E:/Quartusexperiment/code6/code6 {E:/Quartusexperiment/code6/code6/py_1810_6.v}
+vlog -vlog01compat -work work +incdir+E:/Quartusexperiment/code6/code6 {E:/Quartusexperiment/code6/code6/py_1810_6_1.v}
+vlog -vlog01compat -work work +incdir+E:/Quartusexperiment/code6/code6 {E:/Quartusexperiment/code6/code6/py_1810_6_2.v}
+vlog -vlog01compat -work work +incdir+E:/Quartusexperiment/code6/code6 {E:/Quartusexperiment/code6/code6/py_1810_6_3.v}
+vlog -vlog01compat -work work +incdir+E:/Quartusexperiment/code6/code6 {E:/Quartusexperiment/code6/code6/py_1810_6_4.v}
+vlog -vlog01compat -work work +incdir+E:/Quartusexperiment/code6/code6 {E:/Quartusexperiment/code6/code6/py_1810_6_5.v}
+

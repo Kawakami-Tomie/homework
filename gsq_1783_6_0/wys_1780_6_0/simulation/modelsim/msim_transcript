@@ -1,0 +1,32 @@
+# Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# error: Layout::Clairvoyance can't read "map(~)": no such element in array
+# can't read "map(~)": no such element in array
+#     while executing
+# "Layout::Clairvoyance"
+# do gsq_1783_6_0_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/A/Documents/Tencent\ Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0 {C:/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_0.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:16:04 on May 09,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0" C:/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_0.v 
+# init_dbinfo() DATABASE ERROR: (sqlite3_open D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/simulation/modelsim/rtl_work/_lib.qdb): unable to open database file
+# mtilibWrite(): INTERNAL ERROR: Unexpected null object encountered
+# ** Fatal: (vlog-9) Problem while writing token file "D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/simulation/modelsim/rtl_work/_temp/vlogmfxgth".
+# 系统找不到指定的路径。 (GetLastError() = 3)
+# ** Error: C:/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_0.v(1): Verilog Compiler exiting
+# End time: 12:16:04 on May 09,2024, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./gsq_1783_6_0_run_msim_rtl_verilog.do line 8
+# C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog -vlog01compat -work work +incdir+C:/Users/A/Documents/Tencent\ Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0 {C:/Users/A/Documents/Tencent ..."

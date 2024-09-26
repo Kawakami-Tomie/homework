@@ -1,0 +1,97 @@
+|py_1810_6
+clk_in => clk_in.IN1
+clk_1khz << clk_1khz.DB_MAX_OUTPUT_PORT_TYPE
+DIG[0] << py_1810_6_5:e.port1
+DIG[1] << py_1810_6_5:e.port1
+DIG[2] << py_1810_6_5:e.port1
+DIG[3] << py_1810_6_5:e.port1
+DIG[4] << py_1810_6_5:e.port1
+DIG[5] << py_1810_6_5:e.port1
+DIG[6] << py_1810_6_5:e.port1
+DIG[7] << py_1810_6_5:e.port1
+SEL[0] << SEL[0].DB_MAX_OUTPUT_PORT_TYPE
+SEL[1] << SEL[1].DB_MAX_OUTPUT_PORT_TYPE
+data[0] << data[0].DB_MAX_OUTPUT_PORT_TYPE
+data[1] << data[1].DB_MAX_OUTPUT_PORT_TYPE
+data[2] << data[2].DB_MAX_OUTPUT_PORT_TYPE
+data[3] << data[3].DB_MAX_OUTPUT_PORT_TYPE
+SEG[0] << py_1810_6_4:d.port1
+SEG[1] << py_1810_6_4:d.port1
+SEG[2] << py_1810_6_4:d.port1
+SEG[3] << py_1810_6_4:d.port1
+SEG[4] << py_1810_6_4:d.port1
+SEG[5] << py_1810_6_4:d.port1
+SEG[6] << py_1810_6_4:d.port1
+
+
+|py_1810_6|py_1810_6_1:a
+clk_in => clk_1khz~reg0.CLK
+clk_in => counter[0].CLK
+clk_in => counter[1].CLK
+clk_in => counter[2].CLK
+clk_in => counter[3].CLK
+clk_in => counter[4].CLK
+clk_in => counter[5].CLK
+clk_in => counter[6].CLK
+clk_in => counter[7].CLK
+clk_in => counter[8].CLK
+clk_in => counter[9].CLK
+clk_in => counter[10].CLK
+clk_in => counter[11].CLK
+clk_in => counter[12].CLK
+clk_in => counter[13].CLK
+clk_in => counter[14].CLK
+clk_1khz <= clk_1khz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|py_1810_6|py_1810_6_2:b
+clk_1khz => SEL[0]~reg0.CLK
+clk_1khz => SEL[1]~reg0.CLK
+clk_1khz => counter[0].CLK
+clk_1khz => counter[1].CLK
+SEL[0] <= SEL[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+SEL[1] <= SEL[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|py_1810_6|py_1810_6_3:c
+SEL[0] => Mux0.IN5
+SEL[0] => Mux1.IN5
+SEL[0] => Mux2.IN5
+SEL[1] => Mux0.IN4
+SEL[1] => Mux1.IN4
+SEL[1] => Mux2.IN4
+data[0] <= data[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+data[1] <= data[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+data[2] <= data[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+data[3] <= data[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|py_1810_6|py_1810_6_5:e
+SEL[0] => Mux0.IN5
+SEL[0] => DIG[1].DATAIN
+SEL[1] => Mux0.IN4
+SEL[1] => DIG[2].DATAIN
+DIG[0] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+DIG[1] <= SEL[0].DB_MAX_OUTPUT_PORT_TYPE
+DIG[2] <= SEL[1].DB_MAX_OUTPUT_PORT_TYPE
+DIG[3] <= <GND>
+DIG[4] <= <GND>
+DIG[5] <= <GND>
+DIG[6] <= <GND>
+DIG[7] <= <GND>
+
+
+|py_1810_6|py_1810_6_4:d
+data[0] => Decoder0.IN3
+data[1] => Decoder0.IN2
+data[2] => Decoder0.IN1
+data[3] => Decoder0.IN0
+SEG[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+SEG[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+SEG[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+SEG[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+SEG[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+SEG[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+SEG[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+

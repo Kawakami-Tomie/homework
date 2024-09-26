@@ -1,0 +1,12 @@
+module py_1810_6_1(clk,Q,en);//4计数器
+input clk,en;
+output reg[1:0]Q;
+always @(posedge clk)
+     if(en==1'b1)
+	  begin
+	  if(Q==2'd3)
+	    Q<=2'd0;
+	  else
+	    Q<=2'd1+Q;
+	  end
+endmodule

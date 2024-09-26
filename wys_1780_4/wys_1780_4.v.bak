@@ -1,0 +1,9 @@
+module wys_1780_3(codeout, Q, clkin, clr, CO, upd, en, load, data);
+	input clkin, clr, upd, en, load;
+	input [3: 0] data;
+	output [6: 0] codeout;
+	output [3: 0] Q;
+	output CO; 
+	wys_1780_3_1(clkin, clr, Q, CO, upd, en, load, data);
+	wys_1780_3_2(codeout, Q);
+endmodule

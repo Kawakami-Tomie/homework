@@ -1,0 +1,36 @@
+C:/Users/DELL/Desktop/sdsheji/T_sdsheji.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/sdsheji/T_sdsheji.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module T_sdsheji
+
+Top level modules:
+	T_sdsheji
+
+} {} {}} C:/Users/DELL/Desktop/sdsheji/test_sdsheji.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/sdsheji/test_sdsheji.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module T_sdsheji
+
+Top level modules:
+	T_sdsheji
+
+} {} {}} E:/shudian/sdsheji/sdsheji.v {1 {vlog -work work -stats=none E:/shudian/sdsheji/sdsheji.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module sdsheji
+
+Top level modules:
+	sdsheji
+
+} {} {}} C:/Users/DELL/Desktop/sdsheji/sdsheji.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/sdsheji/sdsheji.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module sdsheji
+
+Top level modules:
+	sdsheji
+
+} {} {}} E:/shudian/sdsheji/T_sdsheji.v {1 {vlog -work work -stats=none E:/shudian/sdsheji/T_sdsheji.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module T_sdsheji
+
+Top level modules:
+	T_sdsheji
+
+} {} {}}

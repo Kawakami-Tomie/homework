@@ -1,0 +1,142 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/Quartusexperiment/code6/code6/simulation/modelsim
+vpy_1810_6
+Z1 !s110 1717600334
+!i10b 1
+!s100 08o7ZnMkog`aL0e`MfH_81
+IKiJ]d[^QIT3XbK=XLnO^32
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1715065332
+8E:/Quartusexperiment/code6/code6/py_1810_6.v
+FE:/Quartusexperiment/code6/code6/py_1810_6.v
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1717600334.000000
+!s107 E:/Quartusexperiment/code6/code6/py_1810_6.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/code6/code6|E:/Quartusexperiment/code6/code6/py_1810_6.v|
+!i113 1
+Z6 o-vlog01compat -work work
+Z7 !s92 -vlog01compat -work work +incdir+E:/Quartusexperiment/code6/code6
+Z8 tCvgOpt 0
+vpy_1810_6_1
+R1
+!i10b 1
+!s100 XQ;G2aihdW>:7Nl1m0Tb^1
+I[[eo3@N[d]8ZFFH4MJM]Q3
+R2
+R0
+R3
+8E:/Quartusexperiment/code6/code6/py_1810_6_1.v
+FE:/Quartusexperiment/code6/code6/py_1810_6_1.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartusexperiment/code6/code6/py_1810_6_1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/code6/code6|E:/Quartusexperiment/code6/code6/py_1810_6_1.v|
+!i113 1
+R6
+R7
+R8
+vpy_1810_6_2
+R1
+!i10b 1
+!s100 Jk32`Xa66C5g04K9QmSaV0
+IIB5EUaPAO6Z_PzVO2lzg?2
+R2
+R0
+R3
+8E:/Quartusexperiment/code6/code6/py_1810_6_2.v
+FE:/Quartusexperiment/code6/code6/py_1810_6_2.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartusexperiment/code6/code6/py_1810_6_2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/code6/code6|E:/Quartusexperiment/code6/code6/py_1810_6_2.v|
+!i113 1
+R6
+R7
+R8
+vpy_1810_6_3
+R1
+!i10b 1
+!s100 lha[`LBZSaRIoTaYRLOYO2
+IK>I6`e3X@U40V7?44>]n=3
+R2
+R0
+w1715426358
+8E:/Quartusexperiment/code6/code6/py_1810_6_3.v
+FE:/Quartusexperiment/code6/code6/py_1810_6_3.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartusexperiment/code6/code6/py_1810_6_3.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/code6/code6|E:/Quartusexperiment/code6/code6/py_1810_6_3.v|
+!i113 1
+R6
+R7
+R8
+vpy_1810_6_4
+R1
+!i10b 1
+!s100 _TdbXGBbZ=KTCLeoNI9Rb0
+Izi[k>1A=Q3_TZ;hi:3MWg0
+R2
+R0
+Z9 w1715065334
+8E:/Quartusexperiment/code6/code6/py_1810_6_4.v
+FE:/Quartusexperiment/code6/code6/py_1810_6_4.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartusexperiment/code6/code6/py_1810_6_4.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/code6/code6|E:/Quartusexperiment/code6/code6/py_1810_6_4.v|
+!i113 1
+R6
+R7
+R8
+vpy_1810_6_5
+R1
+!i10b 1
+!s100 mB;3GmkHg2Azf^jRoO?Cz1
+I[75UGT:WhZbX2bz:5E:U03
+R2
+R0
+R9
+8E:/Quartusexperiment/code6/code6/py_1810_6_5.v
+FE:/Quartusexperiment/code6/code6/py_1810_6_5.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartusexperiment/code6/code6/py_1810_6_5.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/code6/code6|E:/Quartusexperiment/code6/code6/py_1810_6_5.v|
+!i113 1
+R6
+R7
+R8

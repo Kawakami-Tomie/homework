@@ -1,0 +1,98 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/Quartusexperiment/bg/simulation/modelsim
+vbg
+Z1 !s110 1717605953
+!i10b 1
+!s100 <8:klnC3HgR;85KIf5MNH1
+I6ha05A>^2oEFHz:`3cL`?0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1717605558
+8E:/Quartusexperiment/bg/bg.v
+FE:/Quartusexperiment/bg/bg.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1717605953.000000
+!s107 E:/Quartusexperiment/bg/bg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/bg|E:/Quartusexperiment/bg/bg.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+E:/Quartusexperiment/bg
+Z7 tCvgOpt 0
+vbg1
+R1
+!i10b 1
+!s100 jePzGcT4V>7^=QHiXXWZc3
+I55oKol^_UFcKOh`l^neP<2
+R2
+R0
+w1717605473
+8E:/Quartusexperiment/bg/bg1.v
+FE:/Quartusexperiment/bg/bg1.v
+L0 2
+R3
+r1
+!s85 0
+31
+Z8 !s108 1717605952.000000
+!s107 E:/Quartusexperiment/bg/bg1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/bg|E:/Quartusexperiment/bg/bg1.v|
+!i113 1
+R5
+R6
+R7
+vbg2
+!s110 1717605952
+!i10b 1
+!s100 @8Y[Ua2V2A1^Db^@;lVgH1
+IZlc;0znR=n@hYZ_163QY>0
+R2
+R0
+w1717605443
+8E:/Quartusexperiment/bg/bg2.v
+FE:/Quartusexperiment/bg/bg2.v
+L0 2
+R3
+r1
+!s85 0
+31
+R8
+!s107 E:/Quartusexperiment/bg/bg2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/bg|E:/Quartusexperiment/bg/bg2.v|
+!i113 1
+R5
+R6
+R7
+vbg_vlg_tst
+R1
+!i10b 1
+!s100 n=FTL9A]ROeAlW6obnnEe3
+I3b<UcDBU=LKT]Yi@e>e<13
+R2
+R0
+w1717605898
+8E:/Quartusexperiment/bg/simulation/modelsim/bg.vt
+FE:/Quartusexperiment/bg/simulation/modelsim/bg.vt
+L0 28
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Quartusexperiment/bg/simulation/modelsim/bg.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartusexperiment/bg/simulation/modelsim|E:/Quartusexperiment/bg/simulation/modelsim/bg.vt|
+!i113 1
+R5
+!s92 -vlog01compat -work work +incdir+E:/Quartusexperiment/bg/simulation/modelsim
+R7

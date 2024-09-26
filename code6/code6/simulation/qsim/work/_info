@@ -1,0 +1,73 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Quartus_code/code6/simulation/qsim
+vhard_block
+Z1 !s110 1715000480
+!i10b 1
+!s100 ]R3C5]GEQ7PQ=8XRTDSa[3
+I?mlPE8hGH@iV;Jmgl:]Qm1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1715000479
+Z4 8py_1810_6.vo
+Z5 Fpy_1810_6.vo
+L0 594
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1715000480.000000
+Z8 !s107 py_1810_6.vo|
+Z9 !s90 -work|work|py_1810_6.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vpy_1810_6
+R1
+!i10b 1
+!s100 73dLEgC?IcR<KdEiaA>Cg1
+IZB^RQ91JmJTfN8`JEiE^<2
+R2
+R0
+R3
+R4
+R5
+L0 31
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vpy_1810_6_vlg_vec_tst
+R1
+!i10b 1
+!s100 >Xdk6g4aDIjG?f@S<O]>@1
+IL;AMWS7jeO`FB1KdP4Njn1
+R2
+R0
+w1715000477
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11

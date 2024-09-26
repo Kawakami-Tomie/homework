@@ -1,0 +1,157 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dE:/Quartusexperiment/_1790_chap_6
+vgsq_1783_6_0_vlg_tst
+Z0 !s110 1715235244
+!i10b 1
+!s100 GhD_jY>T6G:7=I5Y1lC283
+I:UNm@Sz_bKF>BRiCnh<oz3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dE:/Quartusexperiment/gsq_1783_6_0
+w1715063260
+8E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/test_gsq_1783_6_0.v
+FE:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/test_gsq_1783_6_0.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1715235244.000000
+!s107 E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/test_gsq_1783_6_0.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/test_gsq_1783_6_0.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vwys_1780_6_0
+R0
+!i10b 1
+!s100 O8a8B6Nh=WbCcEg<jW3=S1
+IkI2=`Co;4g__0;1:>R82A1
+R1
+R2
+w1715229223
+8E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_0.v
+FE:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_0.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_0.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_0.v|
+!i113 1
+R5
+R6
+vwys_1780_6_1
+Z7 !s110 1715235245
+!i10b 1
+!s100 a:5AXjHfMdmQScYo27?jX0
+IUIHHHnELBBYd]lTfzWdB?2
+R1
+R2
+w1715229225
+8E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_1.v
+FE:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_1.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z8 !s108 1715235245.000000
+!s107 E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_1.v|
+!i113 1
+R5
+R6
+vwys_1780_6_2
+R7
+!i10b 1
+!s100 HY<Tez8zG;7olU02VhC]P3
+I0D7azQfYlK<DedO?8Cl?l3
+R1
+R2
+Z9 w1715229226
+8E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_2.v
+FE:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_2.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_2.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_2.v|
+!i113 1
+R5
+R6
+vwys_1780_6_3
+R7
+!i10b 1
+!s100 ?>z4`=>DP9kE>z]IjS?I01
+I3TP<k2UQ3KRmkd6az`Wa83
+R1
+R2
+R9
+8E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_3.v
+FE:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_3.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_3.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_3.v|
+!i113 1
+R5
+R6
+vwys_1780_6_4
+R7
+!i10b 1
+!s100 zUC[kKST5=H]:k;;;386Y0
+IZHEfKLNnBh^J`7?NU;=_U2
+R1
+R2
+w1715229227
+8E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_4.v
+FE:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_4.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_4.v|
+!i113 1
+R5
+R6
+vwys_1780_6_5
+R7
+!i10b 1
+!s100 QjKeGH;fEOWRC=nChB4RW3
+ICJoUDfSQO<j^ZEG5JC2Jc1
+R1
+R2
+w1715229218
+8E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_5.v
+FE:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_5.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_5.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/gsq_1783_6_0/wys_1780_6_0/gsq_1783_6_5.v|
+!i113 1
+R5
+R6

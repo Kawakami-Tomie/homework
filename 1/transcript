@@ -1,0 +1,29 @@
+# Compile of wys_1780_5.v was successful.
+# Compile of wys_1780_5_test.v was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.wys_1780_5_test
+# vsim work.wys_1780_5_test 
+# Start time: 15:30:42 on Apr 25,2024
+# Loading work.wys_1780_5_test
+# Loading work.wys_1780_5
+run
+vsim work.wys_1780_5_test
+# End time: 15:31:44 on Apr 25,2024, Elapsed time: 0:01:02
+# Errors: 0, Warnings: 0
+# vsim work.wys_1780_5_test 
+# Start time: 15:31:44 on Apr 25,2024
+# Loading work.wys_1780_5_test
+# Loading work.wys_1780_5
+add wave sim:/wys_1780_5_test/*
+run
+quit -sim
+# End time: 15:33:17 on Apr 25,2024, Elapsed time: 0:01:33
+# Errors: 0, Warnings: 0
+vsim work.wys_1780_5_test
+# vsim work.wys_1780_5_test 
+# Start time: 15:33:21 on Apr 25,2024
+# Loading work.wys_1780_5_test
+# Loading work.wys_1780_5
+add wave sim:/wys_1780_5_test/*
+# End time: 15:33:45 on Apr 25,2024, Elapsed time: 0:00:24
+# Errors: 0, Warnings: 0

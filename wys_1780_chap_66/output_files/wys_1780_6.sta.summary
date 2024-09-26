@@ -1,0 +1,113 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'wys_1780_6_2:u2|co[0]'
+Slack : -4.625
+TNS   : -9.655
+
+Type  : Slow 1200mV 85C Model Setup 'clk_in'
+Slack : -3.899
+TNS   : -76.842
+
+Type  : Slow 1200mV 85C Model Setup 'wys_1780_6_1:u1|CNT0[10]'
+Slack : -1.759
+TNS   : -3.146
+
+Type  : Slow 1200mV 85C Model Hold 'wys_1780_6_1:u1|CNT0[10]'
+Slack : 0.167
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk_in'
+Slack : 0.745
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'wys_1780_6_2:u2|co[0]'
+Slack : 0.813
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_in'
+Slack : -3.000
+TNS   : -32.740
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'wys_1780_6_1:u1|CNT0[10]'
+Slack : -1.487
+TNS   : -2.974
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'wys_1780_6_2:u2|co[0]'
+Slack : 0.336
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'wys_1780_6_2:u2|co[0]'
+Slack : -4.349
+TNS   : -8.902
+
+Type  : Slow 1200mV 0C Model Setup 'clk_in'
+Slack : -3.547
+TNS   : -70.008
+
+Type  : Slow 1200mV 0C Model Setup 'wys_1780_6_1:u1|CNT0[10]'
+Slack : -1.577
+TNS   : -2.821
+
+Type  : Slow 1200mV 0C Model Hold 'wys_1780_6_1:u1|CNT0[10]'
+Slack : 0.111
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk_in'
+Slack : 0.695
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'wys_1780_6_2:u2|co[0]'
+Slack : 0.872
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_in'
+Slack : -3.000
+TNS   : -32.740
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'wys_1780_6_1:u1|CNT0[10]'
+Slack : -1.487
+TNS   : -2.974
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'wys_1780_6_2:u2|co[0]'
+Slack : 0.287
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'wys_1780_6_2:u2|co[0]'
+Slack : -1.590
+TNS   : -3.358
+
+Type  : Fast 1200mV 0C Model Setup 'clk_in'
+Slack : -1.042
+TNS   : -20.070
+
+Type  : Fast 1200mV 0C Model Setup 'wys_1780_6_1:u1|CNT0[10]'
+Slack : -0.105
+TNS   : -0.105
+
+Type  : Fast 1200mV 0C Model Hold 'wys_1780_6_1:u1|CNT0[10]'
+Slack : 0.223
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'wys_1780_6_2:u2|co[0]'
+Slack : 0.230
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk_in'
+Slack : 0.297
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_in'
+Slack : -3.000
+TNS   : -23.550
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'wys_1780_6_1:u1|CNT0[10]'
+Slack : -1.000
+TNS   : -2.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'wys_1780_6_2:u2|co[0]'
+Slack : 0.458
+TNS   : 0.000
+
+------------------------------------------------------------

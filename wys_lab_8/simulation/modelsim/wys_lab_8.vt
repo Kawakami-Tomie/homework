@@ -1,0 +1,77 @@
+ 
+`timescale 1 ns/ 1 ns
+module wys_lab_8_vlg_tst();
+// constants                                           
+// general purpose registers
+ 
+// test vector input registers
+reg clk;
+reg f0;
+reg p;
+reg sta;
+// wires                                               
+wire f1;
+wire f2;
+ 
+// assign statements (if any)                          
+wys_lab_8 i1 (
+// port map - connection between master ports and signals/registers   
+	.clk(clk),
+	.f0(f0),
+	.f1(f1),
+	.f2(f2),
+	.p(p),
+	.sta(sta)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+	clk = 0;
+	f0 = 0;
+	p = 0;
+	sta = 0;
+ 
+	#11000000 p = 1;	//11ms后由信虫模式变为哨虫模式
+	#10000000 sta = 1;	//再10ms后敌人来犯
+	
+// --> end                                             
+$display("Running testbench");    //可删掉哦                       
+end
+ 
+always #20 clk = ~clk;  //50MHz时钟信号
+                                                    
+always                                                                  
+begin                                                   
+// insert code here --> begin                          
+	
+	//产生虫后信号f0
+	//繁殖季占空比为50%
+	//正常时是30%占空比的毫秒脉冲，年老时占空比逐渐减小，周期逐渐增大，直至死亡
+	
+	//题设：f0的频率范围是0.5kHz(周期2.0ms)~1.2kHz（周期0.83ms）
+	//此处f0取1kHz
+	//题设：占空比1%~30%
+	
+	f0 = 1;	#500000;		//0.5ms	繁殖季占空比为50%
+	f0 = 0;	#500000;		//0.5ms
+ 
+	f0 = 1;	#300000;		//0.3ms	正常占空比为30%
+	f0 = 0;	#700000;		//0.7ms 这里正常状态的数量可以自己选哈，这里就设置两个正常状态
+	
+	f0 = 1;	#300000;		//0.3ms	正常占空比为30%
+	f0 = 0;	#700000;		//0.7ms
+	
+	f0 = 1;	#200000;		//0.2ms	开始衰老占空比为20%
+	f0 = 0;	#800000;		//0.8ms
+	
+	f0 = 1;	#100000;		//0.1ms	占空比为10%
+	f0 = 0;	#900000;		//0.9ms 
+	
+	f0 = 1;	#50000;		    //0.5ms	占空比为5%
+	f0 = 0;	#950000;		//0.95ms
+		
+// --> end                                             
+end                                                    
+endmodule
+ 

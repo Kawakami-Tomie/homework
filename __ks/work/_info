@@ -1,0 +1,74 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dE:/shudian/ljx_1719_8
+vsdsheji
+Z0 !s110 1623983651
+!i10b 1
+!s100 _Z@h:Yc:RghHOf]ViON402
+I8DlChL_AZ7D:klF6G0QN_2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dE:/shudian/sdsheji
+w1623771630
+8E:/shudian/sdsheji/sdsheji.v
+FE:/shudian/sdsheji/sdsheji.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1623983651.000000
+!s107 E:/shudian/sdsheji/sdsheji.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/shudian/sdsheji/sdsheji.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vT_sdsheji
+R0
+!i10b 1
+!s100 g:bYY<lkP3kzL`oQPHz1l0
+IC4L_dFFaVgQ]4nMLWJ<g50
+R1
+R2
+w1622620418
+8E:/shudian/sdsheji/T_sdsheji.v
+FE:/shudian/sdsheji/T_sdsheji.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/shudian/sdsheji/T_sdsheji.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/shudian/sdsheji/T_sdsheji.v|
+!i113 1
+R5
+R6
+n@t_sdsheji
+vtest_sdsheji
+!s110 1622549880
+!i10b 1
+!s100 Hz_6GTL9nQM3n6Y79FPiS2
+I2ad7kC;DmHPHP@CUiEgg23
+R1
+dC:/Users/DELL/Desktop/sdsheji
+w1622549655
+8C:/Users/DELL/Desktop/sdsheji/test_sdsheji.v
+FC:/Users/DELL/Desktop/sdsheji/test_sdsheji.v
+L0 2
+R3
+r1
+!s85 0
+31
+!s108 1622549880.000000
+!s107 C:/Users/DELL/Desktop/sdsheji/test_sdsheji.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/DELL/Desktop/sdsheji/test_sdsheji.v|
+!i113 1
+R5
+R6

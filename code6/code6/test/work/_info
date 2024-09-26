@@ -1,0 +1,157 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Quartus_code/code_5/test
+vpy_1810_6
+Z0 !s110 1715061372
+!i10b 1
+!s100 YAZ]IF1ALodYL6S]`ENSA0
+IR6FJ1mk7LEne;kL]hQ^;i1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Quartus_code/code6/test
+w1715061010
+8C:/Quartus_code/code6/py_1810_6.v
+FC:/Quartus_code/code6/py_1810_6.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1715061372.000000
+!s107 C:/Quartus_code/code6/py_1810_6.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Quartus_code/code6/py_1810_6.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vpy_1810_6_1
+R0
+!i10b 1
+!s100 jBLjhY3mo4N_U5_oKNiSN1
+I:VG17ICP2WPnlH^2je[<B0
+R1
+R2
+w1715001938
+8C:/Quartus_code/code6/py_1810_6_1.v
+FC:/Quartus_code/code6/py_1810_6_1.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Quartus_code/code6/py_1810_6_1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Quartus_code/code6/py_1810_6_1.v|
+!i113 1
+R5
+R6
+vpy_1810_6_2
+R0
+!i10b 1
+!s100 TQN_mm:ZnfNnokZcD8]U<0
+IYjQJOC_^B6FJoP:AoWkf21
+R1
+R2
+w1715001939
+8C:/Quartus_code/code6/py_1810_6_2.v
+FC:/Quartus_code/code6/py_1810_6_2.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Quartus_code/code6/py_1810_6_2.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Quartus_code/code6/py_1810_6_2.v|
+!i113 1
+R5
+R6
+vpy_1810_6_3
+R0
+!i10b 1
+!s100 Th<fhM@[0W18k@[?J[Zg?2
+IJ@<PHaHEOAA8DFkZP[PhS0
+R1
+R2
+w1715061016
+8C:/Quartus_code/code6/py_1810_6_3.v
+FC:/Quartus_code/code6/py_1810_6_3.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Quartus_code/code6/py_1810_6_3.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Quartus_code/code6/py_1810_6_3.v|
+!i113 1
+R5
+R6
+vpy_1810_6_4
+R0
+!i10b 1
+!s100 0]B19h@PQ8?SzGCi0:5[@3
+IOj:DI_T]6mhV14FRHS2iT1
+R1
+R2
+w1715002604
+8C:/Quartus_code/code6/py_1810_6_4.v
+FC:/Quartus_code/code6/py_1810_6_4.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Quartus_code/code6/py_1810_6_4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Quartus_code/code6/py_1810_6_4.v|
+!i113 1
+R5
+R6
+vpy_1810_6_5
+Z7 !s110 1715061373
+!i10b 1
+!s100 DXVa:QP8DaH323o5K2o;O1
+IX2?AUCZZ8ZmjOSZMd6i@U3
+R1
+R2
+w1715001959
+8C:/Quartus_code/code6/py_1810_6_5.v
+FC:/Quartus_code/code6/py_1810_6_5.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Quartus_code/code6/py_1810_6_5.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Quartus_code/code6/py_1810_6_5.v|
+!i113 1
+R5
+R6
+vpy_1810_6_test
+R7
+!i10b 1
+!s100 :7Jl:V:Ek7Q41dkgW0@7=3
+I7F^fQ3`C<dG^H=;`ifX0_3
+R1
+R2
+w1715002618
+8C:/Quartus_code/code6/py_1810_6_test.v
+FC:/Quartus_code/code6/py_1810_6_test.v
+L0 28
+R3
+r1
+!s85 0
+31
+!s108 1715061373.000000
+!s107 C:/Quartus_code/code6/py_1810_6_test.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Quartus_code/code6/py_1810_6_test.v|
+!i113 1
+R5
+R6

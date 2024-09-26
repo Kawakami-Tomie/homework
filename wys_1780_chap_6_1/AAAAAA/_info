@@ -1,0 +1,157 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/Quartusexperiment/wys_1780_chap_6_1
+vgsq_1783_6_0
+Z1 !s110 1715228469
+!i10b 1
+!s100 WM9QlDbM^AVcH`f[76=_j1
+I9hQJ14cd<2TTdkN6;?02[0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1715062054
+8D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_0.v
+FD:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_0.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1715228468.000000
+!s107 D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_0.v|
+!s90 -reportprogress|300|-work|AAAAAA|-stats=none|D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_0.v|
+!i113 1
+Z5 o-work AAAAAA
+Z6 tCvgOpt 0
+vgsq_1783_6_0_vlg_tst
+Z7 !s110 1715228468
+!i10b 1
+!s100 GhD_jY>T6G:7=I5Y1lC283
+IR9Y<g4ZKZ9`:ENb?GlnMK0
+R2
+R0
+w1715063260
+8D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/test_gsq_1783_6_0.v
+FD:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/test_gsq_1783_6_0.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/test_gsq_1783_6_0.v|
+!s90 -reportprogress|300|-work|AAAAAA|-stats=none|D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/test_gsq_1783_6_0.v|
+!i113 1
+R5
+R6
+vgsq_1783_6_1
+R1
+!i10b 1
+!s100 IAhadGU^RR^_MDg8M`ibW2
+I7m3B3_hmo=f3HKJ[d=j2M2
+R2
+R0
+w1715012712
+8D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_1.v
+FD:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_1.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z8 !s108 1715228469.000000
+!s107 D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_1.v|
+!s90 -reportprogress|300|-work|AAAAAA|-stats=none|D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_1.v|
+!i113 1
+R5
+R6
+vgsq_1783_6_2
+R1
+!i10b 1
+!s100 S=kijGbVS^3ieZ`9RROnj3
+IlKK]O>5]_d<;7fee_N=g[0
+R2
+R0
+w1715010956
+8D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_2.v
+FD:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_2.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_2.v|
+!s90 -reportprogress|300|-work|AAAAAA|-stats=none|D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_2.v|
+!i113 1
+R5
+R6
+vgsq_1783_6_3
+R1
+!i10b 1
+!s100 OPR97UVld><0KjfiR=4g[0
+Io6gb0EbHJY2`oX:MR;VXM0
+R2
+R0
+w1715065452
+8D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_3.v
+FD:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_3.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_3.v|
+!s90 -reportprogress|300|-work|AAAAAA|-stats=none|D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_3.v|
+!i113 1
+R5
+R6
+vgsq_1783_6_4
+R1
+!i10b 1
+!s100 hB7OHgBf<URgGn014CHoW3
+I^k9PYZIniT8>B?@;W=PR;3
+R2
+R0
+w1715061852
+8D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_4.v
+FD:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_4.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_4.v|
+!s90 -reportprogress|300|-work|AAAAAA|-stats=none|D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_4.v|
+!i113 1
+R5
+R6
+vgsq_1783_6_5
+R7
+!i10b 1
+!s100 d_?PL6nI0J0VS4QChgfC]2
+In@RWffDRLL>nfU?:BE]GV1
+R2
+R0
+w1715062056
+8D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_5.v
+FD:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_5.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_5.v|
+!s90 -reportprogress|300|-work|AAAAAA|-stats=none|D:/腾讯电脑管家文件搬家/QQ聊天文件搬家/Users/A/Documents/Tencent Files/2971508120/FileRecv/gsq_1783_6_0/gsq_1783_6_0/gsq_1783_6_5.v|
+!i113 1
+R5
+R6

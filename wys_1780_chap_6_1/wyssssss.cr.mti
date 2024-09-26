@@ -1,0 +1,50 @@
+E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_3.v {1 {vlog -work work -stats=none E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_3.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module wys_1780_chap_6_3
+
+Top level modules:
+	wys_1780_chap_6_3
+
+} {} {}} E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_4.v {1 {vlog -work work -stats=none E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_4.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module wys_1780_chap_6_4
+
+Top level modules:
+	wys_1780_chap_6_4
+
+} {} {}} E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_1.v {1 {vlog -work work -stats=none E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_1.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module wys_1780_chap_6_1
+
+Top level modules:
+	wys_1780_chap_6_1
+
+} {} {}} E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_5.v {1 {vlog -work work -stats=none E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_5.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module wys_1780_chap_6_5
+
+Top level modules:
+	wys_1780_chap_6_5
+
+} {} {}} E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_6.v {1 {vlog -work work -stats=none E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_6.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module wys_1780_chap_6_6
+
+Top level modules:
+	wys_1780_chap_6_6
+
+} {} {}} E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_2.v {1 {vlog -work work -stats=none E:/Quartusexperiment/wys_1780_chap_6_1/wys_1780_chap_6_2.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module wys_1780_chap_6_2
+
+Top level modules:
+	wys_1780_chap_6_2
+
+} {} {}} E:/Quartusexperiment/wys_1780_chap_6_1/simulation/modelsim/wys_1780_chap_6_1.vt {1 {vlog -work work -stats=none E:/Quartusexperiment/wys_1780_chap_6_1/simulation/modelsim/wys_1780_chap_6_1.vt
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module wys_1780_chap_6_1_vlg_tst
+
+Top level modules:
+	wys_1780_chap_6_1_vlg_tst
+
+} {} {}}

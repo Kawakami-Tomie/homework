@@ -1,0 +1,63 @@
+
+
+module _1780_chap_5(clk_in,sel,clk_out);
+    input clk_in; // 50MHZ系统时钟
+ input sel; // 控制c1k_out[1]的频率
+ output reg [1: 0] clk_out; // 输出时钟
+ 
+ reg [15:0]counter1;	// c1k_out[0]的计数器	
+ reg [15:0]counter2; 
+ reg [16:0]counter3;
+ //1为0时c1k_out[1]的计数器 se1为1时c1k_out[1]的计数器
+
+ parameter num1=50000000/1780; //c1k_out[0]比值
+ parameter num2=50000000/1780*2; //l为0时clk_out1]比值 
+ parameter num3=50000000/1780*4; //1为1时clk_out[1]比值
+
+ always@(posedge clk_in)
+ begin
+  if(counter1 < num1 / 2) // 优先处理c1k_out[0] 
+  begin
+    counter1<= counter1 + 16'd1; 
+	 clk_out[0] <= 1'b0;
+ end
+ else if(counter1<num1-1) 
+ begin
+  counter1 <= counter1 + 16'd1; 
+  clk_out[0] <= 1'b1; 
+ end 
+ else
+  counter1 <= 16'd0;
+  //
+ if(sel)	// 根据se1的值处理c1k_out[1]	
+ begin
+   if(counter3 < num3/2) 
+	begin
+     counter3 <= counter3 + 17'd1;
+	  clk_out[1] <= 1'b0;
+   end
+   else if(counter3 < num3 -1) 
+	begin
+     counter3 <= counter3+ 17'd1; 
+	  clk_out[1] <= 1'b1; 
+	end 
+	else
+     counter3 <= 17'd0;
+ end 
+ else
+ begin
+      if(counter2 < num2/2) 
+		 begin
+         counter2 <= counter2 + 16'd1; 
+			clk_out[1] <= 1'b0; 
+		 end
+       else if(counter2 < num2 -1) 
+		 begin
+         counter2 <= counter2 + 16'd1; 
+			clk_out[1] <= 1'b1; 
+		end 
+		else
+        counter2 <= 16'd0;
+      end 
+  end
+endmodule

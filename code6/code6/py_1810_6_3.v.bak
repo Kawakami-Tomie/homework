@@ -1,0 +1,14 @@
+module py_1810_6_3(SEL,Y);//数据选择器
+input [1:0] SEL;
+output reg[3:0] Y;
+always @(SEL)
+begin
+case(SEL)
+2'd0:Y <= 4'b0010;
+2'd1:Y <= 4'b0010;
+2'd2:Y <= 4'b0000;
+2'd3:Y <= 4'b0010;
+default: Y <=4'bx;
+endcase
+end
+endmodule

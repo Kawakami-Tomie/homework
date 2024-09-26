@@ -1,0 +1,40 @@
+module jmw_1763_8(f0, f1, clkin, clr)
+input f0, clkin, clr;	//输入端
+output reg f1;
+reg temp;
+reg flag;
+reg [13:0] cnt;
+always @(posedge clkin)
+begin
+	if(clk)
+		begin
+			if((temp == 1'b0)&(f0 == 1'b1))	//检测到输入信号上升沿
+				flag <= 1'b1;
+			else
+				flag <= flag;
+				
+			if(flag)
+				begin
+					if(cnt >= 14'd10000)
+						begin
+						flag <= 1'b0;
+						cnt <= 14'd0;
+						f1 <= 1'b0;
+						end
+					else
+						begin
+						f1 <= 1'b1;
+						cnt <= cnt + 1'b1;
+						end
+				end
+			else f1 <= 1'b0;
+			temp <= f0;
+		end
+	else
+		begin
+		cnt <= 14'd0;
+		f1 <= 1'b0;
+		end
+end
+endmodule	
+			

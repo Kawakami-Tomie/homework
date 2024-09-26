@@ -1,0 +1,58 @@
+`timescale 10 ns/ 1 ns  
+module wys_1780_chap_6_1_vlg_tst();  
+  
+reg clk_in;  
+wire [3:1]  DIG;  
+wire [6:0]  SEG;  
+wire [1:0]  SEL;  
+wire clk_1kHz;  
+wire [3:0]  data;  
+  
+// ?wys_1780_chap_6_1????????????????????????  
+wys_1780_chap_6_1 wys_1780_chap_6_1_inst (  
+    .DIG(DIG),  
+    .SEG(SEG),  
+    .SEL(SEL),  
+    .clk_1kHz(clk_1kHz),  
+    .clk_in(clk_in),  
+    .data(data)  
+);  
+  
+// ???????????  
+wys_1780_chap_6_2 wys_1780_chap_6_2_inst(  
+    .clk_in(clk_in),  
+    .clk_1kHz(clk_1kHz)  
+);  
+  
+wys_1780_chap_6_3 wys_1780_chap_6_3_inst(  
+    .clk_1kHz(clk_1kHz),  
+    .SEL(SEL)  
+);  
+  
+wys_1780_chap_6_4 wys_1780_chap_6_4_inst(  
+    .SEL(SEL),  
+    .data(data)  
+);  
+  
+wys_1780_chap_6_5 wys_1780_chap_6_5_inst(  
+    .data(data),  
+    .SEL(SEL)  
+);  
+  
+wys_1780_chap_6_6 wys_1780_chap_6_6_inst(  
+    .SEL(SEL),  
+    .DIG(DIG)  
+);  
+  
+initial begin  
+    clk_in = 1'b0;  
+    $display("Running testbench");  
+
+    forever begin  
+        #50 clk_in = ~clk_in; 
+    end  
+end    
+  
+endmodule
+  
+

@@ -1,0 +1,20 @@
+module py_1810_6_5(Y,codeout);	//译码器，显示数字
+	input [3:0] Y;
+	output reg [6:0] codeout;
+	always @(Y)
+	begin
+		case(Y)
+		4'd0:codeout<=7'b111_1110;
+		4'd1:codeout<=7'b011_0000;
+		4'd2:codeout<=7'b110_1101;
+		4'd3:codeout<=7'b111_1001;
+		4'd4:codeout<=7'b011_0011;
+		4'd5:codeout<=7'b101_1011;
+		4'd6:codeout<=7'b101_1111;
+		4'd7:codeout<=7'b111_0000;
+		4'd8:codeout<=7'b111_1111;
+		4'd9:codeout<=7'b111_1011;
+		default:codeout<=7'bx;
+		endcase
+	end
+endmodule

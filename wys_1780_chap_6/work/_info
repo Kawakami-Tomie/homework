@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dE:/Quartusexperiment
+vwys_1780_chap_6
+Z0 !s110 1715160751
+!i10b 1
+!s100 n=NSmf@J1YO?;ZfkUN`4<3
+IRbNhjlj58CWI>KF<cPD9C3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dE:/Quartusexperiment/wys_1780_chap_6
+w1715158772
+8E:/Quartusexperiment/wys_1780_chap_6/wys_1780_chap_6.v
+FE:/Quartusexperiment/wys_1780_chap_6/wys_1780_chap_6.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1715160751.000000
+!s107 E:/Quartusexperiment/wys_1780_chap_6/wys_1780_chap_6.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/wys_1780_chap_6/wys_1780_chap_6.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vwys_1780_chap_6_vlg_tst
+R0
+!i10b 1
+!s100 QI]T:a6f?G@P7N11FFhI_1
+I3iR86c4YbAD:T<mm<P:ca2
+R1
+R2
+w1715160240
+8E:/Quartusexperiment/wys_1780_chap_6/simulation/modelsim/wys_1780_chap_6.vt
+FE:/Quartusexperiment/wys_1780_chap_6/simulation/modelsim/wys_1780_chap_6.vt
+L0 28
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Quartusexperiment/wys_1780_chap_6/simulation/modelsim/wys_1780_chap_6.vt|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Quartusexperiment/wys_1780_chap_6/simulation/modelsim/wys_1780_chap_6.vt|
+!i113 1
+R5
+R6

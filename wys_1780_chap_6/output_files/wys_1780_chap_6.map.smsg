@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at wys_1780_chap_6.v(30): always construct contains both blocking and non-blocking assignments File: E:/Quartusexperiment/wys_1780_chap_6/wys_1780_chap_6.v Line: 30

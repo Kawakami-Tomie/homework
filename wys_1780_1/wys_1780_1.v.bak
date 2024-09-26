@@ -1,0 +1,13 @@
+module wys_1780_1(din,dout);
+input [3:0]din;
+output reg [6:0] dout;
+
+always@(din)
+begin
+	case(din)
+	0:dout<=7'b0111111
+	
+	endcase
+
+end
+endmodule

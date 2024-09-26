@@ -1,0 +1,113 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk_in'
+Slack : -4.384
+TNS   : -33.136
+
+Type  : Slow 1200mV 85C Model Setup 'py_1810_6_2:b|SEL[0]'
+Slack : -2.394
+TNS   : -4.455
+
+Type  : Slow 1200mV 85C Model Setup 'py_1810_6_1:a|clk_1khz'
+Slack : -1.809
+TNS   : -2.747
+
+Type  : Slow 1200mV 85C Model Hold 'py_1810_6_1:a|clk_1khz'
+Slack : 0.465
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk_in'
+Slack : 0.761
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'py_1810_6_2:b|SEL[0]'
+Slack : 1.492
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_in'
+Slack : -3.000
+TNS   : -26.792
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'py_1810_6_1:a|clk_1khz'
+Slack : -1.487
+TNS   : -5.948
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'py_1810_6_2:b|SEL[0]'
+Slack : 0.185
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'clk_in'
+Slack : -4.138
+TNS   : -29.215
+
+Type  : Slow 1200mV 0C Model Setup 'py_1810_6_2:b|SEL[0]'
+Slack : -2.434
+TNS   : -4.630
+
+Type  : Slow 1200mV 0C Model Setup 'py_1810_6_1:a|clk_1khz'
+Slack : -1.556
+TNS   : -2.161
+
+Type  : Slow 1200mV 0C Model Hold 'py_1810_6_1:a|clk_1khz'
+Slack : 0.417
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk_in'
+Slack : 0.707
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'py_1810_6_2:b|SEL[0]'
+Slack : 1.361
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_in'
+Slack : -3.000
+TNS   : -26.792
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'py_1810_6_1:a|clk_1khz'
+Slack : -1.487
+TNS   : -5.948
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'py_1810_6_2:b|SEL[0]'
+Slack : 0.075
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'clk_in'
+Slack : -1.463
+TNS   : -6.488
+
+Type  : Fast 1200mV 0C Model Setup 'py_1810_6_2:b|SEL[0]'
+Slack : -0.833
+TNS   : -1.585
+
+Type  : Fast 1200mV 0C Model Setup 'py_1810_6_1:a|clk_1khz'
+Slack : -0.277
+TNS   : -0.277
+
+Type  : Fast 1200mV 0C Model Hold 'py_1810_6_1:a|clk_1khz'
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk_in'
+Slack : 0.305
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'py_1810_6_2:b|SEL[0]'
+Slack : 0.329
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_in'
+Slack : -3.000
+TNS   : -20.013
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'py_1810_6_1:a|clk_1khz'
+Slack : -1.000
+TNS   : -4.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'py_1810_6_2:b|SEL[0]'
+Slack : 0.434
+TNS   : 0.000
+
+------------------------------------------------------------
